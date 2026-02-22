@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dr. Olori Boye-Ajayi | Speaker & Strategist</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --forest:   #0e1f14;
+      --deep:     #0a1510;
+      --mid:      #183021;
+      --panel:    #112318;
+      --gold:     #c8a84b;
+      --gold-lt:  #e0c375;
+      --gold-pale:#f5e8c0;
+      --cream:    #faf6ee;
+      --muted:    #a09070;
+      --text:     #ddd8c8;
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--deep);
+      color: var(--text);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ─── GRAIN OVERLAY ─── */
+    body::after {
+      content:'';
+      position:fixed; inset:0; z-index:999; pointer-events:none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      opacity:.5;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top:0; left:0; right:0; z-index:100;
+      padding: 20px 60px;
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid rgba(200,168,75,.15);
+      background: rgba(10,21,16,.85);
+      backdrop-filter: blur(12px);
+    }
+    .nav-logo {
+      font-family:'Playfair Display', serif;
+      font-size:18px; font-weight:500;
+      color: var(--gold-lt);
+      text-decoration:none;
+      letter-spacing:.5px;
+    }
+    .nav-cta {
+      font-size:11px; font-weight:600;
+      letter-spacing:2.5px; text-transform:uppercase;
+      color: var(--forest);
+      background: var(--gold);
+      padding:10px 24px;
+      text-decoration:none;
+      transition: background .25s, color .25s;
+    }
+    .nav-cta:hover { background: var(--gold-lt); }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height:100vh;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      position:relative;
+      overflow:hidden;
+    }
+
+    /* botanical SVG background */
+    .hero-bg {
+      position:absolute; inset:0; z-index:0;
+      background:
+        radial-gradient(ellipse 70% 60% at 65% 55%, rgba(200,168,75,.09) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 50% at 10% 80%, rgba(200,168,75,.05) 0%, transparent 55%);
+    }
+
+    /* decorative leaf/vine SVG */
+    .hero-vine {
+      position:absolute; right:0; top:0; height:100%; width:55%;
+      z-index:0; opacity:.18; pointer-events:none;
+    }
+
+    .hero-left {
+      position:relative; z-index:2;
+      padding: 160px 50px 100px 80px;
+      display:flex; flex-direction:column; justify-content:center;
+    }
+
+    .kicker {
+      display:flex; align-items:center; gap:12px;
+      font-size:10.5px; font-weight:600; letter-spacing:4px; text-transform:uppercase;
+      color: var(--gold);
+      margin-bottom:28px;
+    }
+    .kicker::before { content:''; display:block; width:30px; height:1px; background:var(--gold); }
+
+    h1 {
+      font-family:'Playfair Display', serif;
+      font-size: clamp(44px, 5vw, 72px);
+      font-weight:500; line-height:1.06;
+      color: var(--cream);
+      margin-bottom:12px;
+    }
+    h1 em { display:block; font-style:italic; color:var(--gold-lt); }
+
+    .hero-tagline {
+      font-family:'Playfair Display',serif;
+      font-style:italic; font-size:17px;
+      color: var(--gold-pale); line-height:1.65;
+      max-width:420px; margin-bottom:12px;
+    }
+
+    .hero-sub {
+      font-size:14px; line-height:1.8;
+      color: rgba(221,216,200,.7);
+      max-width:430px; margin-bottom:44px;
+    }
+
+    .btn-row { display:flex; gap:14px; flex-wrap:wrap; }
+
+    .btn-gold {
+      display:inline-flex; align-items:center; gap:9px;
+      background: var(--gold); color: var(--forest);
+      font-size:11.5px; font-weight:600; letter-spacing:2px; text-transform:uppercase;
+      padding:16px 34px; text-decoration:none;
+      position:relative; overflow:hidden;
+      transition: color .3s;
+    }
+    .btn-gold::before {
+      content:''; position:absolute; inset:0;
+      background:var(--gold-lt);
+      transform:translateX(-101%);
+      transition:transform .3s ease;
+    }
+    .btn-gold:hover::before { transform:translateX(0); }
+    .btn-gold span { position:relative; z-index:1; }
+
+    .btn-ghost {
+      display:inline-flex; align-items:center; gap:9px;
+      border:1px solid rgba(200,168,75,.4);
+      color: var(--gold-pale);
+      font-size:11.5px; font-weight:500; letter-spacing:2px; text-transform:uppercase;
+      padding:16px 34px; text-decoration:none;
+      transition: border-color .25s, color .25s, background .25s;
+    }
+    .btn-ghost:hover {
+      border-color:var(--gold); color:var(--gold);
+      background:rgba(200,168,75,.06);
+    }
+
+    /* hero right – full half-screen photo */
+    .hero-right {
+      position:relative; z-index:2;
+      overflow:hidden;
+      min-height:100vh;
+    }
+    .hero-photo {
+      position:absolute; inset:0;
+      width:100%; height:100%;
+      object-fit:contain; object-position:center top;
+      display:block;
+    }
+    .hero-right::after {
+      content:'';
+      position:absolute; inset:0;
+      background: linear-gradient(to right, rgba(10,21,16,.55) 0%, transparent 40%),
+                  linear-gradient(to top, rgba(10,21,16,.5) 0%, transparent 40%);
+      pointer-events:none;
+    }
+    .hero-right::before {
+      content:'';
+      position:absolute; top:10%; left:0; bottom:10%;
+      width:1px; z-index:2;
+      background: linear-gradient(to bottom, transparent, rgba(200,168,75,.5), transparent);
+    }
+    /* shown only when no real photo — remove once image is added */
+    .hero-photo-hint {
+      position:absolute; inset:0; z-index:3;
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:center; gap:14px;
+      background: linear-gradient(135deg, rgba(200,168,75,.10), rgba(200,168,75,.02));
+    }
+    .hint-icon {
+      width:72px; height:72px;
+      border:1px solid rgba(200,168,75,.35); border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .hint-icon svg { width:30px; height:30px; fill:rgba(200,168,75,.45); }
+    .hint-label {
+      font-size:10px; letter-spacing:3px; text-transform:uppercase;
+      color:var(--muted); text-align:center;
+    }
+    .photo-dl {
+      font-size:11px; letter-spacing:2.5px; text-transform:uppercase;
+      color:var(--gold); text-decoration:none;
+      border-bottom:1px solid rgba(200,168,75,.4);
+      padding-bottom:3px; margin-top:6px;
+      transition: color .2s, border-color .2s;
+    }
+    .photo-dl:hover { color:var(--gold-lt); border-color:var(--gold-lt); }
+
+    /* ─── STATS STRIP ─── */
+    .stats {
+      display:grid; grid-template-columns:repeat(4,1fr);
+      border-top:1px solid rgba(200,168,75,.2);
+      border-bottom:1px solid rgba(200,168,75,.2);
+      background: rgba(200,168,75,.04);
+    }
+    .stat {
+      padding:34px 20px;
+      text-align:center;
+      border-right:1px solid rgba(200,168,75,.14);
+    }
+    .stat:last-child { border-right:none; }
+    .stat-num {
+      font-family:'Playfair Display',serif;
+      font-size:44px; font-weight:400;
+      color:var(--gold); display:block;
+      line-height:1; margin-bottom:8px;
+    }
+    .stat-lbl {
+      font-size:10px; letter-spacing:2.5px; text-transform:uppercase; color:var(--muted);
+    }
+
+    /* ─── SECTION COMMONS ─── */
+    section { position:relative; }
+
+    .wrap { max-width:1160px; margin:0 auto; padding:0 60px; }
+
+    .sec-kicker {
+      display:flex; align-items:center; gap:12px;
+      font-size:10px; font-weight:600; letter-spacing:4px; text-transform:uppercase;
+      color:var(--gold); margin-bottom:14px;
+    }
+    .sec-kicker::after { content:''; display:block; width:28px; height:1px; background:var(--gold); }
+
+    .sec-head {
+      font-family:'Playfair Display',serif;
+      font-size: clamp(32px,3.5vw,50px);
+      font-weight:500; line-height:1.1;
+      color:var(--cream);
+    }
+    .sec-head em { font-style:italic; color:var(--gold-lt); }
+
+    /* ─── BIO PHOTO ─── */
+    .bio-photo-wrap {
+      position:relative; margin-top:40px;
+    }
+    .bio-photo {
+      width:100%; aspect-ratio:3/4;
+      object-fit:cover; object-position:center top;
+      display:block;
+      border:1px solid rgba(200,168,75,.2);
+    }
+    .bio-photo-placeholder {
+      width:100%; aspect-ratio:3/4;
+      background: linear-gradient(135deg, rgba(200,168,75,.1), rgba(200,168,75,.02));
+      border:1px solid rgba(200,168,75,.2);
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:center; gap:12px;
+    }
+    /* gold corner accents */
+    .bio-photo-wrap::before, .bio-photo-wrap::after {
+      content:''; position:absolute; width:24px; height:24px;
+      border-color:var(--gold); border-style:solid; z-index:2;
+    }
+    .bio-photo-wrap::before {
+      top:-8px; left:-8px;
+      border-width:2px 0 0 2px;
+    }
+    .bio-photo-wrap::after {
+      bottom:-8px; right:-8px;
+      border-width:0 2px 2px 0;
+    }
+
+    /* ─── GALLERY SECTION ─── */
+    .gallery-section {
+      padding:110px 0;
+      border-top:1px solid rgba(200,168,75,.12);
+    }
+    .gallery-grid {
+      display:grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap:4px;
+      margin-top:50px;
+    }
+    .gallery-item {
+      position:relative; overflow:hidden;
+      background: linear-gradient(135deg, rgba(200,168,75,.1), rgba(200,168,75,.02));
+      border:1px solid rgba(200,168,75,.15);
+    }
+    .gallery-item img {
+      width:100%; height:100%;
+      object-fit:cover; object-position:center top;
+      display:block;
+      transition: transform .6s ease;
+    }
+    .gallery-item:hover img { transform:scale(1.04); }
+    /* overlay on hover */
+    .gallery-item::after {
+      content:''; position:absolute; inset:0;
+      background:rgba(10,21,16,.3);
+      opacity:0; transition:opacity .3s;
+    }
+    .gallery-item:hover::after { opacity:1; }
+    /* tall left item spans 2 rows */
+    .gallery-item.tall { grid-row: span 2; }
+    .gallery-placeholder {
+      width:100%; height:100%; min-height:220px;
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:center; gap:10px;
+      padding:20px;
+    }
+    .gallery-placeholder .ph-icon {
+      width:44px; height:44px;
+      border:1px solid rgba(200,168,75,.3); border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .gallery-placeholder .ph-icon svg { width:20px; height:20px; fill:rgba(200,168,75,.4); }
+    .gallery-placeholder span {
+      font-size:9px; letter-spacing:3px; text-transform:uppercase;
+      color:var(--muted); text-align:center;
+    }
+    .gallery-tall-placeholder {
+      min-height:460px;
+    }
+    .gallery-dl {
+      margin-top:24px; text-align:center;
+    }
+    .gallery-dl a {
+      font-size:11px; letter-spacing:2.5px; text-transform:uppercase;
+      color:var(--gold); text-decoration:none;
+      border-bottom:1px solid rgba(200,168,75,.4);
+      padding-bottom:3px;
+      transition: color .2s;
+    }
+    .gallery-dl a:hover { color:var(--gold-lt); }
+    .bio-section { padding:110px 0; }
+    .bio-grid {
+      display:grid; grid-template-columns:1fr 1fr 2fr;
+      gap:60px; align-items:start;
+    }
+    .bio-sticky { }
+    .bio-text p {
+      font-size:15px; line-height:1.85;
+      color:rgba(221,216,200,.82);
+      margin-bottom:20px;
+    }
+    .bio-text p.lead {
+      font-family:'Playfair Display',serif;
+      font-size:19px; font-weight:400;
+      color:var(--cream); line-height:1.6;
+      margin-bottom:28px;
+    }
+
+    /* ─── ACCOLADES ─── */
+    .accolades-section {
+      padding:90px 0;
+      background:rgba(200,168,75,.03);
+      border-top:1px solid rgba(200,168,75,.12);
+      border-bottom:1px solid rgba(200,168,75,.12);
+    }
+    .accolades-head { margin-bottom:50px; }
+    .awards-grid {
+      display:grid; grid-template-columns:repeat(3,1fr);
+      gap:2px;
+    }
+    .award-card {
+      padding:30px 32px;
+      border:1px solid rgba(200,168,75,.12);
+      background:rgba(10,21,16,.7);
+      position:relative; overflow:hidden;
+      transition: background .3s;
+    }
+    .award-card::before {
+      content:''; position:absolute;
+      top:0; left:0; right:0; height:2px;
+      background:var(--gold);
+      transform:scaleX(0); transform-origin:left;
+      transition:transform .3s;
+    }
+    .award-card:hover { background:rgba(200,168,75,.05); }
+    .award-card:hover::before { transform:scaleX(1); }
+    .award-year {
+      font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase;
+      color:var(--gold); display:block; margin-bottom:10px;
+    }
+    .award-text { font-size:13.5px; line-height:1.65; color:rgba(221,216,200,.78); }
+
+    /* ─── SPEAKING ─── */
+    .speaking-section { padding:110px 0; }
+    .speaking-grid {
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:60px; align-items:center;
+      margin-top:60px;
+    }
+    .speaking-info p {
+      font-size:15px; line-height:1.85;
+      color:rgba(221,216,200,.8);
+      margin-bottom:18px;
+    }
+    .topic-tags {
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin:30px 0 40px;
+    }
+    .tag {
+      font-size:11px; letter-spacing:2px; text-transform:uppercase;
+      color:var(--gold);
+      border:1px solid rgba(200,168,75,.35);
+      padding:7px 18px;
+    }
+    .speaking-visual {
+      position:relative;
+      display:flex; align-items:center; justify-content:center;
+      height:360px;
+    }
+    .sv-ring {
+      position:absolute;
+      border-radius:50%;
+      border:1px solid rgba(200,168,75,.18);
+    }
+    .sv-ring-1 { width:320px; height:320px; }
+    .sv-ring-2 {
+      width:230px; height:230px;
+      border-color:rgba(200,168,75,.28);
+      animation:spin 30s linear infinite;
+    }
+    .sv-ring-2::after {
+      content:''; position:absolute;
+      top:-4px; left:50%; transform:translateX(-50%);
+      width:8px; height:8px; border-radius:50%;
+      background:var(--gold);
+    }
+    .sv-center {
+      position:relative; z-index:2;
+      text-align:center;
+    }
+    .sv-label {
+      font-family:'Playfair Display',serif;
+      font-size:15px; font-style:italic;
+      color:var(--gold-lt); display:block;
+      margin-bottom:4px;
+    }
+    .sv-role {
+      font-size:10px; letter-spacing:3px; text-transform:uppercase;
+      color:var(--muted);
+    }
+    @keyframes spin { to { transform:rotate(360deg); } }
+
+    /* ─── TSG SECTION ─── */
+    .tsg-section {
+      padding:110px 0;
+      background: var(--panel);
+      border-top:1px solid rgba(200,168,75,.15);
+      overflow:hidden;
+    }
+    .tsg-grid {
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:80px; align-items:center;
+      margin-top:60px;
+    }
+    .tsg-visual {
+      position:relative; height:420px;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .tsg-orb {
+      width:300px; height:300px; border-radius:50%;
+      background:radial-gradient(circle at 38% 38%, rgba(200,168,75,.22), rgba(200,168,75,.04) 60%, transparent 80%);
+      border:1px solid rgba(200,168,75,.25);
+      display:flex; align-items:center; justify-content:center;
+      animation:breathe 5s ease-in-out infinite;
+      position:relative;
+    }
+    .tsg-orb::after {
+      content:''; position:absolute;
+      inset:14px; border-radius:50%;
+      border:1px solid rgba(200,168,75,.18);
+      animation:breathe 5s .6s ease-in-out infinite;
+    }
+    @keyframes breathe {
+      0%,100% { box-shadow:0 0 0 0 rgba(200,168,75,0); }
+      50%      { box-shadow:0 0 40px 10px rgba(200,168,75,.08); }
+    }
+    .tsg-monogram {
+      font-family:'Playfair Display',serif;
+      font-size:72px; font-weight:400;
+      color:var(--gold); line-height:1;
+      display:block; text-align:center; margin-bottom:6px;
+    }
+    .tsg-sub-label {
+      font-size:9px; letter-spacing:4px; text-transform:uppercase;
+      color:var(--muted); text-align:center;
+    }
+    .tsg-content p {
+      font-size:15px; line-height:1.85;
+      color:rgba(221,216,200,.8);
+      margin-bottom:18px;
+    }
+    .program-pills {
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin:28px 0 36px;
+    }
+    .pill {
+      font-size:11px; letter-spacing:2px; text-transform:uppercase;
+      color:var(--gold);
+      border:1px solid rgba(200,168,75,.35);
+      padding:7px 18px;
+    }
+
+    /* ─── BOOK / SELAR SECTION ─── */
+    .shop-section {
+      padding:110px 0;
+      border-top:1px solid rgba(200,168,75,.12);
+    }
+    .shop-grid {
+      display:grid; grid-template-columns:1fr 1fr;
+      gap:60px; align-items:center;
+      margin-top:60px;
+    }
+    .book-card {
+      padding:50px;
+      border:1px solid rgba(200,168,75,.2);
+      background:rgba(10,21,16,.8);
+      position:relative;
+    }
+    .book-card::before {
+      content:''; position:absolute;
+      top:-1px; left:40px; right:40px; height:2px;
+      background:linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .book-eyebrow {
+      font-size:10px; font-weight:600; letter-spacing:4px; text-transform:uppercase;
+      color:var(--gold); display:block; margin-bottom:18px;
+    }
+    .book-title {
+      font-family:'Playfair Display',serif;
+      font-size:38px; font-weight:700;
+      color:var(--cream); margin-bottom:18px; line-height:1.1;
+    }
+    .book-quote {
+      font-family:'Playfair Display',serif;
+      font-style:italic; font-size:15px;
+      color:var(--gold-pale); line-height:1.65;
+      padding-left:18px;
+      border-left:2px solid var(--gold);
+      margin-bottom:22px;
+    }
+    .book-desc {
+      font-size:14px; line-height:1.75;
+      color:rgba(221,216,200,.7);
+      margin-bottom:34px;
+    }
+    .shop-text p {
+      font-size:15px; line-height:1.85;
+      color:rgba(221,216,200,.8);
+      margin-bottom:18px;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background:var(--deep);
+      border-top:1px solid rgba(200,168,75,.2);
+      padding:50px 60px;
+      display:flex; align-items:center; justify-content:space-between;
+    }
+    .footer-name {
+      font-family:'Playfair Display',serif;
+      font-size:16px; font-weight:500;
+      color:var(--gold-lt);
+    }
+    .footer-note {
+      font-size:12px; color:var(--muted);
+    }
+    .footer-book {
+      text-decoration:none;
+    }
+
+    /* ─── SCROLL ANIMATIONS ─── */
+    .fade-up {
+      opacity:0; transform:translateY(30px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+    .fade-up.visible { opacity:1; transform:translateY(0); }
+
+    /* stagger helpers */
+    .delay-1 { transition-delay:.1s; }
+    .delay-2 { transition-delay:.2s; }
+    .delay-3 { transition-delay:.3s; }
+    .delay-4 { transition-delay:.4s; }
+
+    /* ─── RESPONSIVE ─── */
+    @media(max-width:900px) {
+      nav { padding:18px 24px; }
+      .hero { grid-template-columns:1fr; grid-template-rows: auto auto; }
+      .hero-left { padding:130px 30px 60px; }
+      .hero-right { 
+        display:block;
+        min-height:60vw;
+        max-height:500px;
+      }
+      .stats { grid-template-columns:repeat(2,1fr); }
+      .wrap { padding:0 30px; }
+      .bio-grid { grid-template-columns:1fr; gap:30px; }
+      .bio-photo-wrap { max-width:300px; }
+      .awards-grid { grid-template-columns:1fr; }
+      .gallery-grid { grid-template-columns:1fr 1fr; }
+      .gallery-item.tall { grid-row:span 1; }
+      .speaking-grid,
+      .tsg-grid,
+      .shop-grid { grid-template-columns:1fr; gap:40px; }
+      .awards-grid { grid-template-columns:1fr; }
+      .tsg-visual { height:280px; }
+      footer { flex-direction:column; gap:16px; text-align:center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a class="nav-logo" href="#">Dr. Olori Boye-Ajayi</a>
+  <a class="nav-cta" href="https://forms.gle/s2za4EiXrawCRF249" target="_blank">
+    <span>Book Dr. Olori</span>
+  </a>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+
+  <!-- decorative vine/leaves -->
+  <svg class="hero-vine" viewBox="0 0 500 900" xmlns="http://www.w3.org/2000/svg" fill="none">
+    <path d="M350 0 Q200 150 320 300 Q440 450 250 600 Q80 750 300 900" stroke="#c8a84b" stroke-width="1.2"/>
+    <ellipse cx="260" cy="120" rx="55" ry="28" transform="rotate(-30 260 120)" stroke="#c8a84b" stroke-width="1"/>
+    <ellipse cx="330" cy="260" rx="50" ry="25" transform="rotate(20 330 260)" stroke="#c8a84b" stroke-width="1"/>
+    <ellipse cx="280" cy="420" rx="60" ry="30" transform="rotate(-15 280 420)" stroke="#c8a84b" stroke-width="1"/>
+    <ellipse cx="200" cy="570" rx="48" ry="24" transform="rotate(25 200 570)" stroke="#c8a84b" stroke-width="1"/>
+    <ellipse cx="310" cy="720" rx="55" ry="27" transform="rotate(-20 310 720)" stroke="#c8a84b" stroke-width="1"/>
+    <ellipse cx="240" cy="850" rx="44" ry="22" transform="rotate(15 240 850)" stroke="#c8a84b" stroke-width="1"/>
+    <!-- small circles at junctions -->
+    <circle cx="320" cy="300" r="3" fill="#c8a84b" opacity="0.6"/>
+    <circle cx="250" cy="600" r="3" fill="#c8a84b" opacity="0.6"/>
+  </svg>
+
+  <div class="hero-left">
+    <div class="kicker">Keynote Speaker · Strategist · Minister</div>
+
+    <h1>
+      Dr. Olori<br/>
+      <em>Boye-Ajayi</em>
+    </h1>
+
+    <p class="hero-tagline">
+      "I walk with people through real, ordinary life — and call forth what God has already placed in them."
+    </p>
+
+    <p class="hero-sub">
+      Senior African trade strategist. Capital architect. Policy leader. Oxford alumna. Servant Leader of The Secret Garden Global. Author. And above all — a Bondservant of Jesus Christ.
+    </p>
+
+    <div class="btn-row">
+      <a class="btn-gold" href="https://forms.gle/s2za4EiXrawCRF249" target="_blank">
+        <span>Book Dr. Olori</span>
+        <span>→</span>
+      </a>
+      <a class="btn-ghost" href="https://selar.com/j422577117" target="_blank">
+        Shop Books & Resources
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <!--
+      TO ADD PHOTO: Replace src below with your actual image path
+    -->
+    <img class="hero-photo" src="images/hero.jpeg" alt="Dr. Olori Boye-Ajayi" />
+  </div>
+</section>
+
+<!-- ── STATS ── -->
+<div class="stats">
+  <div class="stat fade-up">
+    <span class="stat-num">15+</span>
+    <span class="stat-lbl">Years of Experience</span>
+  </div>
+  <div class="stat fade-up delay-1">
+    <span class="stat-num">€500M+</span>
+    <span class="stat-lbl">Development Funds Structured</span>
+  </div>
+  <div class="stat fade-up delay-2">
+    <span class="stat-num">100K+</span>
+    <span class="stat-lbl">Entrepreneurs Reached</span>
+  </div>
+  <div class="stat fade-up delay-3">
+    <span class="stat-num">$3M+</span>
+    <span class="stat-lbl">Raised for Women-led SMEs</span>
+  </div>
+</div>
+
+<!-- ── BIO ── -->
+<section class="bio-section">
+  <div class="wrap">
+    <div class="bio-grid">
+      <div class="bio-sticky fade-up">
+        <div class="sec-kicker">Her Story</div>
+        <h2 class="sec-head">A life built on <em>purpose & impact</em></h2>
+      </div>
+
+      <!-- Bio Photo -->
+      <div class="bio-photo-wrap fade-up delay-1">
+        <!--
+          TO ADD PHOTO: Replace the .bio-photo-placeholder div with:
+          <img class="bio-photo" src="YOUR_PHOTO_2.jpg" alt="Dr. Olori Boye-Ajayi" />
+        -->
+        <img class="bio-photo" src="images/bio.jpeg" alt="Dr. Olori Boye-Ajayi" />
+      </div>
+      <div class="bio-text">
+        <p class="lead fade-up">
+          Dr. Olori Boye-Ajayi is a senior African trade and development strategist, capital architect, and execution-focused policy leader with 15+ years of experience mobilizing private and public capital, aligning multi-country stakeholders, and delivering measurable impact across Africa.
+        </p>
+        <p class="fade-up delay-1">
+          An alumna of the University of Oxford and the Blavatnik School of Government, Dr. Boye-Ajayi serves as a Member of the AfCFTA Trade and Industrial Development Advisory Council, where she shapes continental trade strategies and industrial development frameworks.
+        </p>
+        <p class="fade-up delay-2">
+          Founder of Borderless Trade Network and Borderless Trade &amp; Investments, she has structured €500M+ in development funds, raised $3M+ for women-led SMEs, and facilitated market access for 100,000+ entrepreneurs. A MANSA Champion with Afreximbank, she has been honoured by MIPAD and at the UK House of Parliament, championing systems that include, protect, and scale real enterprise.
+        </p>
+        <p class="fade-up delay-3">
+          Dr. Olori's strategic insights have made her a sought-after consultant for international development institutions and multilateral organizations — ensuring programs deliver diversity, inclusion, and maximum impact.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ACCOLADES ── -->
+<section class="accolades-section">
+  <div class="wrap">
+    <div class="accolades-head fade-up">
+      <div class="sec-kicker">Recognition</div>
+      <h2 class="sec-head">Accolades &amp; <em>Honours</em></h2>
+    </div>
+    <div class="awards-grid">
+      <div class="award-card fade-up">
+        <span class="award-year">2026</span>
+        <p class="award-text">Recognized as one of the 100 Inspiring and Award-Winning Amazons in Nigeria</p>
+      </div>
+      <div class="award-card fade-up delay-1">
+        <span class="award-year">2024</span>
+        <p class="award-text">Named among the Global Top 100 Most Influential People of African Descent</p>
+      </div>
+      <div class="award-card fade-up delay-2">
+        <span class="award-year">2024</span>
+        <p class="award-text">Recognized as one of the Top 50 Inspiring Women in Nigeria</p>
+      </div>
+      <div class="award-card fade-up delay-3">
+        <span class="award-year">2023</span>
+        <p class="award-text">Honoured at the African Achievers Awards at the UK House of Parliament</p>
+      </div>
+      <div class="award-card fade-up delay-1">
+        <span class="award-year">2022</span>
+        <p class="award-text">International Woman of the Year — WOMEN4AFRICA UK</p>
+      </div>
+      <div class="award-card fade-up delay-2">
+        <span class="award-year">2021 · 2023</span>
+        <p class="award-text">Included in the Top 100 Inspiring Women in Africa Award</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SPEAKING ── -->
+<section class="speaking-section">
+  <div class="wrap">
+    <div class="sec-kicker fade-up">Speaking</div>
+    <h2 class="sec-head fade-up">Book Her for Your <em>Next Event</em></h2>
+    <div class="speaking-grid">
+      <div class="speaking-info">
+        <p class="fade-up">
+          Dr. Olori is available as a <strong style="color:var(--cream)">Keynote Speaker</strong> or <strong style="color:var(--cream)">Workshop Host</strong>. Her sessions are rooted in lived experience, strategic depth, and a faith-led worldview that challenges and inspires.
+        </p>
+        <p class="fade-up delay-1">
+          Whether you're convening leaders in trade, development, entrepreneurship, or faith — she brings clarity, conviction, and a mandate to see people walk in true potential.
+        </p>
+        <div class="topic-tags fade-up delay-2">
+          <span class="tag">African Trade</span>
+          <span class="tag">Women Entrepreneurship</span>
+          <span class="tag">Development Finance</span>
+          <span class="tag">Leadership</span>
+          <span class="tag">Faith &amp; Work</span>
+          <span class="tag">Policy &amp; Impact</span>
+        </div>
+        <div class="btn-row fade-up delay-3">
+          <a class="btn-gold" href="https://forms.gle/s2za4EiXrawCRF249" target="_blank">
+            <span>Book Dr. Olori For Your Event</span>
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="speaking-visual fade-up delay-2">
+        <div class="sv-ring sv-ring-1"></div>
+        <div class="sv-ring sv-ring-2"></div>
+        <div class="sv-center">
+          <span class="sv-label">Dr. Olori<br/>Boye-Ajayi</span>
+          <span class="sv-role">Keynote Speaker</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TSG SECTION ── -->
+<section class="tsg-section">
+  <div class="wrap">
+    <div class="sec-kicker fade-up">Ministry</div>
+    <h2 class="sec-head fade-up">The Secret Garden <em>Global</em></h2>
+    <div class="tsg-grid">
+      <div class="tsg-visual fade-up">
+        <div class="tsg-orb">
+          <div>
+            <span class="tsg-monogram">TSG</span>
+            <span class="tsg-sub-label">The Love Team</span>
+          </div>
+        </div>
+      </div>
+      <div class="tsg-content">
+        <p class="fade-up">
+          Beyond the marketplace, Dr. Boye-Ajayi serves as the <strong style="color:var(--cream)">Servant Leader of The Secret Garden Global (TSG)</strong> — an interdenominational ministry with a global reach.
+        </p>
+        <p class="fade-up delay-1">
+          TSG's mandate is to equip believers to walk in true dominion and to make real disciples of Christ. Known as <em style="color:var(--gold-pale)">The Love Team</em>, TSG is committed to nurturing spiritual growth, empowering believers to live as God's ambassadors, and fulfilling the One Billion Souls mandate.
+        </p>
+        <p class="fade-up delay-2">
+          This vision is expressed through key programs operating across Nigeria, the United Kingdom, Ethiopia, the United States, Kenya, Uganda, and beyond.
+        </p>
+        <div class="program-pills fade-up delay-3">
+          <span class="pill">Secret Garden Retreat</span>
+          <span class="pill">Flames</span>
+          <span class="pill">Power Night</span>
+          <span class="pill">TSG Missions</span>
+        </div>
+        <div class="btn-row fade-up delay-3">
+          <a class="btn-gold" href="#" target="_blank">
+            <!-- Replace href with actual TSG landing page URL -->
+            <span>Visit TSG Website</span>
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BOOK / SELAR ── -->
+<section class="shop-section">
+  <div class="wrap">
+    <div class="sec-kicker fade-up">Resources</div>
+    <h2 class="sec-head fade-up">Books &amp; <em>Digital Products</em></h2>
+    <div class="shop-grid">
+      <div class="book-card fade-up">
+        <span class="book-eyebrow">Featured Book</span>
+        <h3 class="book-title">The Lemon Book</h3>
+        <p class="book-quote">
+          "When life gives you lemons, make lemonade" sounds wise — but it's not the gospel.
+        </p>
+        <p class="book-desc">
+          Dr. Olori wrote The Lemon Book because believers are not meant to manage damage. This book calls you beyond coping and into the fullness of what God has already secured for you.
+        </p>
+        <a class="btn-gold" href="https://selar.com" target="_blank">
+          <!-- Replace with actual Selar page URL -->
+          <span>Get the Book on Selar</span>
+          <span>→</span>
+        </a>
+      </div>
+
+      <div class="shop-text fade-up delay-2">
+        <div class="sec-kicker" style="margin-bottom:20px;">Also Available</div>
+        <h3 class="sec-head" style="font-size:32px; margin-bottom:24px;">
+          Virtual Experiences &amp; <em>More</em>
+        </h3>
+        <p>
+          Get a Virtual Global Experience with OBA by The Secret Garden — plus courses, resources, and other products designed to equip you to walk in purpose and dominion.
+        </p>
+        <p>
+          All available on Dr. Olori's Selar store.
+        </p>
+        <div class="btn-row" style="margin-top:32px;">
+          <a class="btn-ghost" href="https://selar.com" target="_blank">
+            <!-- Replace with actual Selar page URL -->
+            Browse All Products →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── GALLERY / HEADSHOTS ── -->
+<section class="gallery-section">
+  <div class="wrap">
+    <div class="sec-kicker fade-up">In the Frame</div>
+    <h2 class="sec-head fade-up">Photo <em>Gallery</em></h2>
+
+    <div class="gallery-grid fade-up delay-1">
+
+      <!-- Large tall photo (left) -->
+      <div class="gallery-item tall">
+        <!--
+          TO ADD: <img src="headshot1.jpg" alt="Dr. Olori Boye-Ajayi" />
+        -->
+        <div class="gallery-placeholder gallery-tall-placeholder">
+          <div class="ph-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+          </div>
+          <span>Headshot 1</span>
+        </div>
+      </div>
+
+      <!-- Top right photo -->
+      <div class="gallery-item">
+        <!--
+          TO ADD: <img src="headshot2.jpg" alt="Dr. Olori Boye-Ajayi" />
+        -->
+        <div class="gallery-placeholder">
+          <div class="ph-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+          </div>
+          <span>Headshot 2</span>
+        </div>
+      </div>
+
+      <!-- Top far-right photo -->
+      <div class="gallery-item">
+        <!--
+          TO ADD: <img src="headshot3.jpg" alt="Dr. Olori Boye-Ajayi" />
+        -->
+        <div class="gallery-placeholder">
+          <div class="ph-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+          </div>
+          <span>Headshot 3</span>
+        </div>
+      </div>
+
+      <!-- Bottom middle photo -->
+      <div class="gallery-item">
+        <!--
+          TO ADD: <img src="photo4.jpg" alt="Dr. Olori at event" />
+        -->
+        <div class="gallery-placeholder">
+          <div class="ph-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+          </div>
+          <span>Photo 4</span>
+        </div>
+      </div>
+
+      <!-- Bottom far-right photo -->
+      <div class="gallery-item">
+        <!--
+          TO ADD: <img src="photo5.jpg" alt="Dr. Olori speaking" />
+        -->
+        <div class="gallery-placeholder">
+          <div class="ph-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+          </div>
+          <span>Photo 5</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="gallery-dl fade-up delay-2">
+      <a href="https://drive.google.com/drive/folders/1YMsddK0Ibvqvm2SylCu1ngJSD4uvyjSM?usp=sharing" target="_blank">
+        ↓ Download All Approved Photos
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <span class="footer-name">Dr. Olori Boye-Ajayi</span>
+  <span class="footer-note">© 2025 · All rights reserved</span>
+  <a class="btn-gold footer-book" href="https://forms.gle/s2za4EiXrawCRF249" target="_blank">
+    <span>Book Dr. Olori</span>
+    <span>→</span>
+  </a>
+</footer>
+
+<!-- ── SCROLL ANIMATION SCRIPT ── -->
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
