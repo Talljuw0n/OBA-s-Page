@@ -389,8 +389,20 @@
       transform:scaleX(0); transform-origin:left;
       transition:transform .3s;
     }
-    .award-card:hover { background:rgba(200,168,75,.05); }
-    .award-card:hover::before { transform:scaleX(1); }
+    .award-card.linked {
+      cursor:pointer; text-decoration:none;
+      display:block; color:var(--text);
+      -webkit-tap-highlight-color: transparent;
+    }
+    .award-card.linked:hover { background:rgba(200,168,75,.07); }
+    .award-card.linked:hover::before { transform:scaleX(1); }
+    .award-link-hint {
+      display:inline-flex; align-items:center; gap:6px;
+      margin-top:12px;
+      font-size:10px; letter-spacing:2px; text-transform:uppercase;
+      color:var(--gold);
+      transition: opacity .2s;
+    }
     .award-year {
       font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase;
       color:var(--gold); display:block; margin-bottom:10px;
@@ -609,16 +621,15 @@
         max-height:500px;
       }
       .stats { grid-template-columns:repeat(2,1fr); }
-      .wrap { padding:0 30px; }
+      .wrap { padding:0 20px; }
       .bio-grid { grid-template-columns:1fr; gap:30px; }
       .bio-photo-wrap { max-width:300px; }
-      .awards-grid { grid-template-columns:1fr; }
+      .awards-grid { grid-template-columns:1fr 1fr; gap:2px; }
       .gallery-grid { grid-template-columns:1fr 1fr; }
       .gallery-item.tall { grid-row:span 1; }
       .speaking-grid,
       .tsg-grid,
       .shop-grid { grid-template-columns:1fr; gap:40px; }
-      .awards-grid { grid-template-columns:1fr; }
       .tsg-visual { height:280px; }
       footer { flex-direction:column; gap:16px; text-align:center; }
     }
@@ -867,8 +878,7 @@
           <span class="pill">TSG Missions</span>
         </div>
         <div class="btn-row fade-up delay-3">
-          <a class="btn-gold" href="#" target="_blank">
-            <!-- Replace href with actual TSG landing page URL -->
+          <a class="btn-gold" href="https://secret-garden.fly.dev/" target="_blank">
             <span>Visit TSG Website</span>
             <span>→</span>
           </a>
@@ -893,7 +903,7 @@
         <p class="book-desc">
           Dr. Olori wrote The Lemon Book because believers are not meant to manage damage. This book calls you beyond coping and into the fullness of what God has already secured for you.
         </p>
-        <a class="btn-gold" href="https://selar.com" target="_blank">
+        <a class="btn-gold" href="https://selar.com/j422577117" target="_blank">
           <!-- Replace with actual Selar page URL -->
           <span>Get the Book on Selar</span>
           <span>→</span>
@@ -912,7 +922,7 @@
           All available on Dr. Olori's Selar store.
         </p>
         <div class="btn-row" style="margin-top:32px;">
-          <a class="btn-ghost" href="https://selar.com" target="_blank">
+          <a class="btn-ghost" href="https://selar.com/j422577117" target="_blank">
             <!-- Replace with actual Selar page URL -->
             Browse All Products →
           </a>
@@ -935,12 +945,7 @@
         <!--
           TO ADD: <img src="headshot1.jpg" alt="Dr. Olori Boye-Ajayi" />
         -->
-        <div class="gallery-placeholder gallery-tall-placeholder">
-          <div class="ph-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
-          </div>
-          <span>Headshot 1</span>
-        </div>
+        <img src="images/image1.jpeg" alt="Dr. Olori Boye-Ajayi" />
       </div>
 
       <!-- Top right photo -->
@@ -948,12 +953,7 @@
         <!--
           TO ADD: <img src="headshot2.jpg" alt="Dr. Olori Boye-Ajayi" />
         -->
-        <div class="gallery-placeholder">
-          <div class="ph-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
-          </div>
-          <span>Headshot 2</span>
-        </div>
+        <img src="images/image2.jpeg" alt="Dr. Olori Boye-Ajayi" />
       </div>
 
       <!-- Top far-right photo -->
@@ -961,12 +961,7 @@
         <!--
           TO ADD: <img src="headshot3.jpg" alt="Dr. Olori Boye-Ajayi" />
         -->
-        <div class="gallery-placeholder">
-          <div class="ph-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
-          </div>
-          <span>Headshot 3</span>
-        </div>
+        <img src="images/image3.jpeg" alt="Dr. Olori Boye-Ajayi" />
       </div>
 
       <!-- Bottom middle photo -->
@@ -974,12 +969,7 @@
         <!--
           TO ADD: <img src="photo4.jpg" alt="Dr. Olori at event" />
         -->
-        <div class="gallery-placeholder">
-          <div class="ph-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
-          </div>
-          <span>Photo 4</span>
-        </div>
+        <img src="images/image4.PNG" alt="Dr. Olori at event" />
       </div>
 
       <!-- Bottom far-right photo -->
@@ -987,12 +977,7 @@
         <!--
           TO ADD: <img src="photo5.jpg" alt="Dr. Olori speaking" />
         -->
-        <div class="gallery-placeholder">
-          <div class="ph-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
-          </div>
-          <span>Photo 5</span>
-        </div>
+        <img src="images/image5.jpeg" alt="Dr. Olori at event" />
       </div>
 
     </div>
