@@ -8,22 +8,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --forest:   #2e2d24;        /* darkest olive — used on text over gold bg */
-      --deep:     #2a2920;        /* page background — deep olive */
-      --mid:      #38372c;        /* slightly lighter olive for hover states */
-      --panel:    #313029;        /* section panel background */
-      --gold:     #C1B098;        /* Akaroa — primary accent */
-      --gold-lt:  #d4c7b0;        /* lighter Akaroa for hovers */
-      --gold-pale:#ede5d8;        /* very pale Akaroa for subtle text */
-      --cream:    #f5f0e8;        /* near-white warm cream for headings */
-      --muted:    #8a8270;        /* muted warm grey for labels */
-      --text:     #cec8ba;        /* body text — warm grey */
+      --forest:   #2e2d24;
+      --deep:     #2a2920;
+      --mid:      #38372c;
+      --panel:    #313029;
+      --gold:     #C1B098;
+      --gold-lt:  #d4c7b0;
+      --gold-pale:#ede5d8;
+      --cream:    #f5f0e8;
+      --muted:    #8a8270;
+      --text:     #cec8ba;
     }
 
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-
     html { scroll-behavior: smooth; }
-
     body {
       background: var(--deep);
       color: var(--text);
@@ -43,227 +41,177 @@
     /* ─── NAV ─── */
     nav {
       position: fixed; top:0; left:0; right:0; z-index:100;
-      padding: 20px 60px;
+      padding: 14px 60px;
       display: flex; justify-content: space-between; align-items: center;
       border-bottom: 1px solid rgba(193,176,152,.15);
       background: rgba(42,41,32,.85);
       backdrop-filter: blur(12px);
     }
+
+    /*
+      .nav-brand wraps both the logo image and her name text as one clickable unit.
+      flex + align-items:center keeps the logo and text perfectly vertically aligned.
+      gap gives breathing room between them.
+    */
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .nav-logo-img {
+      /* 38px is tall enough to read clearly without overwhelming the nav */
+      height: 38px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
     .nav-logo {
       font-family:'Playfair Display', serif;
       font-size:18px; font-weight:500;
       color: var(--gold-lt);
-      text-decoration:none;
       letter-spacing:.5px;
     }
-    .nav-links-wrap {
-      display:flex; align-items:center; gap:32px;
-    }
-    .nav-links {
-      display:flex; align-items:center; gap:32px;
-    }
+
+    .nav-links-wrap { display:flex; align-items:center; gap:32px; }
+    .nav-links { display:flex; align-items:center; gap:32px; }
     .nav-link {
       font-size:11px; font-weight:500; letter-spacing:2px; text-transform:uppercase;
-      color:var(--text);
-      text-decoration:none;
-      transition: color .2s;
-      white-space:nowrap;
+      color:var(--text); text-decoration:none;
+      transition: color .2s; white-space:nowrap;
     }
     .nav-link:hover { color:var(--gold); }
     .nav-cta {
       font-size:11px; font-weight:600;
       letter-spacing:2.5px; text-transform:uppercase;
-      color: var(--forest);
-      background: var(--gold);
-      padding:10px 24px;
-      text-decoration:none;
-      transition: background .25s;
-      white-space:nowrap;
+      color: var(--forest); background: var(--gold);
+      padding:10px 24px; text-decoration:none;
+      transition: background .25s; white-space:nowrap;
     }
     .nav-cta:hover { background: var(--gold-lt); }
 
-    /* ── HAMBURGER BUTTON — hidden on desktop ── */
     .hamburger {
       display:none;
       flex-direction:column; justify-content:center; gap:5px;
-      background:none; border:none; cursor:pointer;
-      padding:4px; z-index:101;
+      background:none; border:none; cursor:pointer; padding:4px; z-index:101;
     }
     .hamburger span {
       display:block; width:24px; height:1.5px;
       background:var(--gold);
       transition: transform .3s ease, opacity .3s ease;
     }
-    /* animate the 3 bars into an X when menu is open */
     .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity:0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-    /* ── MOBILE DROPDOWN MENU ── */
     .mobile-menu {
-      display:none; /* JS will toggle this to flex */
-      position:fixed; top:65px; left:0; right:0;
+      display:none;
+      position:fixed; top:67px; left:0; right:0;
       background:rgba(42,41,32,.97);
       backdrop-filter:blur(16px);
       border-bottom:1px solid rgba(193,176,152,.2);
       flex-direction:column;
-      padding:24px 30px 30px;
-      gap:0;
-      z-index:99;
-      /* slide down animation */
-      transform:translateY(-10px);
-      opacity:0;
+      padding:24px 30px 30px; gap:0; z-index:99;
+      transform:translateY(-10px); opacity:0;
       transition: transform .3s ease, opacity .3s ease;
     }
-    .mobile-menu.open {
-      transform:translateY(0);
-      opacity:1;
-    }
+    .mobile-menu.open { transform:translateY(0); opacity:1; }
     .mobile-menu .nav-link {
-      font-size:13px; letter-spacing:2px;
-      padding:16px 0;
+      font-size:13px; letter-spacing:2px; padding:16px 0;
       border-bottom:1px solid rgba(193,176,152,.1);
-      display:block; width:100%;
-      color:var(--text);
+      display:block; width:100%; color:var(--text);
     }
     .mobile-menu .nav-link:last-of-type { border-bottom:none; }
-    .mobile-menu .nav-cta {
-      margin-top:20px;
-      text-align:center;
-      display:block;
-      padding:16px;
-    }
+    .mobile-menu .nav-cta { margin-top:20px; text-align:center; display:block; padding:16px; }
 
     @media(max-width:900px) {
-      nav { padding:18px 24px; }
-      /* hide desktop links, show hamburger */
+      nav { padding:12px 20px; }
+      /* shrink logo image slightly on mobile so it doesn't crowd the name */
+      .nav-logo-img { height:30px; }
+      .nav-logo { font-size:15px; }
       .nav-links { display:none; }
-      .nav-links-wrap .nav-cta { display:none; } /* hide desktop book btn */
+      .nav-links-wrap .nav-cta { display:none; }
       .hamburger { display:flex; }
     }
 
     /* ─── HERO ─── */
     .hero {
-      min-height:100vh;
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      position:relative;
-      overflow:hidden;
+      min-height:100vh; display:grid; grid-template-columns: 1fr 1fr;
+      position:relative; overflow:hidden;
     }
-
-    /* botanical SVG background */
     .hero-bg {
       position:absolute; inset:0; z-index:0;
       background:
         radial-gradient(ellipse 70% 60% at 65% 55%, rgba(193,176,152,.09) 0%, transparent 65%),
         radial-gradient(ellipse 40% 50% at 10% 80%, rgba(193,176,152,.05) 0%, transparent 55%);
     }
-
-    /* decorative leaf/vine SVG */
     .hero-vine {
       position:absolute; right:0; top:0; height:100%; width:55%;
       z-index:0; opacity:.18; pointer-events:none;
     }
-
     .hero-left {
       position:relative; z-index:2;
       padding: 160px 50px 100px 80px;
       display:flex; flex-direction:column; justify-content:center;
     }
-
     .kicker {
       display:flex; align-items:center; gap:12px;
       font-size:10.5px; font-weight:600; letter-spacing:4px; text-transform:uppercase;
-      color: var(--gold);
-      margin-bottom:28px;
+      color: var(--gold); margin-bottom:28px;
     }
     .kicker::before { content:''; display:block; width:30px; height:1px; background:var(--gold); }
-
     h1 {
       font-family:'Playfair Display', serif;
       font-size: clamp(44px, 5vw, 72px);
-      font-weight:500; line-height:1.06;
-      color: var(--cream);
-      margin-bottom:12px;
+      font-weight:500; line-height:1.06; color: var(--cream); margin-bottom:12px;
     }
     h1 em { display:block; font-style:italic; color:var(--gold-lt); }
-
     .hero-tagline {
-      font-family:'Playfair Display',serif;
-      font-style:italic; font-size:17px;
-      color: var(--gold-pale); line-height:1.65;
-      max-width:420px; margin-bottom:12px;
+      font-family:'Playfair Display',serif; font-style:italic; font-size:17px;
+      color: var(--gold-pale); line-height:1.65; max-width:420px; margin-bottom:12px;
     }
-
     .hero-sub {
-      font-size:14px; line-height:1.8;
-      color: rgba(221,216,200,.7);
+      font-size:14px; line-height:1.8; color: rgba(221,216,200,.7);
       max-width:430px; margin-bottom:44px;
     }
-
     .btn-row { display:flex; gap:14px; flex-wrap:wrap; }
-
     .btn-gold {
       display:inline-flex; align-items:center; gap:9px;
       background: var(--gold); color: var(--forest);
       font-size:11.5px; font-weight:600; letter-spacing:2px; text-transform:uppercase;
       padding:16px 34px; text-decoration:none;
-      position:relative; overflow:hidden;
-      transition: color .3s;
+      position:relative; overflow:hidden; transition: color .3s;
     }
     .btn-gold::before {
-      content:''; position:absolute; inset:0;
-      background:var(--gold-lt);
-      transform:translateX(-101%);
-      transition:transform .3s ease;
+      content:''; position:absolute; inset:0; background:var(--gold-lt);
+      transform:translateX(-101%); transition:transform .3s ease;
     }
     .btn-gold:hover::before { transform:translateX(0); }
     .btn-gold span { position:relative; z-index:1; }
-
     .btn-ghost {
       display:inline-flex; align-items:center; gap:9px;
-      border:1px solid rgba(193,176,152,.4);
-      color: var(--gold-pale);
+      border:1px solid rgba(193,176,152,.4); color: var(--gold-pale);
       font-size:11.5px; font-weight:500; letter-spacing:2px; text-transform:uppercase;
       padding:16px 34px; text-decoration:none;
       transition: border-color .25s, color .25s, background .25s;
     }
-    .btn-ghost:hover {
-      border-color:var(--gold); color:var(--gold);
-      background:rgba(193,176,152,.06);
-    }
+    .btn-ghost:hover { border-color:var(--gold); color:var(--gold); background:rgba(193,176,152,.06); }
 
-    /* hero right – full half-screen photo */
-    .hero-right {
-      position:relative; z-index:2;
-      overflow:hidden;
-      min-height:100vh;
-    }
+    .hero-right { position:relative; z-index:2; overflow:hidden; min-height:100vh; }
     .hero-photo {
-      position:absolute; inset:0;
-      width:100%; height:100%;
-      object-fit:cover; object-position:center top;
-      display:block;
+      position:absolute; inset:0; width:100%; height:100%;
+      object-fit:contain; object-position:center top; display:block;
     }
     .hero-right::after {
-      content:'';
-      position:absolute; inset:0;
+      content:''; position:absolute; inset:0;
       background: linear-gradient(to right, rgba(42,41,32,.55) 0%, transparent 40%),
                   linear-gradient(to top, rgba(42,41,32,.5) 0%, transparent 40%);
       pointer-events:none;
     }
     .hero-right::before {
-      content:'';
-      position:absolute; top:10%; left:0; bottom:10%;
+      content:''; position:absolute; top:10%; left:0; bottom:10%;
       width:1px; z-index:2;
       background: linear-gradient(to bottom, transparent, rgba(193,176,152,.5), transparent);
-    }
-    /* shown only when no real photo — remove once image is added */
-    .hero-photo-hint {
-      position:absolute; inset:0; z-index:3;
-      display:flex; flex-direction:column;
-      align-items:center; justify-content:center; gap:14px;
-      background: linear-gradient(135deg, rgba(193,176,152,.10), rgba(193,176,152,.02));
     }
     .hint-icon {
       width:72px; height:72px;
@@ -271,241 +219,92 @@
       display:flex; align-items:center; justify-content:center;
     }
     .hint-icon svg { width:30px; height:30px; fill:rgba(193,176,152,.45); }
-    .hint-label {
-      font-size:10px; letter-spacing:3px; text-transform:uppercase;
-      color:var(--muted); text-align:center;
-    }
-    .photo-dl {
-      font-size:11px; letter-spacing:2.5px; text-transform:uppercase;
-      color:var(--gold); text-decoration:none;
-      border-bottom:1px solid rgba(193,176,152,.4);
-      padding-bottom:3px; margin-top:6px;
-      transition: color .2s, border-color .2s;
-    }
-    .photo-dl:hover { color:var(--gold-lt); border-color:var(--gold-lt); }
+    .hint-label { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); text-align:center; }
 
-    /* ─── STATS STRIP ─── */
+    /* ─── STATS ─── */
     .stats {
       display:grid; grid-template-columns:repeat(4,1fr);
-      border-top:1px solid rgba(193,176,152,.2);
-      border-bottom:1px solid rgba(193,176,152,.2);
+      border-top:1px solid rgba(193,176,152,.2); border-bottom:1px solid rgba(193,176,152,.2);
       background: rgba(193,176,152,.04);
     }
-    .stat {
-      padding:34px 20px;
-      text-align:center;
-      border-right:1px solid rgba(193,176,152,.14);
-    }
+    .stat { padding:34px 20px; text-align:center; border-right:1px solid rgba(193,176,152,.14); }
     .stat:last-child { border-right:none; }
     .stat-num {
-      font-family:'Playfair Display',serif;
-      font-size:44px; font-weight:400;
-      color:var(--gold); display:block;
-      line-height:1; margin-bottom:8px;
+      font-family:'Playfair Display',serif; font-size:44px; font-weight:400;
+      color:var(--gold); display:block; line-height:1; margin-bottom:8px;
     }
-    .stat-lbl {
-      font-size:10px; letter-spacing:2.5px; text-transform:uppercase; color:var(--muted);
-    }
+    .stat-lbl { font-size:10px; letter-spacing:2.5px; text-transform:uppercase; color:var(--muted); }
 
     /* ─── SECTION COMMONS ─── */
     section { position:relative; }
-
     .wrap { max-width:1160px; margin:0 auto; padding:0 60px; }
-
     .sec-kicker {
       display:flex; align-items:center; gap:12px;
       font-size:10px; font-weight:600; letter-spacing:4px; text-transform:uppercase;
       color:var(--gold); margin-bottom:14px;
     }
     .sec-kicker::after { content:''; display:block; width:28px; height:1px; background:var(--gold); }
-
     .sec-head {
       font-family:'Playfair Display',serif;
-      font-size: clamp(32px,3.5vw,50px);
-      font-weight:500; line-height:1.1;
-      color:var(--cream);
+      font-size: clamp(32px,3.5vw,50px); font-weight:500; line-height:1.1; color:var(--cream);
     }
     .sec-head em { font-style:italic; color:var(--gold-lt); }
 
-    /* ─── BIO PHOTO ─── */
-    .bio-photo-wrap {
-      position:relative; margin-top:40px;
-    }
-    .bio-photo {
-      width:100%; aspect-ratio:3/4;
-      object-fit:cover; object-position:center top;
-      display:block;
-      border:1px solid rgba(193,176,152,.2);
-    }
-    .bio-photo-placeholder {
-      width:100%; aspect-ratio:3/4;
-      background: linear-gradient(135deg, rgba(193,176,152,.1), rgba(193,176,152,.02));
-      border:1px solid rgba(193,176,152,.2);
-      display:flex; flex-direction:column;
-      align-items:center; justify-content:center; gap:12px;
-    }
-    /* gold corner accents */
-    .bio-photo-wrap::before, .bio-photo-wrap::after {
-      content:''; position:absolute; width:24px; height:24px;
-      border-color:var(--gold); border-style:solid; z-index:2;
-    }
-    .bio-photo-wrap::before {
-      top:-8px; left:-8px;
-      border-width:2px 0 0 2px;
-    }
-    .bio-photo-wrap::after {
-      bottom:-8px; right:-8px;
-      border-width:0 2px 2px 0;
-    }
-
-    /* ─── GALLERY SECTION ─── */
-    /* ─── GALLERY SLIDESHOW ─── */
-    .gallery-section {
-      padding:110px 0;
-      border-top:1px solid rgba(193,176,152,.12);
-    }
-    .slideshow {
-      position:relative;
-      margin-top:50px;
-      overflow:hidden;
-      border:1px solid rgba(193,176,152,.2);
-      /* aspect ratio gives a nice widescreen frame */
-      aspect-ratio: 16/9;
-      max-height: 600px;
-    }
-    /* each slide is stacked on top of each other, only active one is visible */
-    .slide {
-      position:absolute; inset:0;
-      opacity:0;
-      transition: opacity .8s ease;
-      /* pointer-events:none so hidden slides don't block clicks */
-      pointer-events:none;
-    }
-    .slide.active {
-      opacity:1;
-      pointer-events:auto;
-    }
-    .slide img {
-      width:100%; height:100%;
-      object-fit:cover; object-position:center top;
-      display:block;
-    }
-    /* dark gradient at the bottom of each slide for the dot indicators */
-    .slide::after {
-      content:''; position:absolute; inset:0;
-      background:linear-gradient(to top, rgba(42,41,32,.5) 0%, transparent 40%);
-      pointer-events:none;
-    }
-    /* prev / next arrow buttons */
-    .slide-btn {
-      position:absolute; top:50%; z-index:10;
-      transform:translateY(-50%);
-      background:rgba(42,41,32,.6);
-      border:1px solid rgba(193,176,152,.35);
-      color:var(--gold);
-      width:44px; height:44px;
-      display:flex; align-items:center; justify-content:center;
-      font-size:18px; cursor:pointer;
-      transition: background .2s, border-color .2s;
-      backdrop-filter:blur(4px);
-    }
-    .slide-btn:hover { background:rgba(193,176,152,.15); border-color:var(--gold); }
-    .slide-btn.prev { left:16px; }
-    .slide-btn.next { right:16px; }
-    /* dot indicators at the bottom */
-    .slide-dots {
-      position:absolute; bottom:16px; left:50%;
-      transform:translateX(-50%);
-      display:flex; gap:8px; z-index:10;
-    }
-    .dot {
-      width:8px; height:8px; border-radius:50%;
-      background:rgba(193,176,152,.35);
-      border:1px solid rgba(193,176,152,.5);
-      cursor:pointer;
-      transition: background .3s, transform .3s;
-    }
-    .dot.active {
-      background:var(--gold);
-      transform:scale(1.25);
-    }
-    /* slide counter e.g. "2 / 5" */
-    .slide-counter {
-      position:absolute; top:16px; right:16px; z-index:10;
-      font-size:11px; letter-spacing:2px;
-      color:var(--gold-pale);
-      background:rgba(42,41,32,.5);
-      padding:4px 10px;
-      backdrop-filter:blur(4px);
-    }
-    .gallery-dl {
-      margin-top:24px; text-align:center;
-    }
-    .gallery-dl a {
-      font-size:11px; letter-spacing:2.5px; text-transform:uppercase;
-      color:var(--gold); text-decoration:none;
-      border-bottom:1px solid rgba(193,176,152,.4);
-      padding-bottom:3px;
-      transition: color .2s;
-    }
-    .gallery-dl a:hover { color:var(--gold-lt); }
+    /* ─── BIO ─── */
     .bio-section { padding:110px 0; }
     .bio-grid {
       display:grid; grid-template-columns:1fr 1fr 2fr;
       gap:60px; align-items:start;
     }
-    .bio-sticky { }
-    .bio-text p {
-      font-size:15px; line-height:1.85;
-      color:rgba(221,216,200,.82);
-      margin-bottom:20px;
+    .bio-photo-wrap { position:relative; margin-top:40px; }
+    .bio-photo {
+      width:100%; aspect-ratio:3/4;
+      object-fit:cover; object-position:center top;
+      display:block; border:1px solid rgba(193,176,152,.2);
     }
+    .tsg-photo {
+      width:100%; aspect-ratio:4/5;
+      object-fit:contain; object-position:center;
+      display:block; border:1px solid rgba(193,176,152,.2);
+      background: rgba(193,176,152,.04);
+    }
+    .bio-photo-wrap::before, .bio-photo-wrap::after {
+      content:''; position:absolute; width:24px; height:24px;
+      border-color:var(--gold); border-style:solid; z-index:2;
+    }
+    .bio-photo-wrap::before { top:-8px; left:-8px; border-width:2px 0 0 2px; }
+    .bio-photo-wrap::after  { bottom:-8px; right:-8px; border-width:0 2px 2px 0; }
+
+    .bio-text p { font-size:15px; line-height:1.85; color:rgba(221,216,200,.82); margin-bottom:20px; }
     .bio-text p.lead {
-      font-family:'Playfair Display',serif;
-      font-size:19px; font-weight:400;
-      color:var(--cream); line-height:1.6;
-      margin-bottom:28px;
+      font-family:'Playfair Display',serif; font-size:19px; font-weight:400;
+      color:var(--cream); line-height:1.6; margin-bottom:28px;
     }
 
     /* ─── ACCOLADES ─── */
     .accolades-section {
-      padding:90px 0;
-      background:rgba(193,176,152,.03);
-      border-top:1px solid rgba(193,176,152,.12);
-      border-bottom:1px solid rgba(193,176,152,.12);
+      padding:90px 0; background:rgba(193,176,152,.03);
+      border-top:1px solid rgba(193,176,152,.12); border-bottom:1px solid rgba(193,176,152,.12);
     }
     .accolades-head { margin-bottom:50px; }
-    .awards-grid {
-      display:grid; grid-template-columns:repeat(3,1fr);
-      gap:2px;
-    }
+    .awards-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
     .award-card {
-      padding:30px 32px;
-      border:1px solid rgba(193,176,152,.12);
-      background:rgba(42,41,32,.7);
-      position:relative; overflow:hidden;
-      transition: background .3s;
+      padding:30px 32px; border:1px solid rgba(193,176,152,.12);
+      background:rgba(42,41,32,.7); position:relative; overflow:hidden; transition: background .3s;
     }
     .award-card::before {
-      content:''; position:absolute;
-      top:0; left:0; right:0; height:2px;
-      background:var(--gold);
-      transform:scaleX(0); transform-origin:left;
-      transition:transform .3s;
+      content:''; position:absolute; top:0; left:0; right:0; height:2px;
+      background:var(--gold); transform:scaleX(0); transform-origin:left; transition:transform .3s;
     }
     .award-card.linked {
-      cursor:pointer; text-decoration:none;
-      display:block; color:var(--text);
+      cursor:pointer; text-decoration:none; display:block; color:var(--text);
       -webkit-tap-highlight-color: transparent;
     }
     .award-card.linked:hover { background:rgba(193,176,152,.07); }
     .award-card.linked:hover::before { transform:scaleX(1); }
     .award-link-hint {
-      display:inline-flex; align-items:center; gap:6px;
-      margin-top:12px;
-      font-size:10px; letter-spacing:2px; text-transform:uppercase;
-      color:var(--gold);
-      transition: opacity .2s;
+      display:inline-flex; align-items:center; gap:6px; margin-top:12px;
+      font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--gold);
     }
     .award-year {
       font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase;
@@ -515,194 +314,166 @@
 
     /* ─── SPEAKING ─── */
     .speaking-section { padding:110px 0; }
-    .speaking-grid {
-      display:grid; grid-template-columns:1fr 1fr;
-      gap:60px; align-items:center;
-      margin-top:60px;
-    }
-    .speaking-info p {
-      font-size:15px; line-height:1.85;
-      color:rgba(221,216,200,.8);
-      margin-bottom:18px;
-    }
-    .topic-tags {
-      display:flex; flex-wrap:wrap; gap:10px;
-      margin:30px 0 40px;
-    }
+    .speaking-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; margin-top:60px; }
+    .speaking-info p { font-size:15px; line-height:1.85; color:rgba(221,216,200,.8); margin-bottom:18px; }
+    .topic-tags { display:flex; flex-wrap:wrap; gap:10px; margin:30px 0 40px; }
     .tag {
       font-size:11px; letter-spacing:2px; text-transform:uppercase;
-      color:var(--gold);
-      border:1px solid rgba(193,176,152,.35);
-      padding:7px 18px;
+      color:var(--gold); border:1px solid rgba(193,176,152,.35); padding:7px 18px;
     }
-    .speaking-visual {
-      position:relative;
-      display:flex; align-items:center; justify-content:center;
-      height:360px;
-    }
-    .sv-ring {
-      position:absolute;
-      border-radius:50%;
-      border:1px solid rgba(193,176,152,.18);
-    }
+    .speaking-visual { position:relative; display:flex; align-items:center; justify-content:center; height:360px; }
+    .sv-ring { position:absolute; border-radius:50%; border:1px solid rgba(193,176,152,.18); }
     .sv-ring-1 { width:320px; height:320px; }
-    .sv-ring-2 {
-      width:230px; height:230px;
-      border-color:rgba(193,176,152,.28);
-      animation:spin 30s linear infinite;
-    }
+    .sv-ring-2 { width:230px; height:230px; border-color:rgba(193,176,152,.28); animation:spin 30s linear infinite; }
     .sv-ring-2::after {
-      content:''; position:absolute;
-      top:-4px; left:50%; transform:translateX(-50%);
-      width:8px; height:8px; border-radius:50%;
-      background:var(--gold);
+      content:''; position:absolute; top:-4px; left:50%; transform:translateX(-50%);
+      width:8px; height:8px; border-radius:50%; background:var(--gold);
     }
-    .sv-center {
-      position:relative; z-index:2;
-      text-align:center;
-    }
-    .sv-label {
-      font-family:'Playfair Display',serif;
-      font-size:15px; font-style:italic;
-      color:var(--gold-lt); display:block;
-      margin-bottom:4px;
-    }
-    .sv-role {
-      font-size:10px; letter-spacing:3px; text-transform:uppercase;
-      color:var(--muted);
-    }
+    .sv-center { position:relative; z-index:2; text-align:center; }
+    .sv-label { font-family:'Playfair Display',serif; font-size:15px; font-style:italic; color:var(--gold-lt); display:block; margin-bottom:4px; }
+    .sv-role { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); }
     @keyframes spin { to { transform:rotate(360deg); } }
 
-    /* ─── TSG SECTION ─── */
+    /* ─── TSG ─── */
     .tsg-section {
-      padding:110px 0;
-      background: var(--panel);
-      border-top:1px solid rgba(193,176,152,.15);
-      overflow:hidden;
+      padding:110px 0; background: var(--panel);
+      border-top:1px solid rgba(193,176,152,.15); overflow:hidden;
     }
     .tsg-grid {
-      display:grid; grid-template-columns:1fr 1fr;
-      gap:80px; align-items:center;
-      margin-top:60px;
+      display:grid; grid-template-columns:1fr 1fr 2fr;
+      gap:60px; align-items:start; margin-top:60px;
     }
-    .tsg-visual {
-      position:relative; height:420px;
-      display:flex; align-items:center; justify-content:center;
+    .tsg-content p { font-size:15px; line-height:1.85; color:rgba(221,216,200,.8); margin-bottom:18px; }
+    .tsg-content p.lead {
+      font-family:'Playfair Display',serif; font-size:19px; font-weight:400;
+      color:var(--cream); line-height:1.6; margin-bottom:28px;
     }
-    .tsg-img {
-      width:100%; height:100%;
-      object-fit:cover; object-position:center;
-      display:block;
-      border:1px solid rgba(193,176,152,.2);
-    }
-    /* gold corner accents on the TSG image */
-    .tsg-visual::before, .tsg-visual::after {
-      content:''; position:absolute; width:28px; height:28px;
-      border-color:var(--gold); border-style:solid; z-index:2;
-      pointer-events:none;
-    }
-    .tsg-visual::before { top:-8px; left:-8px; border-width:2px 0 0 2px; }
-    .tsg-visual::after  { bottom:-8px; right:-8px; border-width:0 2px 2px 0; }
-    /* placeholder shown before image is added */
-    .tsg-img-placeholder {
-      width:100%; height:100%;
-      background: linear-gradient(135deg, rgba(193,176,152,.1), rgba(193,176,152,.02));
-      border:1px solid rgba(193,176,152,.2);
-      display:flex; flex-direction:column;
-      align-items:center; justify-content:center; gap:12px;
-    }
-    .tsg-content p {
-      font-size:15px; line-height:1.85;
-      color:rgba(221,216,200,.8);
-      margin-bottom:18px;
-    }
-    .program-pills {
-      display:flex; flex-wrap:wrap; gap:10px;
-      margin:28px 0 36px;
-    }
+    .program-pills { display:flex; flex-wrap:wrap; gap:10px; margin:28px 0 36px; }
     .pill {
       font-size:11px; letter-spacing:2px; text-transform:uppercase;
-      color:var(--gold);
-      border:1px solid rgba(193,176,152,.35);
-      padding:7px 18px;
+      color:var(--gold); border:1px solid rgba(193,176,152,.35); padding:7px 18px;
     }
 
-    /* ─── BOOK / SELAR SECTION ─── */
-    .shop-section {
-      padding:110px 0;
-      border-top:1px solid rgba(193,176,152,.12);
-    }
-    .shop-grid {
-      display:grid; grid-template-columns:1fr 1fr;
-      gap:60px; align-items:center;
-      margin-top:60px;
-    }
+    /* ─── BOOKS ─── */
+    .shop-section { padding:110px 0; border-top:1px solid rgba(193,176,152,.12); }
+    .books-grid { display:flex; flex-direction:column; gap:24px; margin-top:60px; }
     .book-card {
-      padding:50px;
-      border:1px solid rgba(193,176,152,.2);
-      background:rgba(42,41,32,.8);
-      position:relative;
+      border:1px solid rgba(193,176,152,.2); background:rgba(42,41,32,.8);
+      position:relative; overflow:hidden;
+      display:grid; grid-template-columns: 220px 1fr;
     }
     .book-card::before {
-      content:''; position:absolute;
-      top:-1px; left:40px; right:40px; height:2px;
-      background:linear-gradient(90deg, transparent, var(--gold), transparent);
+      content:''; position:absolute; top:0; left:0; bottom:0; width:2px;
+      background:linear-gradient(to bottom, transparent, var(--gold), transparent);
     }
-    .book-eyebrow {
-      font-size:10px; font-weight:600; letter-spacing:4px; text-transform:uppercase;
-      color:var(--gold); display:block; margin-bottom:18px;
+    .book-cover {
+      width:100%; height:100%;
+      object-fit:cover; object-position:center top; display:block;
+      border-right:1px solid rgba(193,176,152,.15);
     }
-    .book-title {
-      font-family:'Playfair Display',serif;
-      font-size:38px; font-weight:700;
-      color:var(--cream); margin-bottom:18px; line-height:1.1;
+    .book-cover-placeholder {
+      width:100%; aspect-ratio:2/3;
+      background:rgba(193,176,152,.05);
+      border-right:1px solid rgba(193,176,152,.12);
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:center; gap:8px;
     }
+    .book-cover-placeholder .ph-icon {
+      width:36px; height:36px;
+      border:1px solid rgba(193,176,152,.3); border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .book-cover-placeholder .ph-icon svg { width:18px; height:18px; fill:rgba(193,176,152,.4); }
+    .book-cover-placeholder span { font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); text-align:center; padding:0 12px; }
+    .book-body { padding:36px 40px; display:flex; flex-direction:column; justify-content:center; }
+    .book-eyebrow { font-size:10px; font-weight:600; letter-spacing:4px; text-transform:uppercase; color:var(--gold); display:block; margin-bottom:12px; }
+    .book-title { font-family:'Playfair Display',serif; font-size:28px; font-weight:700; color:var(--cream); margin-bottom:14px; line-height:1.1; }
     .book-quote {
-      font-family:'Playfair Display',serif;
-      font-style:italic; font-size:15px;
+      font-family:'Playfair Display',serif; font-style:italic; font-size:14px;
       color:var(--gold-pale); line-height:1.65;
-      padding-left:18px;
-      border-left:2px solid var(--gold);
-      margin-bottom:22px;
+      padding-left:14px; border-left:2px solid var(--gold); margin-bottom:14px;
     }
-    .book-desc {
-      font-size:14px; line-height:1.75;
-      color:rgba(221,216,200,.7);
-      margin-bottom:34px;
+    .book-desc { font-size:13.5px; line-height:1.75; color:rgba(221,216,200,.7); }
+    .selar-cta { margin-top:40px; text-align:center; }
+    .selar-cta p { font-size:14px; color:rgba(221,216,200,.7); margin-bottom:20px; line-height:1.7; }
+
+    /* ─── GALLERY SLIDESHOW ────────────────────────────────────────
+       WHY THE OLD VERSION CUT IMAGES:
+       aspect-ratio:16/9 + max-height:600px forced a wide, shallow
+       box. Portrait photos are taller than wide, so the top showed
+       but the bottom was outside the box and hidden by overflow:hidden.
+
+       FIX:
+       - Remove aspect-ratio and max-height entirely
+       - Use a fixed min-height that's tall enough for portrait images
+       - Switch to object-fit:contain so the WHOLE image is always
+         visible — nothing cropped, image centred in the frame
+       - Dark panel background fills the letterbox space cleanly
+    ─────────────────────────────────────────────────────────────── */
+    .gallery-section { padding:110px 0; border-top:1px solid rgba(193,176,152,.12); }
+    .slideshow {
+      position:relative;
+      margin-top:50px;
+      overflow:hidden;
+      border:1px solid rgba(193,176,152,.2);
+      background: var(--panel);
+      /* tall enough to show full portrait images */
+      min-height: 80vh;
     }
-    .shop-text p {
-      font-size:15px; line-height:1.85;
-      color:rgba(221,216,200,.8);
-      margin-bottom:18px;
+    .slide { position:absolute; inset:0; opacity:0; transition: opacity .8s ease; pointer-events:none; }
+    .slide.active { opacity:1; pointer-events:auto; }
+    .slide img {
+      width:100%; height:100%;
+      object-fit:contain;          /* full image, no cropping */
+      object-position:center;      /* centred in the frame */
+      display:block;
     }
+    .slide::after {
+      content:''; position:absolute; inset:0;
+      background:linear-gradient(to top, rgba(42,41,32,.4) 0%, transparent 30%);
+      pointer-events:none;
+    }
+    .slide-btn {
+      position:absolute; top:50%; z-index:10; transform:translateY(-50%);
+      background:rgba(42,41,32,.6); border:1px solid rgba(193,176,152,.35); color:var(--gold);
+      width:44px; height:44px; display:flex; align-items:center; justify-content:center;
+      font-size:18px; cursor:pointer; transition: background .2s, border-color .2s; backdrop-filter:blur(4px);
+    }
+    .slide-btn:hover { background:rgba(193,176,152,.15); border-color:var(--gold); }
+    .slide-btn.prev { left:16px; }
+    .slide-btn.next { right:16px; }
+    .slide-dots { position:absolute; bottom:16px; left:50%; transform:translateX(-50%); display:flex; gap:8px; z-index:10; }
+    .dot {
+      width:8px; height:8px; border-radius:50%;
+      background:rgba(193,176,152,.35); border:1px solid rgba(193,176,152,.5);
+      cursor:pointer; transition: background .3s, transform .3s;
+    }
+    .dot.active { background:var(--gold); transform:scale(1.25); }
+    .slide-counter {
+      position:absolute; top:16px; right:16px; z-index:10;
+      font-size:11px; letter-spacing:2px; color:var(--gold-pale);
+      background:rgba(42,41,32,.5); padding:4px 10px; backdrop-filter:blur(4px);
+    }
+    .gallery-dl { margin-top:24px; text-align:center; }
+    .gallery-dl a {
+      font-size:11px; letter-spacing:2.5px; text-transform:uppercase;
+      color:var(--gold); text-decoration:none;
+      border-bottom:1px solid rgba(193,176,152,.4); padding-bottom:3px; transition: color .2s;
+    }
+    .gallery-dl a:hover { color:var(--gold-lt); }
 
     /* ─── FOOTER ─── */
     footer {
-      background:var(--deep);
-      border-top:1px solid rgba(193,176,152,.2);
-      padding:50px 60px;
-      display:flex; align-items:center; justify-content:space-between;
+      background:var(--deep); border-top:1px solid rgba(193,176,152,.2);
+      padding:50px 60px; display:flex; align-items:center; justify-content:space-between;
     }
-    .footer-name {
-      font-family:'Playfair Display',serif;
-      font-size:16px; font-weight:500;
-      color:var(--gold-lt);
-    }
-    .footer-note {
-      font-size:12px; color:var(--muted);
-    }
-    .footer-book {
-      text-decoration:none;
-    }
+    .footer-name { font-family:'Playfair Display',serif; font-size:16px; font-weight:500; color:var(--gold-lt); }
+    .footer-note { font-size:12px; color:var(--muted); }
+    .footer-book { text-decoration:none; }
 
     /* ─── SCROLL ANIMATIONS ─── */
-    .fade-up {
-      opacity:0; transform:translateY(30px);
-      transition: opacity .8s ease, transform .8s ease;
-    }
+    .fade-up { opacity:0; transform:translateY(30px); transition: opacity .8s ease, transform .8s ease; }
     .fade-up.visible { opacity:1; transform:translateY(0); }
-
-    /* stagger helpers */
     .delay-1 { transition-delay:.1s; }
     .delay-2 { transition-delay:.2s; }
     .delay-3 { transition-delay:.3s; }
@@ -710,25 +481,30 @@
 
     /* ─── RESPONSIVE ─── */
     @media(max-width:900px) {
-      nav { padding:18px 24px; }
+      nav { padding:12px 20px; }
+      .nav-logo-img { height:30px; }
+      .nav-logo { font-size:15px; }
+      .nav-links { display:none; }
+      .nav-links-wrap .nav-cta { display:none; }
+      .hamburger { display:flex; }
       .hero { grid-template-columns:1fr; grid-template-rows: auto auto; }
       .hero-left { padding:130px 30px 60px; }
-      .hero-right { 
-        display:block;
-        min-height:60vw;
-        max-height:500px;
-      }
+      .hero-right { display:block; min-height:60vw; max-height:500px; }
       .stats { grid-template-columns:repeat(2,1fr); }
       .wrap { padding:0 20px; }
-      .bio-grid { grid-template-columns:1fr; gap:30px; }
+      .bio-grid,
+      .tsg-grid { grid-template-columns:1fr; gap:30px; }
       .bio-photo-wrap { max-width:300px; }
       .awards-grid { grid-template-columns:1fr 1fr; gap:2px; }
-      .gallery-grid { grid-template-columns:1fr 1fr; }
-      .gallery-item.tall { grid-row:span 1; }
-      .speaking-grid,
-      .tsg-grid,
-      .shop-grid { grid-template-columns:1fr; gap:40px; }
-      .tsg-visual { height:280px; }
+      .books-grid { gap:16px; }
+      .book-card { grid-template-columns: 110px 1fr; }
+      .book-body { padding:18px 16px; }
+      .book-title { font-size:18px; }
+      .book-quote { font-size:12px; }
+      .book-desc { font-size:12px; }
+      /* gallery stays tall on mobile — 60vh still shows full images */
+      .slideshow { min-height: 60vh; }
+      .speaking-grid { grid-template-columns:1fr; gap:40px; }
       footer { flex-direction:column; gap:16px; text-align:center; }
     }
   </style>
@@ -737,9 +513,17 @@
 
 <!-- ── NAV ── -->
 <nav>
-  <a class="nav-logo" href="#">Dr. Olori Boye-Ajayi</a>
+  <!--
+    .nav-brand is a single <a> that wraps both the logo image and the name.
+    Clicking either one goes to the top of the page.
+    To swap the logo: change src="images/logo.png" to your actual filename.
+    Logo lives in the same /images/ folder as all other images.
+  -->
+  <a class="nav-brand" href="#">
+    <img class="nav-logo-img" src="images/logo.png" alt="Logo" />
+    <span class="nav-logo">Dr. Olori Boye-Ajayi</span>
+  </a>
 
-  <!-- Desktop: links + book button -->
   <div class="nav-links-wrap">
     <div class="nav-links">
       <a class="nav-link" href="#" target="_blank">Link One</a>
@@ -748,16 +532,11 @@
     </div>
     <a class="nav-cta" href="https://forms.gle/s2za4EiXrawCRF249" target="_blank">Book Dr. Olori</a>
   </div>
-
-  <!-- Mobile: hamburger button (3 bars → X) -->
   <button class="hamburger" id="hamburger" aria-label="Open menu">
-    <span></span>
-    <span></span>
-    <span></span>
+    <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- Mobile dropdown — slides down when hamburger is clicked -->
 <div class="mobile-menu" id="mobileMenu">
   <a class="nav-link" href="#" target="_blank">Link One</a>
   <a class="nav-link" href="#" target="_blank">Link Two</a>
@@ -768,8 +547,6 @@
 <!-- ── HERO ── -->
 <section class="hero">
   <div class="hero-bg"></div>
-
-  <!-- decorative vine/leaves -->
   <svg class="hero-vine" viewBox="0 0 500 900" xmlns="http://www.w3.org/2000/svg" fill="none">
     <path d="M350 0 Q200 150 320 300 Q440 450 250 600 Q80 750 300 900" stroke="#C1B098" stroke-width="1.2"/>
     <ellipse cx="260" cy="120" rx="55" ry="28" transform="rotate(-30 260 120)" stroke="#C1B098" stroke-width="1"/>
@@ -778,64 +555,32 @@
     <ellipse cx="200" cy="570" rx="48" ry="24" transform="rotate(25 200 570)" stroke="#C1B098" stroke-width="1"/>
     <ellipse cx="310" cy="720" rx="55" ry="27" transform="rotate(-20 310 720)" stroke="#C1B098" stroke-width="1"/>
     <ellipse cx="240" cy="850" rx="44" ry="22" transform="rotate(15 240 850)" stroke="#C1B098" stroke-width="1"/>
-    <!-- small circles at junctions -->
     <circle cx="320" cy="300" r="3" fill="#C1B098" opacity="0.6"/>
     <circle cx="250" cy="600" r="3" fill="#C1B098" opacity="0.6"/>
   </svg>
-
   <div class="hero-left">
     <div class="kicker">Keynote Speaker · Strategist · Minister</div>
-
-    <h1>
-      Dr. Olori<br/>
-      <em>Boye-Ajayi</em>
-    </h1>
-
-    <p class="hero-tagline">
-      "I walk with people through real, ordinary life — and call forth what God has already placed in them."
-    </p>
-
-    <p class="hero-sub">
-      Senior African trade strategist. Capital architect. Policy leader. Oxford alumna. Servant Leader of The Secret Garden Global. Author. And above all — a Bondservant of Jesus Christ.
-    </p>
-
+    <h1>Dr. Olori<br/><em>Boye-Ajayi</em></h1>
+    <p class="hero-tagline">"I walk with people through real, ordinary life — and call forth what God has already placed in them."</p>
+    <p class="hero-sub">Senior African trade strategist. Capital architect. Policy leader. Oxford alumna. Servant Leader of The Secret Garden Global. Author. And above all — a Bondservant of Jesus Christ.</p>
     <div class="btn-row">
       <a class="btn-gold" href="https://forms.gle/s2za4EiXrawCRF249" target="_blank">
-        <span>Book Dr. Olori</span>
-        <span>→</span>
+        <span>Book Dr. Olori</span><span>→</span>
       </a>
-      <a class="btn-ghost" href="https://selar.com" target="_blank">
-        Shop Books & Resources
-      </a>
+      <a class="btn-ghost" href="https://selar.com/j422577117" target="_blank">Shop Books & Resources</a>
     </div>
   </div>
-
   <div class="hero-right">
-    <!--
-      TO ADD PHOTO: Replace src below with your actual image path
-    -->
-    <img class="hero-photo" src="YOUR_PHOTO.jpg" alt="Dr. Olori Boye-Ajayi" />
+    <img class="hero-photo" src="images/hero.jpeg" alt="Dr. Olori Boye-Ajayi" />
   </div>
 </section>
 
 <!-- ── STATS ── -->
 <div class="stats">
-  <div class="stat fade-up">
-    <span class="stat-num">15+</span>
-    <span class="stat-lbl">Years of Experience</span>
-  </div>
-  <div class="stat fade-up delay-1">
-    <span class="stat-num">€500M+</span>
-    <span class="stat-lbl">Development Funds Structured</span>
-  </div>
-  <div class="stat fade-up delay-2">
-    <span class="stat-num">100K+</span>
-    <span class="stat-lbl">Entrepreneurs Reached</span>
-  </div>
-  <div class="stat fade-up delay-3">
-    <span class="stat-num">$3M+</span>
-    <span class="stat-lbl">Raised for Women-led SMEs</span>
-  </div>
+  <div class="stat fade-up"><span class="stat-num">15+</span><span class="stat-lbl">Years of Experience</span></div>
+  <div class="stat fade-up delay-1"><span class="stat-num">€500M+</span><span class="stat-lbl">Development Funds Structured</span></div>
+  <div class="stat fade-up delay-2"><span class="stat-num">100K+</span><span class="stat-lbl">Entrepreneurs Reached</span></div>
+  <div class="stat fade-up delay-3"><span class="stat-num">$3M+</span><span class="stat-lbl">Raised for Women-led SMEs</span></div>
 </div>
 
 <!-- ── BIO ── -->
@@ -843,38 +588,17 @@
   <div class="wrap">
     <div class="bio-grid">
       <div class="bio-sticky fade-up">
-        <div class="sec-kicker">Her Story</div>
+        <div class="sec-kicker">My Story</div>
         <h2 class="sec-head">A life built on <em>purpose & impact</em></h2>
       </div>
-
-      <!-- Bio Photo -->
       <div class="bio-photo-wrap fade-up delay-1">
-        <!--
-          TO ADD PHOTO: Replace the .bio-photo-placeholder div with:
-          <img class="bio-photo" src="YOUR_PHOTO_2.jpg" alt="Dr. Olori Boye-Ajayi" />
-        -->
-        <div class="bio-photo-placeholder">
-          <div class="hint-icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
-            </svg>
-          </div>
-          <span class="hint-label">Bio Photo</span>
-        </div>
+        <img class="bio-photo" src="images/bio.jpeg" alt="Dr. Olori Boye-Ajayi" />
       </div>
       <div class="bio-text">
-        <p class="lead fade-up">
-          Dr. Olori Boye-Ajayi is a senior African trade and development strategist, capital architect, and execution-focused policy leader with 15+ years of experience mobilizing private and public capital, aligning multi-country stakeholders, and delivering measurable impact across Africa.
-        </p>
-        <p class="fade-up delay-1">
-          An alumna of the University of Oxford and the Blavatnik School of Government, Dr. Boye-Ajayi serves as a Member of the AfCFTA Trade and Industrial Development Advisory Council, where she shapes continental trade strategies and industrial development frameworks.
-        </p>
-        <p class="fade-up delay-2">
-          Founder of Borderless Trade Network and Borderless Trade &amp; Investments, she has structured €500M+ in development funds, raised $3M+ for women-led SMEs, and facilitated market access for 100,000+ entrepreneurs. A MANSA Champion with Afreximbank, she has been honoured by MIPAD and at the UK House of Parliament, championing systems that include, protect, and scale real enterprise.
-        </p>
-        <p class="fade-up delay-3">
-          Dr. Olori's strategic insights have made her a sought-after consultant for international development institutions and multilateral organizations — ensuring programs deliver diversity, inclusion, and maximum impact.
-        </p>
+        <p class="lead fade-up">Dr. Olori Boye-Ajayi is a senior African trade and development strategist, capital architect, and execution-focused policy leader with 15+ years of experience mobilizing private and public capital, aligning multi-country stakeholders, and delivering measurable impact across Africa.</p>
+        <p class="fade-up delay-1">An alumna of the University of Oxford and the Blavatnik School of Government, Dr. Boye-Ajayi serves as a Member of the AfCFTA Trade and Industrial Development Advisory Council, where she shapes continental trade strategies and industrial development frameworks.</p>
+        <p class="fade-up delay-2">Founder of Borderless Trade Network and Borderless Trade &amp; Investments, she has structured €500M+ in development funds, raised $3M+ for women-led SMEs, and facilitated market access for 100,000+ entrepreneurs. A MANSA Champion with Afreximbank, she has been honoured by MIPAD and at the UK House of Parliament, championing systems that include, protect, and scale real enterprise.</p>
+        <p class="fade-up delay-3">Dr. Olori's strategic insights have made her a sought-after consultant for international development institutions and multilateral organizations — ensuring programs deliver diversity, inclusion, and maximum impact.</p>
       </div>
     </div>
   </div>
@@ -888,47 +612,34 @@
       <h2 class="sec-head">Accolades &amp; <em>Honours</em></h2>
     </div>
     <div class="awards-grid">
-
-      <!-- No link -->
       <div class="award-card fade-up">
         <span class="award-year">2026</span>
         <p class="award-text">Recognized as one of the 100 Inspiring and Award-Winning Amazons in Nigeria</p>
       </div>
-
-      <!-- Linked → Nigerian CEO Magazine -->
       <a class="award-card linked fade-up delay-1" href="https://nigerianceomagazine.com/olori-boye-ajayi-president-borderless-trade-network/?utm_source=chatgpt.com" target="_blank" rel="noopener">
         <span class="award-year">2024</span>
         <p class="award-text">Named among the Global Top 100 Most Influential People of African Descent</p>
         <span class="award-link-hint">Read Feature ↗</span>
       </a>
-
-      <!-- Linked → BusinessDay -->
       <a class="award-card linked fade-up delay-2" href="https://businessday.ng/interview/article/olori-boye-ajayi-dedicated-to-empowering-women-driving-africas-trade-transformation/?utm_source=chatgpt.com" target="_blank" rel="noopener">
         <span class="award-year">2024</span>
         <p class="award-text">Recognized as one of the Top 50 Inspiring Women in Nigeria</p>
         <span class="award-link-hint">Read Feature ↗</span>
       </a>
-
-      <!-- Linked → Vanguard -->
       <a class="award-card linked fade-up delay-3" href="https://www.vanguardngr.com/2024/09/how-nigerian-talents-are-conquering-supply-chain-world/?utm_source=chatgpt.com" target="_blank" rel="noopener">
         <span class="award-year">2023</span>
         <p class="award-text">Honoured at the African Achievers Awards at the UK House of Parliament</p>
         <span class="award-link-hint">Read Feature ↗</span>
       </a>
-
-      <!-- Linked → Fund it Forward -->
       <a class="award-card linked fade-up delay-1" href="https://funditforward.tv/faculty/dr-olori-boye-ajayi-season-2/?utm_source=chatgpt.com" target="_blank" rel="noopener">
         <span class="award-year">2022</span>
         <p class="award-text">International Woman of the Year — WOMEN4AFRICA UK</p>
         <span class="award-link-hint">Read Feature ↗</span>
       </a>
-
-      <!-- No link -->
       <div class="award-card fade-up delay-2">
         <span class="award-year">2021 · 2023</span>
         <p class="award-text">Included in the Top 100 Inspiring Women in Africa Award</p>
       </div>
-
     </div>
   </div>
 </section>
@@ -937,15 +648,11 @@
 <section class="speaking-section">
   <div class="wrap">
     <div class="sec-kicker fade-up">Speaking</div>
-    <h2 class="sec-head fade-up">Book Her for Your <em>Next Event</em></h2>
+    <h2 class="sec-head fade-up">Book Me for Your <em>Next Event</em></h2>
     <div class="speaking-grid">
       <div class="speaking-info">
-        <p class="fade-up">
-          Dr. Olori is available as a <strong style="color:var(--cream)">Keynote Speaker</strong> or <strong style="color:var(--cream)">Workshop Host</strong>. Her sessions are rooted in lived experience, strategic depth, and a faith-led worldview that challenges and inspires.
-        </p>
-        <p class="fade-up delay-1">
-          Whether you're convening leaders in trade, development, entrepreneurship, or faith — she brings clarity, conviction, and a mandate to see people walk in true potential.
-        </p>
+        <p class="fade-up">Dr. Olori is available as a <strong style="color:var(--cream)">Keynote Speaker</strong>. Her sessions are rooted in lived experience, strategic depth, and a faith-led worldview that challenges and inspires.</p>
+        <p class="fade-up delay-1">Whether you're convening leaders in trade, development, entrepreneurship, or faith — she brings clarity, conviction, and a mandate to see people walk in true potential.</p>
         <div class="topic-tags fade-up delay-2">
           <span class="tag">African Trade</span>
           <span class="tag">Women Entrepreneurship</span>
@@ -956,12 +663,10 @@
         </div>
         <div class="btn-row fade-up delay-3">
           <a class="btn-gold" href="https://forms.gle/s2za4EiXrawCRF249" target="_blank">
-            <span>Book Dr. Olori For Your Event</span>
-            <span>→</span>
+            <span>Book Me For Your Event</span><span>→</span>
           </a>
         </div>
       </div>
-
       <div class="speaking-visual fade-up delay-2">
         <div class="sv-ring sv-ring-1"></div>
         <div class="sv-ring sv-ring-2"></div>
@@ -974,36 +679,22 @@
   </div>
 </section>
 
-<!-- ── TSG SECTION ── -->
+<!-- ── TSG ── -->
 <section class="tsg-section">
   <div class="wrap">
     <div class="sec-kicker fade-up">Ministry</div>
     <h2 class="sec-head fade-up">The Secret Garden <em>Global</em></h2>
     <div class="tsg-grid">
-      <div class="tsg-visual fade-up">
-        <!--
-          TO ADD TSG IMAGE: Replace the .tsg-img-placeholder div with:
-          <img class="tsg-img" src="images/tsg.jpg" alt="The Secret Garden Global" />
-        -->
-        <div class="tsg-img-placeholder">
-          <div class="hint-icon">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z" fill="rgba(193,176,152,0.4)"/>
-            </svg>
-          </div>
-          <span class="hint-label">TSG Image</span>
-        </div>
+      <div class="fade-up">
+        <div class="sec-kicker" style="margin-top:8px;">The Love Team</div>
+      </div>
+      <div class="bio-photo-wrap fade-up delay-1">
+        <img class="tsg-photo" src="images/secret-garden.jpeg" alt="The Secret Garden Global" />
       </div>
       <div class="tsg-content">
-        <p class="fade-up">
-          Beyond the marketplace, Dr. Boye-Ajayi serves as the <strong style="color:var(--cream)">Servant Leader of The Secret Garden Global (TSG)</strong> — an interdenominational ministry with a global reach.
-        </p>
-        <p class="fade-up delay-1">
-          TSG's mandate is to equip believers to walk in true dominion and to make real disciples of Christ. Known as <em style="color:var(--gold-pale)">The Love Team</em>, TSG is committed to nurturing spiritual growth, empowering believers to live as God's ambassadors, and fulfilling the One Billion Souls mandate.
-        </p>
-        <p class="fade-up delay-2">
-          This vision is expressed through key programs operating across Nigeria, the United Kingdom, Ethiopia, the United States, Kenya, Uganda, and beyond.
-        </p>
+        <p class="lead fade-up">Beyond the marketplace, Dr. Boye-Ajayi serves as the <strong style="color:var(--cream)">Servant Leader of The Secret Garden Global (TSG)</strong> — an interdenominational ministry with a global reach.</p>
+        <p class="fade-up delay-1">TSG's mandate is to equip believers to walk in true dominion and to make real disciples of Christ. Known as <em style="color:var(--gold-pale)">The Love Team</em>, TSG is committed to nurturing spiritual growth, empowering believers to live as God's ambassadors, and fulfilling the One Billion Souls mandate.</p>
+        <p class="fade-up delay-2">This vision is expressed through key programs operating across Nigeria, the United Kingdom, Ethiopia, the United States, Kenya, Uganda, and beyond.</p>
         <div class="program-pills fade-up delay-3">
           <span class="pill">Secret Garden Retreat</span>
           <span class="pill">Flames</span>
@@ -1011,10 +702,8 @@
           <span class="pill">TSG Missions</span>
         </div>
         <div class="btn-row fade-up delay-3">
-          <a class="btn-gold" href="#" target="_blank">
-            <!-- Replace href with actual TSG landing page URL -->
-            <span>Visit TSG Website</span>
-            <span>→</span>
+          <a class="btn-gold" href="https://secret-garden.fly.dev/" target="_blank">
+            <span>Visit TSG Website</span><span>→</span>
           </a>
         </div>
       </div>
@@ -1022,101 +711,83 @@
   </div>
 </section>
 
-<!-- ── BOOK / SELAR ── -->
+<!-- ── BOOKS ── -->
 <section class="shop-section">
   <div class="wrap">
     <div class="sec-kicker fade-up">Resources</div>
     <h2 class="sec-head fade-up">Books &amp; <em>Digital Products</em></h2>
-    <div class="shop-grid">
-      <div class="book-card fade-up">
-        <span class="book-eyebrow">Featured Book</span>
-        <h3 class="book-title">The Lemon Book</h3>
-        <p class="book-quote">
-          "When life gives you lemons, make lemonade" sounds wise — but it's not the gospel.
-        </p>
-        <p class="book-desc">
-          Dr. Olori wrote The Lemon Book because believers are not meant to manage damage. This book calls you beyond coping and into the fullness of what God has already secured for you.
-        </p>
-        <a class="btn-gold" href="https://selar.com" target="_blank">
-          <!-- Replace with actual Selar page URL -->
-          <span>Get the Book on Selar</span>
-          <span>→</span>
-        </a>
-      </div>
 
-      <div class="shop-text fade-up delay-2">
-        <div class="sec-kicker" style="margin-bottom:20px;">Also Available</div>
-        <h3 class="sec-head" style="font-size:32px; margin-bottom:24px;">
-          Virtual Experiences &amp; <em>More</em>
-        </h3>
-        <p>
-          Get a Virtual Global Experience with OBA by The Secret Garden — plus courses, resources, and other products designed to equip you to walk in purpose and dominion.
-        </p>
-        <p>
-          All available on Dr. Olori's Selar store.
-        </p>
-        <div class="btn-row" style="margin-top:32px;">
-          <a class="btn-ghost" href="https://selar.com" target="_blank">
-            <!-- Replace with actual Selar page URL -->
-            Browse All Products →
-          </a>
+    <div class="books-grid">
+
+      <!-- BOOK 1: The Lemon Book -->
+      <div class="book-card fade-up">
+        <img class="book-cover" src="images/lemon.jpeg" alt="The Lemon Book" />
+        <div class="book-body">
+          <span class="book-eyebrow">Featured Book</span>
+          <h3 class="book-title">The Lemon Book</h3>
+          <p class="book-quote">"When life gives you lemons, make lemonade" sounds wise — but it's not the gospel.</p>
+          <p class="book-desc">Dr. Olori wrote The Lemon Book because believers are not meant to manage damage. This book calls you beyond coping and into the fullness of what God has already secured for you.</p>
         </div>
       </div>
+
+      <!-- BOOK 2 — update title, quote, description, and add cover image -->
+      <div class="book-card fade-up delay-1">
+        <div class="book-cover-placeholder">
+          <div class="ph-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+          </div>
+          <span>Add second book cover</span>
+        </div>
+        <div class="book-body">
+          <span class="book-eyebrow">Also Available</span>
+          <h3 class="book-title">Book Title Here</h3>
+          <p class="book-quote">Add a key quote or tagline from this book here.</p>
+          <p class="book-desc">Add your book description here — what it's about, who it's for, and what the reader will take away from it.</p>
+        </div>
+      </div>
+
     </div>
+
+    <div class="selar-cta fade-up delay-2">
+      <p>Get these books, virtual experiences, courses, and more on My Selar store.</p>
+      <a class="btn-gold" href="https://selar.com/m/dr-oloriboye-ajayi" target="_blank">
+        <span>Browse All Products</span><span>→</span>
+      </a>
+    </div>
+
   </div>
 </section>
 
-<!-- ── GALLERY / HEADSHOTS ── -->
+<!-- ── GALLERY ── -->
 <section class="gallery-section">
   <div class="wrap">
     <div class="sec-kicker fade-up">In the Frame</div>
     <h2 class="sec-head fade-up">Photo <em>Gallery</em></h2>
-
     <div class="slideshow fade-up delay-1">
-
-      <!-- SLIDE 1 — add your image src here -->
-      <div class="slide active">
-        <img src="images/image1.jpeg" alt="Dr. Olori Boye-Ajayi" />
-      </div>
-      <!-- SLIDE 2 -->
-      <div class="slide">
-        <img src="images/image2.jpeg" alt="Dr. Olori Boye-Ajayi" />
-      </div>
-      <!-- SLIDE 3 -->
-      <div class="slide">
-        <img src="images/image3.jpeg" alt="Dr. Olori Boye-Ajayi" />
-      </div>
-      <!-- SLIDE 4 -->
-      <div class="slide">
-        <img src="images/image4.PNG" alt="Dr. Olori at event" />
-      </div>
-      <!-- SLIDE 5 -->
-      <div class="slide">
-        <img src="images/image5.jpeg" alt="Dr. Olori speaking" />
-      </div>
-
-      <!-- Prev / Next arrow buttons -->
+      <div class="slide active"><img src="images/gallery1.jpeg" alt="Dr. Olori Boye-Ajayi" /></div>
+      <div class="slide"><img src="images/gallery2.jpeg" alt="Dr. Olori Boye-Ajayi" /></div>
+      <div class="slide"><img src="images/image3.jpeg" alt="Dr. Olori Boye-Ajayi" /></div>
+      <div class="slide"><img src="images/image4.PNG" alt="Dr. Olori at event" /></div>
+      <div class="slide"><img src="images/gallery3.jpeg" alt="Dr. Olori speaking" /></div>
+      <div class="slide"><img src="images/gallery4.JPG" alt="Dr. Olori speaking" /></div>
+      <div class="slide"><img src="images/gallery5.jpg" alt="Dr. Olori speaking" /></div>
+      <div class="slide"><img src="images/gallery6.jpg" alt="Dr. Olori speaking" /></div>
       <button class="slide-btn prev" onclick="moveSlide(-1)" aria-label="Previous">&#8592;</button>
-      <button class="slide-btn next" onclick="moveSlide(1)"  aria-label="Next">&#8594;</button>
-
-      <!-- Clickable dot indicators -->
+      <button class="slide-btn next" onclick="moveSlide(1)" aria-label="Next">&#8594;</button>
       <div class="slide-dots">
         <span class="dot active" onclick="goToSlide(0)"></span>
-        <span class="dot"        onclick="goToSlide(1)"></span>
-        <span class="dot"        onclick="goToSlide(2)"></span>
-        <span class="dot"        onclick="goToSlide(3)"></span>
-        <span class="dot"        onclick="goToSlide(4)"></span>
+        <span class="dot" onclick="goToSlide(1)"></span>
+        <span class="dot" onclick="goToSlide(2)"></span>
+        <span class="dot" onclick="goToSlide(3)"></span>
+        <span class="dot" onclick="goToSlide(4)"></span>
+        <span class="dot" onclick="goToSlide(5)"></span>
+        <span class="dot" onclick="goToSlide(6)"></span>
+        <span class="dot" onclick="goToSlide(7)"></span>
       </div>
-
-      <!-- "1 / 5" counter -->
-      <div class="slide-counter" id="slideCounter">1 / 5</div>
-
+      <div class="slide-counter" id="slideCounter">1 / 8</div>
     </div>
-
     <div class="gallery-dl fade-up delay-2">
-      <a href="https://drive.google.com/drive/folders/1YMsddK0Ibvqvm2SylCu1ngJSD4uvyjSM?usp=sharing" target="_blank">
-        ↓ Download All Approved Photos
-      </a>
+      <a href="https://drive.google.com/drive/folders/1YMsddK0Ibvqvm2SylCu1ngJSD4uvyjSM?usp=sharing" target="_blank">↓ Download All Approved Photos</a>
     </div>
   </div>
 </section>
@@ -1126,105 +797,62 @@
   <span class="footer-name">Dr. Olori Boye-Ajayi</span>
   <span class="footer-note">© 2025 · All rights reserved</span>
   <a class="btn-gold footer-book" href="https://forms.gle/s2za4EiXrawCRF249" target="_blank">
-    <span>Book Dr. Olori</span>
-    <span>→</span>
+    <span>Book Dr. Olori</span><span>→</span>
   </a>
 </footer>
 
 <!-- ── SLIDESHOW SCRIPT ── -->
-<!--
-  HOW IT WORKS:
-  - "currentSlide" tracks which slide is visible (starts at 0)
-  - "goToSlide(n)" hides all slides, shows the one at index n, and updates the dots + counter
-  - "moveSlide(dir)" adds +1 or -1 to currentSlide, wraps around using modulo (%)
-  - Auto-advance runs every 4 seconds via setInterval
--->
 <script>
   let currentSlide = 0;
-  const slides = document.querySelectorAll('.slide');
-  const dots   = document.querySelectorAll('.dot');
+  const slides  = document.querySelectorAll('.slide');
+  const dots    = document.querySelectorAll('.dot');
   const counter = document.getElementById('slideCounter');
   const total   = slides.length;
-
   function goToSlide(n) {
-    // remove active from current slide and dot
     slides[currentSlide].classList.remove('active');
     dots[currentSlide].classList.remove('active');
-    // update index (wrap around with modulo)
     currentSlide = (n + total) % total;
-    // add active to new slide and dot
     slides[currentSlide].classList.add('active');
     dots[currentSlide].classList.add('active');
-    // update "2 / 5" counter
     counter.textContent = (currentSlide + 1) + ' / ' + total;
   }
-
-  function moveSlide(dir) {
-    goToSlide(currentSlide + dir);
-  }
-
-  // auto-advance every 4 seconds
+  function moveSlide(dir) { goToSlide(currentSlide + dir); }
   let autoplay = setInterval(() => moveSlide(1), 4000);
-
-  // pause autoplay when user manually clicks arrows or dots
   document.querySelector('.slideshow').addEventListener('click', () => {
     clearInterval(autoplay);
     autoplay = setInterval(() => moveSlide(1), 4000);
   });
 </script>
 
-<!-- ── HAMBURGER MENU SCRIPT ── -->
-<!--
-  HOW IT WORKS:
-  - We grab the button (#hamburger) and the dropdown (#mobileMenu)
-  - Clicking the button toggles the "open" class on both elements
-  - CSS handles the visual: bars animate into X, menu slides down
-  - Clicking a link or anywhere outside closes the menu
--->
+<!-- ── HAMBURGER SCRIPT ── -->
 <script>
-  const hamburger   = document.getElementById('hamburger');
-  const mobileMenu  = document.getElementById('mobileMenu');
-
+  const hamburger  = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
   hamburger.addEventListener('click', () => {
     const isOpen = mobileMenu.style.display === 'flex';
     if (isOpen) {
-      // close it
-      mobileMenu.classList.remove('open');
-      hamburger.classList.remove('open');
-      // wait for animation to finish, then hide
+      mobileMenu.classList.remove('open'); hamburger.classList.remove('open');
       setTimeout(() => { mobileMenu.style.display = 'none'; }, 300);
     } else {
-      // open it
       mobileMenu.style.display = 'flex';
-      // small delay so the display:flex kicks in before the transition runs
-      requestAnimationFrame(() => {
-        mobileMenu.classList.add('open');
-        hamburger.classList.add('open');
-      });
+      requestAnimationFrame(() => { mobileMenu.classList.add('open'); hamburger.classList.add('open'); });
     }
   });
-
-  // close menu when any link inside it is clicked
   mobileMenu.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
-      mobileMenu.classList.remove('open');
-      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open'); hamburger.classList.remove('open');
       setTimeout(() => { mobileMenu.style.display = 'none'; }, 300);
     });
   });
 </script>
 
-<!-- ── SCROLL ANIMATION SCRIPT ── -->
+<!-- ── SCROLL ANIMATIONS ── -->
 <script>
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        observer.unobserve(e.target);
-      }
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
     });
   }, { threshold: 0.12 });
-
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
 
