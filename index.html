@@ -268,6 +268,37 @@
       display:block; border:1px solid rgba(193,176,152,.2);
       background: rgba(193,176,152,.04);
     }
+
+    /*
+      TSG logo — displayed inline at its natural size.
+      mix-blend-mode:multiply ONLY works on light/white backgrounds:
+      it multiplies the logo pixels with the background, making white
+      pixels (255,255,255) transparent, while keeping the dark green
+      and rust-orange logo colours visible.
+      We give it a very light warm background to activate this effect.
+      No border, no frame, no allocated empty space — it's just the logo.
+    */
+    .tsg-logo-wrap {
+      background: #e8e3da;
+      border-radius: 4px;
+      padding: 16px;
+      display: inline-block; /* shrinks to fit the image exactly */
+      position: relative;
+      width: fit-content;    /* ensures no extra horizontal space */
+    }
+    /* subtle gold corner accents on the wrap */
+    .tsg-logo-wrap::before, .tsg-logo-wrap::after {
+      content:''; position:absolute; width:16px; height:16px;
+      border-color:var(--gold); border-style:solid; z-index:2;
+    }
+    .tsg-logo-wrap::before { top:-5px; left:-5px; border-width:1.5px 0 0 1.5px; }
+    .tsg-logo-wrap::after  { bottom:-5px; right:-5px; border-width:0 1.5px 1.5px 0; }
+    .tsg-logo-img {
+      display: block;
+      width: 220px;              /* fixed — no wider than needed */
+      height: auto;
+      mix-blend-mode: multiply;  /* white bg disappears, brand colours stay */
+    }
     .bio-photo-wrap::before, .bio-photo-wrap::after {
       content:''; position:absolute; width:24px; height:24px;
       border-color:var(--gold); border-style:solid; z-index:2;
@@ -339,10 +370,17 @@
       padding:110px 0; background: var(--panel);
       border-top:1px solid rgba(193,176,152,.15); overflow:hidden;
     }
+    /*
+      2-column layout: left = label + logo stacked, right = content text.
+      The logo column is fixed at 280px so it's exactly as wide as needed —
+      no empty space either side of it.
+    */
     .tsg-grid {
-      display:grid; grid-template-columns:1fr 1fr 2fr;
-      gap:60px; align-items:start; margin-top:60px;
+      display:grid; grid-template-columns: auto 1fr;
+      gap:70px; align-items:start; margin-top:60px;
     }
+    /* stacks the kicker label above the logo in the left column */
+    .tsg-left { display:flex; flex-direction:column; gap:28px; }
     .tsg-content p { font-size:15px; line-height:1.85; color:rgba(221,216,200,.8); margin-bottom:18px; }
     .tsg-content p.lead {
       font-family:'Playfair Display',serif; font-size:19px; font-weight:400;
@@ -495,6 +533,7 @@
       .bio-grid,
       .tsg-grid { grid-template-columns:1fr; gap:30px; }
       .bio-photo-wrap { max-width:300px; }
+      .tsg-logo-img { width:160px; }
       .awards-grid { grid-template-columns:1fr 1fr; gap:2px; }
       .books-grid { gap:16px; }
       .book-card { grid-template-columns: 110px 1fr; }
@@ -561,8 +600,8 @@
   <div class="hero-left">
     <div class="kicker">Keynote Speaker · Strategist · Minister</div>
     <h1>Dr. Olori<br/><em>Boye-Ajayi</em></h1>
-    <p class="hero-tagline">"I walk with people through real, ordinary life — and call forth what God has already placed in them."</p>
-    <p class="hero-sub">Senior African trade strategist. Capital architect. Policy leader. Oxford alumna. Servant Leader of The Secret Garden Global. Author. And above all — a Bondservant of Jesus Christ.</p>
+    <p class="hero-tagline">"I walk with people through real, ordinary life and call forth what God has already placed in them."</p>
+    <p class="hero-sub">Senior African trade strategist. Capital architect. Policy leader. Oxford alumna. Servant Leader of The Secret Garden Global. Author. And above all a Bondservant of Jesus Christ.</p>
     <div class="btn-row">
       <a class="btn-gold" href="https://forms.gle/s2za4EiXrawCRF249" target="_blank">
         <span>Book Dr. Olori</span><span>→</span>
@@ -595,10 +634,10 @@
         <img class="bio-photo" src="images/bio.jpeg" alt="Dr. Olori Boye-Ajayi" />
       </div>
       <div class="bio-text">
-        <p class="lead fade-up">Dr. Olori Boye-Ajayi is a senior African trade and development strategist, capital architect, and execution-focused policy leader with 15+ years of experience mobilizing private and public capital, aligning multi-country stakeholders, and delivering measurable impact across Africa.</p>
+        <p class="lead fade-up">Dr. Olori Boye-Ajayi is a senior African trade and development strategist, capital architect, and execution focused policy leader with 15+ years of experience mobilizing private and public capital, aligning multi-country stakeholders, and delivering measurable impact across Africa.</p>
         <p class="fade-up delay-1">An alumna of the University of Oxford and the Blavatnik School of Government, Dr. Boye-Ajayi serves as a Member of the AfCFTA Trade and Industrial Development Advisory Council, where she shapes continental trade strategies and industrial development frameworks.</p>
         <p class="fade-up delay-2">Founder of Borderless Trade Network and Borderless Trade &amp; Investments, she has structured €500M+ in development funds, raised $3M+ for women-led SMEs, and facilitated market access for 100,000+ entrepreneurs. A MANSA Champion with Afreximbank, she has been honoured by MIPAD and at the UK House of Parliament, championing systems that include, protect, and scale real enterprise.</p>
-        <p class="fade-up delay-3">Dr. Olori's strategic insights have made her a sought-after consultant for international development institutions and multilateral organizations — ensuring programs deliver diversity, inclusion, and maximum impact.</p>
+        <p class="fade-up delay-3">Dr. Olori's strategic insights have made her a sought-after consultant for international development institutions and multilateral organizations ensuring programs deliver diversity, inclusion, and maximum impact.</p>
       </div>
     </div>
   </div>
@@ -652,7 +691,7 @@
     <div class="speaking-grid">
       <div class="speaking-info">
         <p class="fade-up">Dr. Olori is available as a <strong style="color:var(--cream)">Keynote Speaker</strong>. Her sessions are rooted in lived experience, strategic depth, and a faith-led worldview that challenges and inspires.</p>
-        <p class="fade-up delay-1">Whether you're convening leaders in trade, development, entrepreneurship, or faith — she brings clarity, conviction, and a mandate to see people walk in true potential.</p>
+        <p class="fade-up delay-1">Whether you're convening leaders in trade, development, entrepreneurship, or faith she brings clarity, conviction, and a mandate to see people walk in true potential.</p>
         <div class="topic-tags fade-up delay-2">
           <span class="tag">African Trade</span>
           <span class="tag">Women Entrepreneurship</span>
@@ -685,12 +724,18 @@
     <div class="sec-kicker fade-up">Ministry</div>
     <h2 class="sec-head fade-up">The Secret Garden <em>Global</em></h2>
     <div class="tsg-grid">
-      <div class="fade-up">
-        <div class="sec-kicker" style="margin-top:8px;">The Love Team</div>
+
+      <!-- LEFT COL: label + logo stacked -->
+      <div class="tsg-left fade-up">
+        <div class="sec-kicker">The Love Team</div>
+        <!-- Logo sits in a warm-toned wrap so mix-blend-mode:multiply
+             removes the white background cleanly. No empty frame space. -->
+        <div class="tsg-logo-wrap">
+          <img class="tsg-logo-img" src="images/secret-garden.jpeg" alt="The Secret Garden Global" />
+        </div>
       </div>
-      <div class="bio-photo-wrap fade-up delay-1">
-        <img class="tsg-photo" src="images/secret-garden.jpeg" alt="The Secret Garden Global" />
-      </div>
+
+      <!-- RIGHT COL: all text content -->
       <div class="tsg-content">
         <p class="lead fade-up">Beyond the marketplace, Dr. Boye-Ajayi serves as the <strong style="color:var(--cream)">Servant Leader of The Secret Garden Global (TSG)</strong> — an interdenominational ministry with a global reach.</p>
         <p class="fade-up delay-1">TSG's mandate is to equip believers to walk in true dominion and to make real disciples of Christ. Known as <em style="color:var(--gold-pale)">The Love Team</em>, TSG is committed to nurturing spiritual growth, empowering believers to live as God's ambassadors, and fulfilling the One Billion Souls mandate.</p>
@@ -707,6 +752,7 @@
           </a>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -725,7 +771,7 @@
         <div class="book-body">
           <span class="book-eyebrow">Featured Book</span>
           <h3 class="book-title">The Lemon Book</h3>
-          <p class="book-quote">"When life gives you lemons, make lemonade" sounds wise — but it's not the gospel.</p>
+          <p class="book-quote">"When life gives you lemons, make lemonade" sounds wise but it's not the gospel.</p>
           <p class="book-desc">Dr. Olori wrote The Lemon Book because believers are not meant to manage damage. This book calls you beyond coping and into the fullness of what God has already secured for you.</p>
         </div>
       </div>
@@ -769,7 +815,7 @@
       <div class="slide"><img src="images/image3.jpeg" alt="Dr. Olori Boye-Ajayi" /></div>
       <div class="slide"><img src="images/image4.PNG" alt="Dr. Olori at event" /></div>
       <div class="slide"><img src="images/gallery3.jpeg" alt="Dr. Olori speaking" /></div>
-      <div class="slide"><img src="images/gallery4.JPG" alt="Dr. Olori speaking" /></div>
+      <div class="slide"><img src="images/image1.jpeg" alt="Dr. Olori speaking" /></div>
       <div class="slide"><img src="images/gallery5.jpg" alt="Dr. Olori speaking" /></div>
       <div class="slide"><img src="images/gallery6.jpg" alt="Dr. Olori speaking" /></div>
       <button class="slide-btn prev" onclick="moveSlide(-1)" aria-label="Previous">&#8592;</button>
