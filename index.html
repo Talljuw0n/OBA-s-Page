@@ -435,6 +435,21 @@
     .selar-cta { margin-top:40px; text-align:center; }
     .selar-cta p { font-size:14px; color:rgba(221,216,200,.7); margin-bottom:20px; line-height:1.7; }
 
+    /* ─── EVENT / PROGRAM CARD ─── */
+    .book-card.event-card {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr;
+    }
+    .book-card.event-card .event-banner {
+      width:100%; display:block;
+      aspect-ratio:16/7; object-fit:cover; object-position:center top;
+      border-bottom:1px solid rgba(193,176,152,.15); border-right:none;
+    }
+    .book-card.event-card .book-body { padding:30px 40px; }
+    @media(max-width:900px) {
+      .book-card.event-card .book-body { padding:18px 16px; }
+    }
+
     /* ─── GALLERY SLIDESHOW ────────────────────────────────────────
        WHY THE OLD VERSION CUT IMAGES:
        aspect-ratio:16/9 + max-height:600px forced a wide, shallow
@@ -500,6 +515,138 @@
     }
     .gallery-dl a:hover { color:var(--gold-lt); }
 
+    /* ─── T2T PROGRAMME ─── */
+    .t2t-section {
+      padding:110px 0;
+      border-top:1px solid rgba(193,176,152,.12);
+    }
+    .t2t-grid {
+      display:grid; grid-template-columns: 1fr 480px;
+      gap:70px; align-items:start; margin-top:60px;
+    }
+    .t2t-partners {
+      display:flex; flex-wrap:wrap; align-items:center; gap:8px;
+      margin-bottom:28px;
+    }
+    .t2t-partner-tag {
+      font-size:10px; font-weight:600; letter-spacing:2px; text-transform:uppercase;
+      color:var(--forest); background:var(--gold);
+      padding:5px 14px;
+    }
+    .t2t-partner-tag.ghost {
+      background:transparent; color:var(--gold);
+      border:1px solid rgba(193,176,152,.4);
+    }
+    .t2t-intro { font-size:15px; line-height:1.85; color:rgba(221,216,200,.8); margin-bottom:14px; }
+    .t2t-stats {
+      display:grid; grid-template-columns:repeat(4,1fr);
+      gap:1px; background:rgba(193,176,152,.12);
+      border:1px solid rgba(193,176,152,.12);
+      margin:32px 0 36px;
+    }
+    .t2t-stat {
+      padding:20px 16px; text-align:center;
+      background:rgba(42,41,32,.8);
+    }
+    .t2t-stat-num {
+      font-family:'Playfair Display',serif; font-size:28px; font-weight:400;
+      color:var(--gold); display:block; line-height:1; margin-bottom:6px;
+    }
+    .t2t-stat-lbl { font-size:9.5px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); }
+    .t2t-focus { margin-bottom:32px; }
+    .t2t-focus-label {
+      font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase;
+      color:var(--muted); margin-bottom:14px; display:block;
+    }
+    .t2t-image-wrap { position:relative; }
+    .t2t-image-wrap::before, .t2t-image-wrap::after {
+      content:''; position:absolute; width:24px; height:24px;
+      border-color:var(--gold); border-style:solid; z-index:2;
+    }
+    .t2t-image-wrap::before { top:-8px; left:-8px; border-width:2px 0 0 2px; }
+    .t2t-image-wrap::after  { bottom:-8px; right:-8px; border-width:0 2px 2px 0; }
+    .t2t-img {
+      width:100%; display:block;
+      aspect-ratio:4/3; object-fit:cover; object-position:center top;
+      border:1px solid rgba(193,176,152,.2);
+    }
+    .t2t-caption {
+      margin-top:14px;
+      font-size:11px; letter-spacing:1.5px; text-transform:uppercase;
+      color:var(--muted); line-height:1.6; text-align:center;
+    }
+    .t2t-outcome {
+      padding:20px 24px;
+      border-left:2px solid var(--gold);
+      background:rgba(193,176,152,.04);
+      margin-bottom:32px;
+    }
+    .t2t-outcome p {
+      font-family:'Playfair Display',serif; font-style:italic; font-size:14px;
+      color:var(--gold-pale); line-height:1.7;
+    }
+
+    /* ─── STUDENT VAULT ─── */
+    .vault-section {
+      padding:110px 0; background: var(--panel);
+      border-top:1px solid rgba(193,176,152,.15); border-bottom:1px solid rgba(193,176,152,.15);
+    }
+    .vault-grid {
+      display:grid; grid-template-columns: 340px 1fr;
+      gap:70px; align-items:start; margin-top:60px;
+    }
+    .vault-image-wrap { position:relative; }
+    .vault-image-wrap::before, .vault-image-wrap::after {
+      content:''; position:absolute; width:24px; height:24px;
+      border-color:var(--gold); border-style:solid; z-index:2;
+    }
+    .vault-image-wrap::before { top:-8px; left:-8px; border-width:2px 0 0 2px; }
+    .vault-image-wrap::after  { bottom:-8px; right:-8px; border-width:0 2px 2px 0; }
+    .vault-img {
+      width:100%; display:block;
+      aspect-ratio:4/5; object-fit:cover; object-position:center top;
+      border:1px solid rgba(193,176,152,.2);
+    }
+    .vault-price-badge {
+      margin:20px 0 32px;
+      padding:18px 24px;
+      border:1px solid rgba(193,176,152,.3);
+      background:rgba(193,176,152,.06);
+      display:flex; flex-direction:column; gap:4px;
+    }
+    .vault-price-label { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); }
+    .vault-price-amount {
+      font-family:'Playfair Display',serif; font-size:36px; font-weight:500;
+      color:var(--gold); line-height:1.1;
+    }
+    .vault-price-note { font-size:12px; color:rgba(221,216,200,.6); letter-spacing:.5px; }
+    .vault-intro { font-size:15px; line-height:1.85; color:rgba(221,216,200,.8); margin-bottom:32px; }
+    .vault-benefits { display:flex; flex-direction:column; gap:0; margin-bottom:36px; }
+    .vault-benefit {
+      display:grid; grid-template-columns:36px 1fr;
+      gap:16px; align-items:start;
+      padding:18px 0;
+      border-bottom:1px solid rgba(193,176,152,.1);
+    }
+    .vault-benefit:last-child { border-bottom:none; }
+    .benefit-num {
+      font-family:'Playfair Display',serif; font-size:13px; font-weight:500;
+      color:var(--gold); padding-top:2px;
+    }
+    .benefit-title {
+      font-size:13.5px; font-weight:600; letter-spacing:.3px;
+      color:var(--cream); margin-bottom:5px;
+    }
+    .benefit-desc { font-size:13px; line-height:1.7; color:rgba(221,216,200,.7); }
+    .vault-status {
+      display:flex; align-items:center; gap:10px; margin-bottom:24px;
+    }
+    .vault-status-dot {
+      width:8px; height:8px; border-radius:50%; background:#7dba84;
+      box-shadow:0 0 6px rgba(125,186,132,.6);
+    }
+    .vault-status-text { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#7dba84; }
+
     /* ─── FOOTER ─── */
     footer {
       background:var(--deep); border-top:1px solid rgba(193,176,152,.2);
@@ -544,6 +691,11 @@
       /* gallery stays tall on mobile — 60vh still shows full images */
       .slideshow { min-height: 60vh; }
       .speaking-grid { grid-template-columns:1fr; gap:40px; }
+      .t2t-grid { grid-template-columns:1fr; gap:30px; }
+      .t2t-stats { grid-template-columns:repeat(2,1fr); }
+      .vault-grid { grid-template-columns:1fr; gap:30px; }
+      .vault-image-wrap { max-width:280px; }
+      .vault-price-amount { font-size:28px; }
       footer { flex-direction:column; gap:16px; text-align:center; }
     }
   </style>
@@ -683,6 +835,73 @@
   </div>
 </section>
 
+<!-- ── T2T PROGRAMME ── -->
+<section class="t2t-section">
+  <div class="wrap">
+    <div class="sec-kicker fade-up">Initiative</div>
+    <h2 class="sec-head fade-up">Training to <em>Transaction</em></h2>
+
+    <div class="t2t-grid">
+
+      <!-- LEFT: content -->
+      <div class="t2t-content">
+        <div class="t2t-partners fade-up delay-1">
+          <span class="t2t-partner-tag">Providus Bank</span>
+          <span class="t2t-partner-tag ghost">ECOWAS Parliament</span>
+          <span class="t2t-partner-tag ghost">GABA</span>
+          <span class="t2t-partner-tag ghost">SMEDAN</span>
+        </div>
+
+        <p class="t2t-intro fade-up delay-1">The Training-to-Transaction (T2T) Market Access Programme is a flagship initiative sponsored by Providus Bank, supported by the ECOWAS Parliament and the Global African Business Association (GABA), and implemented by Duchess Natural Limited and Borderless Trade &amp; Investments, co-led by Dr. Olori Boye-Ajayi.</p>
+        <p class="t2t-intro fade-up delay-1">T2T is built for African SMEs who are ready to move beyond readiness into real commercial transactions. The programme delivers structured guidance across export preparation, trade compliance, buyer access, and trade finance bridging the gap between aspiration and execution in African trade.</p>
+
+        <div class="t2t-stats fade-up delay-2">
+          <div class="t2t-stat">
+            <span class="t2t-stat-num">500</span>
+            <span class="t2t-stat-lbl">SMEs Supported</span>
+          </div>
+          <div class="t2t-stat">
+            <span class="t2t-stat-num">2</span>
+            <span class="t2t-stat-lbl">Cities · Lagos &amp; Abuja</span>
+          </div>
+          <div class="t2t-stat">
+            <span class="t2t-stat-num">5</span>
+            <span class="t2t-stat-lbl">Day Training Phase</span>
+          </div>
+          <div class="t2t-stat">
+            <span class="t2t-stat-num">50+</span>
+            <span class="t2t-stat-lbl">Market Pipeline Slots</span>
+          </div>
+        </div>
+
+        <div class="t2t-focus fade-up delay-2">
+          <span class="t2t-focus-label">Programme Focus Areas</span>
+          <div class="topic-tags">
+            <span class="tag">Export &amp; Market Readiness</span>
+            <span class="tag">Trade Compliance</span>
+            <span class="tag">Buyer Access</span>
+            <span class="tag">Trade Finance</span>
+            <span class="tag">FX Solutions</span>
+            <span class="tag">Market Linkage</span>
+          </div>
+        </div>
+
+        <div class="t2t-outcome fade-up delay-3">
+          <p>Up to 50 participating companies will be selected into the U.S., UK, Canada, Caribbean, and Africa market access pipelines based on programme performance and trade readiness.</p>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: image -->
+      <div class="t2t-image-wrap fade-up delay-2">
+        <img class="t2t-img" src="images/T2T.jpeg" alt="T2T Programme — Dr. Olori Boye-Ajayi with partners" />
+        <p class="t2t-caption">Dr. Olori Boye-Ajayi with programme partners &amp; stakeholders</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ── SPEAKING ── -->
 <section class="speaking-section">
   <div class="wrap">
@@ -767,7 +986,7 @@
 
       <!-- BOOK 1: The Lemon Book -->
       <div class="book-card fade-up">
-        <img class="book-cover" src="images/lemon.jpeg" alt="The Lemon Book" />
+        <img class="book-cover" src="images/Lemonnew.png" alt="The Lemon Book" />
         <div class="book-body">
           <span class="book-eyebrow">Featured Book</span>
           <h3 class="book-title">The Lemon Book</h3>
@@ -787,6 +1006,23 @@
         </div>
       </div>
 
+      <!-- JUMP PROGRAM -->
+      <div class="book-card event-card fade-up delay-2">
+        <img class="event-banner" src="images/jump.jpg" alt="JUMP – 72-Hour Business Accelerator Program" />
+        <div class="book-body">
+          <span class="book-eyebrow">Live Program · Cohort 2</span>
+          <h3 class="book-title">JUMP</h3>
+          <p class="book-quote">"Clarity comes through action — not waiting for the perfect moment."</p>
+          <p class="book-desc">JUMP is a 72-hour Business Accelerator Experience hosted by Dr. Olori Boye-Ajayi for idea-stage and early-stage entrepreneurs. If you have a vision but struggle with execution, with confusion, self-doubt, or procrastination holding you back. JUMP was built for you.</p>
+          <p class="book-desc" style="margin-top:10px;">You will walk away with your minimum viable launch plan, a validated business direction, pricing and profit clarity, a customer acquisition roadmap, and an accountability-driven execution system, all delivered through live founder mentorship and implementation sessions.</p>
+          <div style="margin-top:22px;">
+            <a class="btn-gold" href="https://selar.com/a4a7f12835" target="_blank">
+              <span>Join JUMP</span><span>→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <div class="selar-cta fade-up delay-2">
@@ -796,6 +1032,85 @@
       </a>
     </div>
 
+  </div>
+</section>
+
+<!-- ── STUDENT VAULT ── -->
+<section class="vault-section">
+  <div class="wrap">
+    <div class="sec-kicker fade-up">Student Program</div>
+    <h2 class="sec-head fade-up">OBA Student <em>Vault</em></h2>
+    <div class="vault-grid">
+
+      <div class="vault-image-wrap fade-up">
+        <img class="vault-img" src="images/vault.jpeg" alt="OBA Student Vault" />
+      </div>
+
+      <div class="vault-content">
+        <div class="vault-status fade-up">
+          <span class="vault-status-dot"></span>
+          <span class="vault-status-text">Enrollment Open</span>
+        </div>
+        <div class="vault-price-badge fade-up delay-1">
+          <span class="vault-price-label">One-Time Investment · Lifetime Access</span>
+          <span class="vault-price-amount">₦25,000</span>
+          <span class="vault-price-note">The price will not stay here.</span>
+        </div>
+        <p class="vault-intro fade-up delay-1">Most students graduate with a certificate and no plan — no income, no network, no access. The Student Vault was built to change that permanently. For a single payment of ₦7,000, you step into a lifetime position inside a curated space of resources, funding, mentorship, and opportunity built for students who are serious about building something before the world tells them they are ready.</p>
+
+        <div class="vault-benefits fade-up delay-2">
+          <div class="vault-benefit">
+            <span class="benefit-num">01</span>
+            <div>
+              <p class="benefit-title">20 Businesses You Can Start Immediately</p>
+              <p class="benefit-desc">Practical, tested, and immediately executable business models structured for students with no startup capital and a high appetite for results.</p>
+            </div>
+          </div>
+          <div class="vault-benefit">
+            <span class="benefit-num">02</span>
+            <div>
+              <p class="benefit-title">The Money Files Mini Course by Dr. OBA <span style="color:var(--muted);font-weight:300;font-size:11px;">— valued at ₦80,000</span></p>
+              <p class="benefit-desc">The financial intelligence curriculum the Nigerian education system never delivered — covering wealth psychology, money management, income diversification, and the principles of financial independence.</p>
+            </div>
+          </div>
+          <div class="vault-benefit">
+            <span class="benefit-num">03</span>
+            <div>
+              <p class="benefit-title">Fully-Funded Study Abroad Scholarships</p>
+              <p class="benefit-desc">A continuously updated library of legit, fully-funded international scholarships and internship opportunities that build global credibility before you graduate.</p>
+            </div>
+          </div>
+          <div class="vault-benefit">
+            <span class="benefit-num">04</span>
+            <div>
+              <p class="benefit-title">Up to 50% Off Every OBA Inc. Resource — Forever</p>
+              <p class="benefit-desc">Every course, programme, masterclass, and digital product released under OBA Inc. — past, present, and future — at up to 50% off. Permanently. This benefit compounds every time a new resource drops.</p>
+            </div>
+          </div>
+          <div class="vault-benefit">
+            <span class="benefit-num">05</span>
+            <div>
+              <p class="benefit-title">Quarterly Group Coaching Mastermind with Dr. OBA</p>
+              <p class="benefit-desc">Four times a year, Vault members join a live group coaching session with Dr. OBA — covering strategy, personal development, business direction, and direct answers to questions that matter most.</p>
+            </div>
+          </div>
+          <div class="vault-benefit">
+            <span class="benefit-num">06</span>
+            <div>
+              <p class="benefit-title">Priority Pass — ₦10,000,000 Student Fund</p>
+              <p class="benefit-desc">Student Vault members receive first and exclusive access to a dedicated pool of capital and resources available to members who cannot afford their school fees.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="btn-row fade-up delay-3">
+          <a class="btn-gold" href="https://selar.com/v0787k8g72" target="_blank">
+            <span>Join the Student Vault</span><span>→</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
