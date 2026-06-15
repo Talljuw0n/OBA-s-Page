@@ -435,20 +435,81 @@
     .selar-cta { margin-top:40px; text-align:center; }
     .selar-cta p { font-size:14px; color:rgba(221,216,200,.7); margin-bottom:20px; line-height:1.7; }
 
-    /* ─── EVENT / PROGRAM CARD ─── */
-    .book-card.event-card {
-      grid-template-columns: 1fr;
-      grid-template-rows: auto 1fr;
+    /* ─── JUMP PROGRAMME ─── */
+    .jump-section {
+      padding:110px 0; background: var(--panel);
+      border-top:1px solid rgba(193,176,152,.15); border-bottom:1px solid rgba(193,176,152,.15);
     }
-    .book-card.event-card .event-banner {
+    .jump-grid {
+      display:grid; grid-template-columns: 1fr 1fr;
+      gap:70px; align-items:start; margin-top:60px;
+    }
+    .jump-image-wrap { position:relative; }
+    .jump-image-wrap::before, .jump-image-wrap::after {
+      content:''; position:absolute; width:24px; height:24px;
+      border-color:var(--gold); border-style:solid; z-index:2;
+    }
+    .jump-image-wrap::before { top:-8px; left:-8px; border-width:2px 0 0 2px; }
+    .jump-image-wrap::after  { bottom:-8px; right:-8px; border-width:0 2px 2px 0; }
+    .jump-img {
       width:100%; display:block;
-      aspect-ratio:16/7; object-fit:cover; object-position:center top;
-      border-bottom:1px solid rgba(193,176,152,.15); border-right:none;
+      aspect-ratio:16/9; object-fit:cover; object-position:center;
+      border:1px solid rgba(193,176,152,.2);
     }
-    .book-card.event-card .book-body { padding:30px 40px; }
-    @media(max-width:900px) {
-      .book-card.event-card .book-body { padding:18px 16px; }
+    .jump-tagline {
+      font-family:'Playfair Display',serif; font-style:italic; font-size:17px;
+      color:var(--gold-pale); line-height:1.65; margin-bottom:20px;
+      padding-left:14px; border-left:2px solid var(--gold);
     }
+    .jump-intro { font-size:15px; line-height:1.85; color:rgba(221,216,200,.8); margin-bottom:28px; }
+    .jump-outcomes-label {
+      font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase;
+      color:var(--muted); margin-bottom:16px; display:block;
+    }
+    .jump-outcomes { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:36px; }
+    .jump-outcome {
+      display:flex; align-items:flex-start; gap:10px;
+      font-size:13px; line-height:1.6; color:rgba(221,216,200,.8);
+    }
+    .jump-outcome::before {
+      content:''; display:block; flex-shrink:0;
+      width:5px; height:5px; border-radius:50%;
+      background:var(--gold); margin-top:6px;
+    }
+    .jump-focus { display:flex; gap:24px; margin-bottom:36px; }
+    .jump-focus-item { text-align:center; }
+    .jump-focus-num {
+      font-family:'Playfair Display',serif; font-size:28px; font-weight:400;
+      color:var(--gold); display:block; line-height:1; margin-bottom:4px;
+    }
+    .jump-focus-label { font-size:9.5px; letter-spacing:2.5px; text-transform:uppercase; color:var(--muted); }
+    .jump-who-label {
+      font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase;
+      color:var(--muted); margin-bottom:16px; display:block;
+    }
+    .jump-who { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:32px; }
+    .jump-who-item {
+      display:flex; align-items:flex-start; gap:10px;
+      font-size:13px; line-height:1.6; color:rgba(221,216,200,.8);
+      padding:12px 14px;
+      border:1px solid rgba(193,176,152,.15);
+      background:rgba(193,176,152,.04);
+    }
+    .jump-who-item::before {
+      content:''; display:block; flex-shrink:0;
+      width:5px; height:5px; border-radius:50%;
+      background:var(--gold); margin-top:6px;
+    }
+    .jump-diff {
+      padding:20px 24px; margin-bottom:32px;
+      border-left:2px solid var(--gold);
+      background:rgba(193,176,152,.04);
+    }
+    .jump-diff-label {
+      font-size:9.5px; font-weight:600; letter-spacing:3px; text-transform:uppercase;
+      color:var(--gold); display:block; margin-bottom:8px;
+    }
+    .jump-diff p { font-size:13.5px; line-height:1.75; color:rgba(221,216,200,.8); }
 
     /* ─── GALLERY SLIDESHOW ────────────────────────────────────────
        WHY THE OLD VERSION CUT IMAGES:
@@ -693,6 +754,9 @@
       .speaking-grid { grid-template-columns:1fr; gap:40px; }
       .t2t-grid { grid-template-columns:1fr; gap:30px; }
       .t2t-stats { grid-template-columns:repeat(2,1fr); }
+      .jump-grid { grid-template-columns:1fr; gap:30px; }
+      .jump-outcomes { grid-template-columns:1fr; }
+      .jump-who { grid-template-columns:1fr; }
       .vault-grid { grid-template-columns:1fr; gap:30px; }
       .vault-image-wrap { max-width:280px; }
       .vault-price-amount { font-size:28px; }
@@ -1006,23 +1070,6 @@
         </div>
       </div>
 
-      <!-- JUMP PROGRAM -->
-      <div class="book-card event-card fade-up delay-2">
-        <img class="event-banner" src="images/jump.jpg" alt="JUMP – 72-Hour Business Accelerator Program" />
-        <div class="book-body">
-          <span class="book-eyebrow">Live Program · Cohort 2</span>
-          <h3 class="book-title">JUMP</h3>
-          <p class="book-quote">"Clarity comes through action — not waiting for the perfect moment."</p>
-          <p class="book-desc">JUMP is a 72-hour Business Accelerator Experience hosted by Dr. Olori Boye-Ajayi for idea-stage and early-stage entrepreneurs. If you have a vision but struggle with execution, with confusion, self-doubt, or procrastination holding you back. JUMP was built for you.</p>
-          <p class="book-desc" style="margin-top:10px;">You will walk away with your minimum viable launch plan, a validated business direction, pricing and profit clarity, a customer acquisition roadmap, and an accountability-driven execution system, all delivered through live founder mentorship and implementation sessions.</p>
-          <div style="margin-top:22px;">
-            <a class="btn-gold" href="https://selar.com/a4a7f12835" target="_blank">
-              <span>Join JUMP</span><span>→</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
     </div>
 
     <div class="selar-cta fade-up delay-2">
@@ -1032,6 +1079,75 @@
       </a>
     </div>
 
+  </div>
+</section>
+
+<!-- ── JUMP ── -->
+<section class="jump-section">
+  <div class="wrap">
+    <div class="sec-kicker fade-up">Programme</div>
+    <h2 class="sec-head fade-up">JUMP  72-Hour Business <em>Accelerator</em></h2>
+
+    <div class="jump-grid">
+
+      <!-- LEFT: flyer image -->
+      <div class="jump-image-wrap fade-up delay-1">
+        <img class="jump-img" src="images/jump.jpg" alt="JUMP – 72-Hour Business Accelerator" />
+      </div>
+
+      <!-- RIGHT: content -->
+      <div class="jump-content">
+        <p class="jump-tagline fade-up">"Clarity comes through action — not waiting for the perfect moment."</p>
+        <p class="jump-intro fade-up delay-1">JUMP is a transformational business mentoring and accelerator experience hosted by Dr. Olori Boye-Ajayi, designed for idea-stage and early-stage entrepreneurs who have vision but struggle with execution. Over 72 intensive hours, participants move from intention to action — gaining the clarity, confidence, and practical direction needed to build and launch their business.</p>
+
+        <div class="jump-diff fade-up delay-1">
+          <span class="jump-diff-label">What Makes JUMP Different</span>
+          <p>JUMP goes beyond motivation. It combines mindset transformation with practical business direction, bridging the gap between vision and execution — so participants don't just feel inspired, they leave equipped and moving. Rather than waiting for the perfect moment, they are guided to start, refine, and grow through consistent action.</p>
+        </div>
+
+        <span class="jump-who-label fade-up delay-2">Who This Is For</span>
+        <div class="jump-who fade-up delay-2">
+          <span class="jump-who-item">Individuals with business ideas but no clear execution plan</span>
+          <span class="jump-who-item">Startup founders experiencing confusion or inconsistency</span>
+          <span class="jump-who-item">Creatives and professionals ready to turn their vision into a business</span>
+          <span class="jump-who-item">Purpose-driven individuals struggling with self-doubt or procrastination</span>
+        </div>
+
+        <div class="jump-focus fade-up delay-2">
+          <div class="jump-focus-item">
+            <span class="jump-focus-num">01</span>
+            <span class="jump-focus-label">Clarity</span>
+          </div>
+          <div class="jump-focus-item">
+            <span class="jump-focus-num">02</span>
+            <span class="jump-focus-label">Confidence</span>
+          </div>
+          <div class="jump-focus-item">
+            <span class="jump-focus-num">03</span>
+            <span class="jump-focus-label">Action</span>
+          </div>
+        </div>
+
+        <span class="jump-outcomes-label fade-up delay-3">What You Walk Out With</span>
+        <div class="jump-outcomes fade-up delay-3">
+          <span class="jump-outcome">Your minimum viable launch plan</span>
+          <span class="jump-outcome">Your first customer acquisition roadmap</span>
+          <span class="jump-outcome">A validated business direction</span>
+          <span class="jump-outcome">Accountability-driven execution system</span>
+          <span class="jump-outcome">Pricing &amp; profit clarity</span>
+          <span class="jump-outcome">Founder mentorship &amp; live coaching</span>
+          <span class="jump-outcome">Launch-focused implementation sessions</span>
+          <span class="jump-outcome">Momentum — from hesitation to consistent action</span>
+        </div>
+
+        <div class="btn-row fade-up delay-3">
+          <a class="btn-gold" href="https://selar.com/a4a7f12835" target="_blank">
+            <span>Join JUMP</span><span>→</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
