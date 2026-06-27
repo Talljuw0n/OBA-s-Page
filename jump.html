@@ -11,14 +11,14 @@
       --black:    #0A0A0A;
       --black-lt: #161616;
       --black-mid:#0D0D0D;
-      --red:      #C8102E;
-      --red-lt:   #E01535;
+      --red:      #8b2910;
+      --red-lt:   #a8351a;
       --red-pale: #FEE2E2;
       --white:    #FFFFFF;
       --text:     rgba(255,255,255,0.83);
       --muted:    rgba(255,255,255,0.45);
       --border:   rgba(255,255,255,0.1);
-      --border-red: rgba(200,16,46,0.4);
+      --border-red: rgba(139,41,16,0.4);
     }
 
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -107,17 +107,17 @@
     }
     .hero::before {
       content:''; position:absolute; inset:0; z-index:1;
-      background-image: radial-gradient(circle, rgba(200,16,46,0.06) 1px, transparent 1px);
+      background-image: radial-gradient(circle, rgba(139,41,16,0.06) 1px, transparent 1px);
       background-size:36px 36px; pointer-events:none;
     }
     .hero-glow {
       position:absolute; width:600px; height:600px; border-radius:50%;
-      background:radial-gradient(circle, rgba(200,16,46,0.10) 0%, transparent 70%);
+      background:radial-gradient(circle, rgba(139,41,16,0.10) 0%, transparent 70%);
       top:50%; left:50%; transform:translate(-50%,-50%); pointer-events:none; z-index:1;
     }
     .hero-badge {
       display:inline-flex; align-items:center; gap:8px;
-      background:rgba(200,16,46,0.12); border:1px solid rgba(200,16,46,0.4);
+      background:rgba(139,41,16,0.12); border:1px solid rgba(139,41,16,0.4);
       color:var(--red); border-radius:100px; padding:6px 18px 6px 14px;
       font-size:11px; font-weight:600; letter-spacing:.08em; margin-bottom:32px;
       position:relative; z-index:1;
@@ -186,7 +186,7 @@
       padding:16px 32px; text-decoration:none;
       transition:border-color .25s, background .25s;
     }
-    .btn-outline:hover { border-color:var(--red); background:rgba(200,16,46,0.10); color:var(--red); }
+    .btn-outline:hover { border-color:var(--red); background:rgba(139,41,16,0.10); color:var(--red); }
 
     /* ── SHARED SECTION STYLES ── */
     section { position:relative; }
@@ -291,19 +291,19 @@
     .founder-img-wrap::after  { bottom:-8px; right:-8px; border-width:0 2px 2px 0; }
     .founder-img {
       width:100%; aspect-ratio:3/4; object-fit:cover; object-position:center top;
-      display:block; border:1px solid rgba(200,16,46,0.3);
+      display:block; border:1px solid rgba(139,41,16,0.3);
     }
     .founder-bio { font-size:15px; line-height:1.85; color:var(--text); margin-bottom:20px; }
     .founder-quote {
       font-family:'Playfair Display',serif; font-style:italic; font-size:17px;
       color:var(--red-lt); line-height:1.65;
       padding:20px 24px; border-left:2px solid var(--red);
-      background:rgba(200,16,46,0.07); margin:28px 0;
+      background:rgba(139,41,16,0.07); margin:28px 0;
     }
     .founder-link {
       font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase;
       color:var(--red); text-decoration:none;
-      border-bottom:1px solid rgba(200,16,46,0.5); padding-bottom:3px;
+      border-bottom:1px solid rgba(139,41,16,0.5); padding-bottom:3px;
       transition:color .2s;
     }
     .founder-link:hover { color:var(--red-lt); }
@@ -318,7 +318,7 @@
     .step:hover { border-color:var(--border-red); background:rgba(22,22,22,0.7); }
     .step-num {
       font-family:'Barlow Condensed',sans-serif; font-size:3.5rem; font-weight:700;
-      color:rgba(200,16,46,0.22); line-height:1; display:block; margin-bottom:20px;
+      color:rgba(139,41,16,0.22); line-height:1; display:block; margin-bottom:20px;
     }
     .step-title {
       font-family:'Barlow Condensed',sans-serif; font-size:1.5rem; font-weight:700;
@@ -379,7 +379,7 @@
       font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase;
       padding:20px 48px; text-decoration:none;
       transition:background .25s; margin-bottom:24px;
-      box-shadow:0 8px 40px rgba(200,16,46,0.35);
+      box-shadow:0 8px 40px rgba(139,41,16,0.35);
     }
     .cta-btn:hover { background:var(--red-lt); }
     .payment-note { font-size:12px; color:var(--muted); }
@@ -522,8 +522,9 @@
 <!-- ── NAV ── -->
 <nav id="mainNav">
   <div class="nav-inner">
-    <a class="nav-logo" href="#hero"><span>JUMP</span> Programme</a>
+    <a class="nav-logo" href="#hero"><img src="images/JumpLogo.png" alt="JUMP" style="height:38px; width:auto; display:block; object-fit:contain;"></a>
     <div class="nav-links">
+      <a class="nav-link" href="index.html" style="opacity:0.55; display:flex; align-items:center; gap:6px;">&#8592; Home</a>
       <a class="nav-link" href="#what">The Programme</a>
       <a class="nav-link" href="#room">The Room</a>
       <a class="nav-link" href="#founder">The Founder</a>
@@ -536,6 +537,7 @@
 </nav>
 
 <div class="mobile-nav" id="mobileNav">
+  <a class="nav-link" href="index.html" style="opacity:0.55;">&#8592; Back to Home</a>
   <a class="nav-link" href="#what">The Programme</a>
   <a class="nav-link" href="#room">The Room</a>
   <a class="nav-link" href="#founder">The Founder</a>
@@ -577,11 +579,16 @@
       </div>
     </div>
   </div>
+  <div style="position:relative;z-index:2; margin-bottom:20px;">
+    <span style="font-size:11px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.5);">Investment</span>
+    <div style="font-family:'Barlow Condensed',sans-serif; font-size:2.8rem; font-weight:700; color:var(--white); line-height:1;">&#8358;60,000</div>
+    <span style="font-size:11px; color:rgba(255,255,255,0.45);">One-time payment · Lifetime access to the Jumpers' Room</span>
+  </div>
   <div class="hero-btns" style="position:relative;z-index:2;">
     <a class="btn-primary js-reg-link" href="https://selar.com/a4a7f12835" target="_blank">
       Claim Your Seat &rarr;
     </a>
-    <a class="btn-outline" href="#what">Watch the Intro Video</a>
+    <a class="btn-outline" href="#video">Watch the Intro Video</a>
   </div>
 </section>
 
@@ -916,7 +923,7 @@
       <p class="footer-tagline">Built for the founder who is done waiting.</p>
     </div>
     <div class="footer-socials">
-      <a class="footer-social" href="https://www.instagram.com/lifwitholori" target="_blank" aria-label="Instagram">
+      <a class="footer-social" href="https://www.instagram.com/lifewitholori" target="_blank" aria-label="Instagram">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
       </a>
       <a class="footer-social" href="https://www.tiktok.com/@oloriboyeajayi" target="_blank" aria-label="TikTok">
@@ -931,6 +938,10 @@
 </footer>
 
 <script>
+  // ── BACK BUTTON → HOMEPAGE ──
+  history.replaceState(null, '', 'index.html');
+  history.pushState(null, '', 'jump.html');
+
   // ── NAV SCROLL ──
   const nav = document.getElementById('mainNav');
   window.addEventListener('scroll', () => {
