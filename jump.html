@@ -3,28 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>JUMP — 72-Hour Business Accelerator | Dr. Olori Boye-Ajayi</title>
+  <title>JUMP | 72-Hour Business Accelerator | Dr. Olori Boye-Ajayi</title>
   <link rel="icon" type="image/png" href="images/favicon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --navy:     #1C2333;
-      --navy-lt:  #243044;
-      --navy-mid: #1a2030;
-      --gold:     #E8A020;
-      --gold-lt:  #F0C060;
-      --gold-pale:#FDF3DC;
+      --black:    #0A0A0A;
+      --black-lt: #161616;
+      --black-mid:#0D0D0D;
+      --red:      #C8102E;
+      --red-lt:   #E01535;
+      --red-pale: #FEE2E2;
       --white:    #FFFFFF;
       --text:     rgba(255,255,255,0.83);
       --muted:    rgba(255,255,255,0.45);
       --border:   rgba(255,255,255,0.1);
-      --border-gold: rgba(232,160,32,0.35);
+      --border-red: rgba(200,16,46,0.4);
     }
 
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior:smooth; }
     body {
-      background: var(--navy);
+      background: var(--black);
       color: var(--text);
       font-family: 'Inter', sans-serif;
       font-weight: 300;
@@ -38,31 +38,31 @@
       height:68px;
       display:flex; align-items:center;
       padding:0 60px;
-      background:rgba(28,35,51,0); transition:background .3s, border .3s;
+      background:rgba(10,10,10,0); transition:background .3s, border .3s;
     }
     nav.scrolled {
-      background:rgba(28,35,51,0.97);
+      background:rgba(10,10,10,0.97);
       border-bottom:1px solid var(--border);
       backdrop-filter:blur(16px);
     }
     .nav-inner { width:100%; display:flex; align-items:center; justify-content:space-between; }
     .nav-logo {
-      font-family:'Playfair Display',serif; font-size:20px; font-weight:700;
+      font-family:'Barlow Condensed',sans-serif; font-size:22px; font-weight:700;
       color:var(--white); text-decoration:none; letter-spacing:.5px;
     }
-    .nav-logo span { color:var(--gold); }
+    .nav-logo span { color:var(--red); }
     .nav-links { display:flex; align-items:center; gap:32px; }
     .nav-link {
       font-size:11px; font-weight:500; letter-spacing:2px; text-transform:uppercase;
       color:var(--text); text-decoration:none; transition:color .2s; white-space:nowrap;
     }
-    .nav-link:hover { color:var(--gold); }
+    .nav-link:hover { color:var(--red); }
     .nav-seat {
       font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase;
-      color:var(--navy); background:var(--gold); padding:10px 22px;
+      color:var(--black); background:var(--red); padding:10px 22px;
       text-decoration:none; transition:background .2s; white-space:nowrap;
     }
-    .nav-seat:hover { background:var(--gold-lt); }
+    .nav-seat:hover { background:var(--red-lt); }
     .nav-hamburger {
       display:none; flex-direction:column; gap:5px;
       background:none; border:none; cursor:pointer; padding:4px;
@@ -76,7 +76,7 @@
     .nav-hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
     .mobile-nav {
       display:none; position:fixed; top:68px; left:0; right:0; z-index:99;
-      background:rgba(28,35,51,0.98); backdrop-filter:blur(16px);
+      background:rgba(10,10,10,0.98); backdrop-filter:blur(16px);
       border-bottom:1px solid var(--border);
       flex-direction:column; padding:20px 24px 28px; gap:0;
       transform:translateY(-8px); opacity:0;
@@ -95,7 +95,7 @@
       min-height:100vh; display:flex; flex-direction:column;
       align-items:center; justify-content:center; text-align:center;
       padding:120px 60px 80px; position:relative; overflow:hidden;
-      background: linear-gradient(160deg, #1a2235 0%, #1C2333 50%, #1e2840 100%);
+      background: linear-gradient(160deg, #0A0A0A 0%, #0D0D0D 50%, #111111 100%);
     }
     .hero-video {
       position:absolute; inset:0; z-index:0;
@@ -103,22 +103,22 @@
     }
     .hero-overlay {
       position:absolute; inset:0; z-index:1;
-      background: linear-gradient(160deg, rgba(26,34,53,0.82) 0%, rgba(28,35,51,0.75) 100%);
+      background: linear-gradient(160deg, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.70) 100%);
     }
     .hero::before {
       content:''; position:absolute; inset:0; z-index:1;
-      background-image: radial-gradient(circle, rgba(232,160,32,0.04) 1px, transparent 1px);
+      background-image: radial-gradient(circle, rgba(200,16,46,0.06) 1px, transparent 1px);
       background-size:36px 36px; pointer-events:none;
     }
     .hero-glow {
       position:absolute; width:600px; height:600px; border-radius:50%;
-      background:radial-gradient(circle, rgba(232,160,32,0.07) 0%, transparent 70%);
+      background:radial-gradient(circle, rgba(200,16,46,0.10) 0%, transparent 70%);
       top:50%; left:50%; transform:translate(-50%,-50%); pointer-events:none; z-index:1;
     }
     .hero-badge {
       display:inline-flex; align-items:center; gap:8px;
-      background:rgba(232,160,32,0.12); border:1px solid rgba(232,160,32,0.3);
-      color:var(--gold); border-radius:100px; padding:6px 18px 6px 14px;
+      background:rgba(200,16,46,0.12); border:1px solid rgba(200,16,46,0.4);
+      color:var(--red); border-radius:100px; padding:6px 18px 6px 14px;
       font-size:11px; font-weight:600; letter-spacing:.08em; margin-bottom:32px;
       position:relative; z-index:1;
     }
@@ -131,11 +131,11 @@
       50% { box-shadow:0 0 0 5px rgba(46,204,113,0); }
     }
     .hero h1 {
-      font-family: Georgia, 'Playfair Display', serif;
-      font-size:clamp(2.6rem,6vw,5rem); font-weight:700; line-height:1.08;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size:clamp(2.8rem,6.5vw,5.5rem); font-weight:700; line-height:1.05;
       color:var(--white); margin-bottom:22px; position:relative; z-index:1;
     }
-    .hero h1 em { font-style:italic; color:var(--gold); }
+    .hero h1 em { font-style:italic; color:var(--red); }
     .hero-sub {
       font-size:clamp(15px,2vw,18px); color:var(--text); line-height:1.75;
       max-width:580px; margin:0 auto 44px; font-weight:300;
@@ -156,14 +156,14 @@
       min-width:80px;
     }
     .cd-num {
-      font-family:'Playfair Display',serif; font-size:clamp(2.2rem,5vw,3.8rem);
+      font-family:'Barlow Condensed',sans-serif; font-size:clamp(2.2rem,5vw,3.8rem);
       font-weight:700; color:var(--white); line-height:1;
       background:rgba(255,255,255,0.05); border:1px solid var(--border);
       padding:12px 20px; min-width:80px; text-align:center;
     }
     .cd-sep {
-      font-family:'Playfair Display',serif; font-size:2.5rem;
-      color:var(--gold); padding:0 6px; margin-bottom:22px;
+      font-family:'Barlow Condensed',sans-serif; font-size:2.5rem;
+      color:var(--red); padding:0 6px; margin-bottom:22px;
     }
     .cd-lbl {
       font-size:9px; font-weight:600; letter-spacing:2.5px; text-transform:uppercase;
@@ -173,12 +173,12 @@
     .hero-btns { display:flex; gap:14px; flex-wrap:wrap; justify-content:center; position:relative; z-index:1; }
     .btn-primary {
       display:inline-flex; align-items:center; gap:8px;
-      background:var(--gold); color:var(--navy);
+      background:var(--red); color:var(--black);
       font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase;
       padding:16px 36px; text-decoration:none;
       position:relative; overflow:hidden; transition:background .25s;
     }
-    .btn-primary:hover { background:var(--gold-lt); }
+    .btn-primary:hover { background:var(--red-lt); }
     .btn-outline {
       display:inline-flex; align-items:center; gap:8px;
       border:1px solid rgba(255,255,255,0.35); color:var(--white);
@@ -186,21 +186,21 @@
       padding:16px 32px; text-decoration:none;
       transition:border-color .25s, background .25s;
     }
-    .btn-outline:hover { border-color:var(--gold); background:rgba(232,160,32,0.08); color:var(--gold); }
+    .btn-outline:hover { border-color:var(--red); background:rgba(200,16,46,0.10); color:var(--red); }
 
     /* ── SHARED SECTION STYLES ── */
     section { position:relative; }
     .sec-pad { padding:100px 0; }
     .sec-kicker {
       font-size:10px; font-weight:600; letter-spacing:4px; text-transform:uppercase;
-      color:var(--gold); margin-bottom:14px; display:block;
+      color:var(--red); margin-bottom:14px; display:block;
     }
     .sec-head {
-      font-family: Georgia, 'Playfair Display', serif;
-      font-size:clamp(2rem,3.5vw,3rem); font-weight:700; line-height:1.1;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size:clamp(2.2rem,3.8vw,3.2rem); font-weight:700; line-height:1.05;
       color:var(--white); margin-bottom:16px;
     }
-    .sec-head em { font-style:italic; color:var(--gold); font-weight:400; }
+    .sec-head em { font-style:italic; color:var(--red); font-weight:400; }
     .sec-intro {
       font-family:'Playfair Display',serif; font-style:italic;
       font-size:18px; color:rgba(255,255,255,0.65); line-height:1.65; margin-bottom:60px;
@@ -208,67 +208,67 @@
     .divider { height:1px; background:var(--border); }
 
     /* ── WHAT IS JUMP ── */
-    .what-section { background:var(--navy-mid); }
+    .what-section { background:var(--black-mid); }
     .icons-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-top:0; }
     .icon-card {
-      padding:48px 36px; background:var(--navy-lt);
+      padding:48px 36px; background:var(--black-lt);
       border:1px solid var(--border); text-align:center;
       transition:border-color .3s, background .3s;
     }
-    .icon-card:hover { border-color:var(--border-gold); background:rgba(36,48,68,0.8); }
+    .icon-card:hover { border-color:var(--border-red); background:rgba(22,22,22,0.9); }
     .icon-wrap {
       width:60px; height:60px; margin:0 auto 24px;
-      border:1px solid var(--border-gold); border-radius:50%;
+      border:1px solid var(--border-red); border-radius:50%;
       display:flex; align-items:center; justify-content:center;
     }
-    .icon-wrap svg { width:26px; height:26px; stroke:var(--gold); fill:none; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; }
+    .icon-wrap svg { width:26px; height:26px; stroke:var(--red); fill:none; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; }
     .icon-title {
-      font-family:'Playfair Display',serif; font-size:20px; font-weight:700;
+      font-family:'Barlow Condensed',sans-serif; font-size:22px; font-weight:700;
       color:var(--white); margin-bottom:12px;
     }
     .icon-caption { font-size:14px; line-height:1.75; color:var(--text); }
 
     /* ── IS THIS YOUR ROOM ── */
-    .room-section { background:var(--navy); }
+    .room-section { background:var(--black); }
     .room-card {
       max-width:560px; margin:0 auto;
-      border:1px solid var(--border-gold); background:var(--navy-lt);
+      border:1px solid var(--border-red); background:var(--black-lt);
       padding:48px; position:relative; overflow:hidden;
     }
     .room-card::before {
       content:''; position:absolute; top:0; left:0; right:0; height:3px;
-      background:var(--gold);
+      background:var(--red);
     }
     .room-age {
       display:inline-block; font-size:10px; font-weight:700; letter-spacing:3px;
-      text-transform:uppercase; color:var(--navy); background:var(--gold);
+      text-transform:uppercase; color:var(--black); background:var(--red);
       padding:4px 14px; margin-bottom:20px;
     }
     .room-title {
-      font-family:'Playfair Display',serif; font-size:2.4rem; font-weight:700;
+      font-family:'Barlow Condensed',sans-serif; font-size:2.6rem; font-weight:700;
       color:var(--white); margin-bottom:18px; line-height:1;
     }
     .room-desc { font-size:16px; line-height:1.8; color:var(--text); margin-bottom:32px; }
     .room-btn {
       display:inline-flex; align-items:center; gap:10px;
-      background:var(--gold); color:var(--navy);
+      background:var(--red); color:var(--black);
       font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase;
       padding:16px 32px; text-decoration:none; transition:background .2s;
     }
-    .room-btn:hover { background:var(--gold-lt); }
+    .room-btn:hover { background:var(--red-lt); }
 
     /* ── WHAT YOU LEAVE WITH ── */
-    .leave-section { background:var(--navy-mid); }
+    .leave-section { background:var(--black-mid); }
     .leave-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:2px; }
     .leave-item {
-      padding:32px 36px; background:var(--navy-lt);
+      padding:32px 36px; background:var(--black-lt);
       border:1px solid var(--border); display:flex; gap:20px; align-items:flex-start;
       transition:border-color .3s;
     }
-    .leave-item:hover { border-color:var(--border-gold); }
+    .leave-item:hover { border-color:var(--border-red); }
     .leave-num {
-      font-family:'Playfair Display',serif; font-size:28px; font-weight:700;
-      color:var(--gold); line-height:1; flex-shrink:0; padding-top:2px; min-width:32px;
+      font-family:'Barlow Condensed',sans-serif; font-size:28px; font-weight:700;
+      color:var(--red); line-height:1; flex-shrink:0; padding-top:2px; min-width:32px;
     }
     .leave-title {
       font-size:14px; font-weight:700; color:var(--white);
@@ -277,7 +277,7 @@
     .leave-desc { font-size:13.5px; line-height:1.7; color:var(--text); }
 
     /* ── THE FOUNDER ── */
-    .founder-section { background:var(--navy); }
+    .founder-section { background:var(--black); }
     .founder-grid {
       display:grid; grid-template-columns:340px 1fr;
       gap:70px; align-items:start;
@@ -285,61 +285,61 @@
     .founder-img-wrap { position:relative; }
     .founder-img-wrap::before, .founder-img-wrap::after {
       content:''; position:absolute; width:24px; height:24px;
-      border-color:var(--gold); border-style:solid; z-index:2;
+      border-color:var(--red); border-style:solid; z-index:2;
     }
     .founder-img-wrap::before { top:-8px; left:-8px; border-width:2px 0 0 2px; }
     .founder-img-wrap::after  { bottom:-8px; right:-8px; border-width:0 2px 2px 0; }
     .founder-img {
       width:100%; aspect-ratio:3/4; object-fit:cover; object-position:center top;
-      display:block; border:1px solid rgba(232,160,32,0.2);
+      display:block; border:1px solid rgba(200,16,46,0.3);
     }
     .founder-bio { font-size:15px; line-height:1.85; color:var(--text); margin-bottom:20px; }
     .founder-quote {
       font-family:'Playfair Display',serif; font-style:italic; font-size:17px;
-      color:var(--gold-lt); line-height:1.65;
-      padding:20px 24px; border-left:2px solid var(--gold);
-      background:rgba(232,160,32,0.05); margin:28px 0;
+      color:var(--red-lt); line-height:1.65;
+      padding:20px 24px; border-left:2px solid var(--red);
+      background:rgba(200,16,46,0.07); margin:28px 0;
     }
     .founder-link {
       font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase;
-      color:var(--gold); text-decoration:none;
-      border-bottom:1px solid rgba(232,160,32,0.4); padding-bottom:3px;
+      color:var(--red); text-decoration:none;
+      border-bottom:1px solid rgba(200,16,46,0.5); padding-bottom:3px;
       transition:color .2s;
     }
-    .founder-link:hover { color:var(--gold-lt); }
+    .founder-link:hover { color:var(--red-lt); }
 
     /* ── 72-HOUR BREAKDOWN ── */
-    .breakdown-section { background:var(--navy-mid); }
+    .breakdown-section { background:var(--black-mid); }
     .steps-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0; }
     .step {
       padding:44px 36px; border:1px solid var(--border); position:relative;
       transition:border-color .3s, background .3s;
     }
-    .step:hover { border-color:var(--border-gold); background:rgba(36,48,68,0.5); }
+    .step:hover { border-color:var(--border-red); background:rgba(22,22,22,0.7); }
     .step-num {
-      font-family:'Playfair Display',serif; font-size:3.5rem; font-weight:700;
-      color:rgba(232,160,32,0.2); line-height:1; display:block; margin-bottom:20px;
+      font-family:'Barlow Condensed',sans-serif; font-size:3.5rem; font-weight:700;
+      color:rgba(200,16,46,0.22); line-height:1; display:block; margin-bottom:20px;
     }
     .step-title {
-      font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700;
+      font-family:'Barlow Condensed',sans-serif; font-size:1.5rem; font-weight:700;
       color:var(--white); margin-bottom:12px;
     }
     .step-desc { font-size:14px; line-height:1.75; color:var(--text); }
     .step-connector {
       position:absolute; top:50%; right:-1px; transform:translateY(-50%);
-      width:20px; height:1px; background:var(--gold); display:none;
+      width:20px; height:1px; background:var(--red); display:none;
     }
 
     /* ── COMMUNITY NUMBERS ── */
-    .community-section { background:var(--navy); }
+    .community-section { background:var(--black); }
     .community-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; margin-bottom:60px; }
     .comm-stat {
-      padding:36px 24px; text-align:center; background:var(--navy-lt);
+      padding:36px 24px; text-align:center; background:var(--black-lt);
       border:1px solid var(--border);
     }
     .comm-num {
-      font-family:'Playfair Display',serif; font-size:2.8rem; font-weight:700;
-      color:var(--gold); display:block; line-height:1; margin-bottom:8px;
+      font-family:'Barlow Condensed',sans-serif; font-size:2.8rem; font-weight:700;
+      color:var(--red); display:block; line-height:1; margin-bottom:8px;
     }
     .comm-lbl { font-size:10px; letter-spacing:2.5px; text-transform:uppercase; color:var(--muted); }
     .ecosystem-label {
@@ -349,17 +349,17 @@
     .ecosystem-tags { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
     .eco-tag {
       font-size:11px; letter-spacing:1.5px; text-transform:uppercase;
-      color:var(--gold); border:1px solid var(--border-gold); padding:7px 18px;
+      color:var(--red); border:1px solid var(--border-red); padding:7px 18px;
     }
 
     /* ── FINAL CTA ── */
     .cta-section {
       padding:100px 0; text-align:center;
-      background:linear-gradient(160deg, #1a2235 0%, #1C2333 100%);
+      background:linear-gradient(160deg, #0A0A0A 0%, #0D0D0D 100%);
       border-top:1px solid var(--border);
     }
     .cta-headline {
-      font-family:'Playfair Display',serif; font-size:clamp(2rem,4vw,3.4rem);
+      font-family:'Barlow Condensed',sans-serif; font-size:clamp(2.2rem,4.5vw,3.8rem);
       font-weight:700; color:var(--white); margin-bottom:14px;
     }
     .cta-sub {
@@ -369,24 +369,24 @@
     .price-display { margin-bottom:48px; }
     .price-label { font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--muted); display:block; margin-bottom:8px; }
     .price-amount {
-      font-family:'Playfair Display',serif; font-size:clamp(2.5rem,5vw,4rem);
-      font-weight:700; color:var(--gold); display:block; line-height:1;
+      font-family:'Barlow Condensed',sans-serif; font-size:clamp(2.5rem,5vw,4rem);
+      font-weight:700; color:var(--red); display:block; line-height:1;
     }
     .price-note { font-size:12px; color:var(--muted); margin-top:8px; display:block; }
     .cta-btn {
       display:inline-flex; align-items:center; gap:10px;
-      background:var(--gold); color:var(--navy);
+      background:var(--red); color:var(--black);
       font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase;
       padding:20px 48px; text-decoration:none;
       transition:background .25s; margin-bottom:24px;
-      box-shadow:0 8px 40px rgba(232,160,32,0.3);
+      box-shadow:0 8px 40px rgba(200,16,46,0.35);
     }
-    .cta-btn:hover { background:var(--gold-lt); }
+    .cta-btn:hover { background:var(--red-lt); }
     .payment-note { font-size:12px; color:var(--muted); }
-    .payment-note span { color:var(--gold); font-weight:500; }
+    .payment-note span { color:var(--red); font-weight:500; }
 
     /* ── FAQ ── */
-    .faq-section { background:var(--navy-mid); }
+    .faq-section { background:var(--black-mid); }
     .faq-list { max-width:780px; margin:0 auto; }
     .faq-item { border-bottom:1px solid var(--border); }
     .faq-q {
@@ -399,9 +399,9 @@
     }
     .faq-icon {
       flex-shrink:0; width:28px; height:28px;
-      border:1px solid var(--border-gold); border-radius:50%;
+      border:1px solid var(--border-red); border-radius:50%;
       display:flex; align-items:center; justify-content:center;
-      color:var(--gold); font-size:18px; transition:transform .3s;
+      color:var(--red); font-size:18px; transition:transform .3s;
     }
     .faq-item.open .faq-icon { transform:rotate(45deg); }
     .faq-a {
@@ -411,21 +411,65 @@
       font-size:14px; line-height:1.8; color:var(--text);
       padding:0 0 24px;
     }
-    .faq-item.open .faq-a { max-height:300px; }
+    .faq-a-inner p { margin-bottom:12px; }
+    .faq-a-inner p:last-child { margin-bottom:0; }
+    .faq-item.open .faq-a { max-height:700px; }
+
+    /* ── VIDEO POPUP MODAL ── */
+    .vid-modal-overlay {
+      position:fixed; inset:0; z-index:9999;
+      background:rgba(0,0,0,0.88);
+      display:flex; align-items:center; justify-content:center;
+      opacity:0; visibility:hidden;
+      transition:opacity 0.35s ease, visibility 0.35s ease;
+    }
+    .vid-modal-overlay.open {
+      opacity:1; visibility:visible;
+    }
+    .vid-modal-box {
+      position:relative; width:90%; max-width:800px;
+      transform:scale(0.93); transition:transform 0.35s ease;
+    }
+    .vid-modal-overlay.open .vid-modal-box { transform:scale(1); }
+    .vid-modal-ratio {
+      position:relative; width:100%; aspect-ratio:16/9;
+      background:#000;
+    }
+    .vid-modal-ratio iframe {
+      position:absolute; inset:0; width:100%; height:100%; border:0;
+    }
+    .vid-modal-placeholder {
+      position:absolute; inset:0;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      gap:16px; color:var(--muted);
+    }
+    .vid-modal-play {
+      width:72px; height:72px; border-radius:50%;
+      border:2px solid var(--red);
+      display:flex; align-items:center; justify-content:center;
+      opacity:0.7;
+    }
+    .vid-modal-close {
+      position:absolute; top:-44px; right:0;
+      background:none; border:none; cursor:pointer;
+      color:var(--red); font-size:28px; line-height:1;
+      transition:color 0.2s;
+    }
+    .vid-modal-close:hover { color:var(--red-lt); }
 
     /* ── FOOTER ── */
     footer {
-      background:var(--navy-mid); border-top:1px solid var(--border);
+      background:var(--black-mid); border-top:1px solid var(--border);
       padding:48px 60px;
     }
     .footer-inner {
       display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:24px;
     }
     .footer-logo {
-      font-family:'Playfair Display',serif; font-size:18px; font-weight:700;
+      font-family:'Barlow Condensed',sans-serif; font-size:20px; font-weight:700;
       color:var(--white); text-decoration:none;
     }
-    .footer-logo span { color:var(--gold); }
+    .footer-logo span { color:var(--red); }
     .footer-tagline {
       font-family:'Playfair Display',serif; font-style:italic;
       font-size:13px; color:var(--muted); margin-top:4px;
@@ -437,7 +481,7 @@
       color:var(--muted); text-decoration:none; font-size:14px;
       transition:border-color .2s, color .2s;
     }
-    .footer-social:hover { border-color:var(--gold); color:var(--gold); }
+    .footer-social:hover { border-color:var(--red); color:var(--red); }
     .footer-note { font-size:11px; color:var(--muted); }
 
     /* ── SCROLL FADE ── */
@@ -484,7 +528,7 @@
       <a class="nav-link" href="#room">The Room</a>
       <a class="nav-link" href="#founder">The Founder</a>
     </div>
-    <a class="nav-seat desktop" href="https://selar.com/a4a7f12835" target="_blank">Your Seat</a>
+    <a class="nav-seat desktop js-reg-link" href="https://selar.com/a4a7f12835" target="_blank">Your Seat</a>
     <button class="nav-hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -495,7 +539,7 @@
   <a class="nav-link" href="#what">The Programme</a>
   <a class="nav-link" href="#room">The Room</a>
   <a class="nav-link" href="#founder">The Founder</a>
-  <a class="nav-seat" href="https://selar.com/a4a7f12835" target="_blank">Claim Your Seat</a>
+  <a class="nav-seat js-reg-link" href="https://selar.com/a4a7f12835" target="_blank">Claim Your Seat</a>
 </div>
 
 <!-- ── HERO ── -->
@@ -510,7 +554,7 @@
   <h1 style="position:relative;z-index:2;">72 Hours. One Decision.<br/><em>Everything Changes.</em></h1>
   <p class="hero-sub" style="position:relative;z-index:2;">A live business accelerator experience for founders who are ready to stop preparing and start building.</p>
   <div class="countdown-wrap" style="position:relative;z-index:2;">
-    <p class="countdown-label">Registration closes in</p>
+    <p class="countdown-label" id="cd-label-1">Registration closes in</p>
     <div class="countdown">
       <div class="cd-block">
         <span class="cd-num" id="cd-days">00</span>
@@ -534,7 +578,7 @@
     </div>
   </div>
   <div class="hero-btns" style="position:relative;z-index:2;">
-    <a class="btn-primary" href="https://selar.com/a4a7f12835" target="_blank">
+    <a class="btn-primary js-reg-link" href="https://selar.com/a4a7f12835" target="_blank">
       Claim Your Seat &rarr;
     </a>
     <a class="btn-outline" href="#what">Watch the Intro Video</a>
@@ -542,22 +586,13 @@
 </section>
 
 <!-- ── INTRO VIDEO ── -->
-<section style="padding:90px 0; background:var(--navy-mid); border-top:1px solid var(--border);" id="video">
+<section style="padding:90px 0; background:var(--black-mid); border-top:1px solid var(--border);" id="video">
   <div class="wrap" style="text-align:center;">
     <span class="sec-kicker fade-up">A Message from Dr. Olori</span>
-    <h2 class="sec-head fade-up" style="margin-bottom:10px;">Before you scroll<br/>any further — <em>watch this.</em></h2>
+    <h2 class="sec-head fade-up" style="margin-bottom:10px;">Before you scroll<br/>any further. <em>Watch this.</em></h2>
     <p class="fade-up delay-1" style="font-size:14px; color:var(--muted); margin-bottom:48px; font-style:italic;">90 seconds that will tell you everything you need to know.</p>
-    <!-- Paste YouTube or Vimeo embed src below when video is ready -->
-    <div class="fade-up delay-1" style="position:relative; max-width:780px; margin:0 auto; aspect-ratio:16/9; background:var(--navy-lt); border:1px solid var(--border-gold); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:16px;">
-      <div style="width:64px; height:64px; border:1px solid var(--border-gold); border-radius:50%; display:flex; align-items:center; justify-content:center;">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="var(--gold)"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-      </div>
-      <p style="font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--muted);">Video coming soon</p>
-      <!-- To activate: replace the div above with an iframe embed, e.g.:
-      <iframe width="100%" height="100%" src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=0"
-        style="position:absolute;inset:0;" frameborder="0" allowfullscreen></iframe>
-      -->
-    </div>
+    <video class="fade-up delay-1" src="Woman_hosting_a_podcast.mp4" controls playsinline
+      style="width:100%; max-width:780px; display:block; margin:0 auto; aspect-ratio:16/9; border:1px solid var(--border-red); background:#000;"></video>
   </div>
 </section>
 
@@ -604,10 +639,10 @@
       <h2 class="sec-head fade-up">The room was built<br/>for a specific <em>founder.</em></h2>
     </div>
     <div class="room-card fade-up">
-      <span class="room-age">Ages 25 – 35</span>
+      <span class="room-age">Ages 25 to 35</span>
       <h3 class="room-title">JUMP ONE</h3>
-      <p class="room-desc">You have the idea. You have the ability. You've been about to launch for a year. You've planned, researched, and prepared — but somehow the next step never gets taken. This is the room that ends the waiting.</p>
-      <a class="room-btn" href="https://selar.com/a4a7f12835" target="_blank">This is my room &rarr;</a>
+      <p class="room-desc">You have the idea. You have the ability. You've been about to launch for a year. You've planned, researched, and prepared, but somehow the next step never gets taken. This is the room that ends the waiting.</p>
+      <a class="room-btn js-reg-link" href="https://selar.com/a4a7f12835" target="_blank">This is my room &rarr;</a>
     </div>
   </div>
 </section>
@@ -626,7 +661,7 @@
         <span class="leave-num">01</span>
         <div>
           <p class="leave-title">Your Blueprint</p>
-          <p class="leave-desc">A minimum viable launch plan built for your specific idea — not a template, yours.</p>
+          <p class="leave-desc">A minimum viable launch plan built for your specific idea. Not a template. Yours.</p>
         </div>
       </div>
       <div class="leave-item fade-up delay-1">
@@ -687,10 +722,10 @@
       <div>
         <span class="sec-kicker fade-up">The Founder</span>
         <h2 class="sec-head fade-up">Dr. Olori<br/><em>Boye-Ajayi</em></h2>
-        <p class="founder-bio fade-up delay-1">Dr. Olori Boye-Ajayi is an entrepreneur, executive coach, and the founder of OBA Inc. and The Secret Garden Global. For over a decade she has walked with founders, leaders, and builders — helping them move from the idea that lives in their head to the plan that changes their life.</p>
+        <p class="founder-bio fade-up delay-1">Dr. Olori Boye-Ajayi is an entrepreneur, executive coach, and the founder of OBA Inc. and The Secret Garden Global. For over a decade she has walked with founders, leaders, and builders, helping them move from the idea that lives in their head to the plan that changes their life.</p>
         <p class="founder-bio fade-up delay-1">JUMP is the room she wished existed when she was starting out.</p>
         <div class="founder-quote fade-up delay-2">
-          "Clarity comes through action. Not through waiting for the perfect moment." — Dr. Olori
+          "Clarity comes through action. Not through waiting for the perfect moment." Dr. Olori
         </div>
         <a class="founder-link fade-up delay-3" href="index.html">Learn more about Dr. Olori &rarr;</a>
       </div>
@@ -773,7 +808,7 @@
     <h2 class="cta-headline fade-up">The room doesn't wait.</h2>
     <p class="cta-sub fade-up delay-1">"Every hour the countdown runs is an hour someone else is deciding to move."</p>
     <div class="countdown-wrap fade-up delay-1">
-      <p class="countdown-label">Time remaining</p>
+      <p class="countdown-label" id="cd-label-2">Time remaining</p>
       <div class="countdown">
         <div class="cd-block">
           <span class="cd-num" id="cd-days-2">00</span>
@@ -801,7 +836,7 @@
       <span class="price-amount">₦60,000</span>
       <span class="price-note">One-time payment · Lifetime access to the Jumpers' Room</span>
     </div>
-    <a class="cta-btn fade-up delay-3" href="https://selar.com/a4a7f12835" target="_blank">
+    <a class="cta-btn fade-up delay-3 js-reg-link" href="https://selar.com/a4a7f12835" target="_blank">
       Secure My Seat Before It's Gone &rarr;
     </a>
     <br/>
@@ -824,46 +859,52 @@
           <span class="faq-q-text">What actually happens in the 72 hours?</span>
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-a"><p class="faq-a-inner">Answer coming soon — to be provided by the OBA Inc. team.</p></div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>You come in with your idea. You leave with your plan.</p>
+          <p>JUMP is structured across guided modules where Dr. Olori walks you through the exact lessons she has learned across building twelve businesses and consulting for over 100,000 SMEs. Each module attacks a specific obstacle that keeps founders stuck.</p>
+          <p>You will work through the costly mistakes most entrepreneurs make and how to avoid them. You will define your Minimum Viable Start, the simplest version of your business you can launch with what you already have. You will validate your idea before you build it. You will set up your Profit Foundation so the business sustains both your vision and your livelihood.</p>
+          <p>You will learn how to make your first sale, develop your distinctive brand voice, and understand the different physics of scaling from 10 to 100 to 1,000 customers.</p>
+          <p>Every module ends with execution. You do not just learn. You write, decide, and act inside The JUMP Journal as you go.</p>
+          <p>You leave with a document, a plan, and a community. Not motivation. Not inspiration. A road.</p>
+        </div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">
           <span class="faq-q-text">Where does the room happen? Online or in person?</span>
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-a"><p class="faq-a-inner">Answer coming soon — to be provided by the OBA Inc. team.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">
-          <span class="faq-q-text">JUMP ONE or JUMP TWO — how do I know which is right for me?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a"><p class="faq-a-inner">JUMP ONE is for founders aged 25–35 who have ideas, ability, and have been about to launch for a while. If that's you, JUMP ONE is your room. JUMP TWO (coming soon) is for founders aged 16–23 who are building early.</p></div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>The room is fully online, which means it is fully accessible. Whether you are in Lagos, Abuja, London, or anywhere else in the world, you can be in this room. All you need is a device, a stable connection, and the decision to show up.</p>
+          <p>JUMP is delivered through guided video modules you work through alongside the cohort, with your JUMP Journal in hand. You watch, you participate, you build, in real time, with people who are in the exact same season as you.</p>
+        </div></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">
           <span class="faq-q-text">What should I come in with?</span>
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-a"><p class="faq-a-inner">Answer coming soon — to be provided by the OBA Inc. team.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">
-          <span class="faq-q-text">What does life look like on Day 73?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a"><p class="faq-a-inner">Answer coming soon — to be provided by the OBA Inc. team.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">
-          <span class="faq-q-text">What are my options to get into the room?</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a"><p class="faq-a-inner">Answer coming soon — to be provided by the OBA Inc. team.</p></div>
+        <div class="faq-a"><div class="faq-a-inner">
+          <p>Come in with your idea, even if it is half-formed. Even if you have been sitting on it for years. Even if you are not sure it is good enough yet.</p>
+          <p>Bring your JUMP Journal. This isn't optional. This is where every decision, every framework, every action point gets written down. The mind forgets, the pen remembers.</p>
+          <p>Bring a pen. Bring something to drink. Find somewhere comfortable where you can focus for stretches of time without interruption.</p>
+          <p>If you already have a business, bring your current numbers: what you are charging, what you are making, what is not working. The more honest you are about where you are, the more the modules can move you.</p>
+          <p>You do not need to be ready. You just need to show up.</p>
+        </div></div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- ── VIDEO POPUP MODAL ── -->
+<div class="vid-modal-overlay" id="vidModal" role="dialog" aria-modal="true" aria-label="Intro video">
+  <div class="vid-modal-box">
+    <button class="vid-modal-close" id="vidModalClose" aria-label="Close video">&#x2715;</button>
+    <div class="vid-modal-ratio" id="vidModalRatio">
+      <video id="vidModalVideo" src="Woman_hosting_a_podcast.mp4" controls playsinline
+        style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; background:#000;"></video>
+    </div>
+  </div>
+</div>
 
 <!-- ── FOOTER ── -->
 <footer>
@@ -912,7 +953,7 @@
   });
 
   // ── COUNTDOWN ──
-  const target = new Date('2026-07-30T23:59:59');
+  const target = new Date('2026-06-30T23:59:59');
   function updateCountdown() {
     const now  = new Date();
     const diff = target - now;
@@ -921,6 +962,16 @@
        'cd-days-2','cd-hours-2','cd-mins-2','cd-secs-2'].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.textContent = '00';
+      });
+      // Update labels
+      const lbl1 = document.getElementById('cd-label-1');
+      const lbl2 = document.getElementById('cd-label-2');
+      if (lbl1) lbl1.textContent = 'Registration is now closed';
+      if (lbl2) lbl2.textContent = 'Registration is now closed';
+      // Swap all register buttons to waitlist
+      document.querySelectorAll('.js-reg-link').forEach(btn => {
+        btn.href = '#waitlist'; // ← replace with your waitlist URL when ready
+        btn.textContent = 'Join the Waitlist →';
       });
       return;
     }
@@ -938,6 +989,29 @@
   }
   updateCountdown();
   setInterval(updateCountdown, 1000);
+
+  // ── VIDEO POPUP MODAL ──
+  const vidModal   = document.getElementById('vidModal');
+  const vidClose   = document.getElementById('vidModalClose');
+  const vidVideo   = document.getElementById('vidModalVideo');
+
+  function openVidModal() {
+    vidModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    if (vidVideo) vidVideo.play().catch(() => {});
+  }
+  function closeVidModal() {
+    vidModal.classList.remove('open');
+    document.body.style.overflow = '';
+    if (vidVideo) { vidVideo.pause(); vidVideo.currentTime = 0; }
+  }
+
+  vidClose.addEventListener('click', closeVidModal);
+  vidModal.addEventListener('click', e => { if (e.target === vidModal) closeVidModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVidModal(); });
+
+  // Auto-open after 1.5 s
+  setTimeout(openVidModal, 1500);
 
   // ── FAQ ACCORDION ──
   document.querySelectorAll('.faq-q').forEach(btn => {

@@ -453,8 +453,11 @@
     .jump-image-wrap::after  { bottom:-8px; right:-8px; border-width:0 2px 2px 0; }
     .jump-img {
       width:100%; display:block;
-      aspect-ratio:16/9; object-fit:cover; object-position:center;
+      aspect-ratio:16/9; object-fit:contain; object-position:center;
+      background:var(--forest);
       border:1px solid rgba(193,176,152,.2);
+      padding:24px;
+      box-sizing:border-box;
     }
     .jump-tagline {
       font-family:'Playfair Display',serif; font-style:italic; font-size:17px;
@@ -1087,13 +1090,13 @@
 <section class="jump-section">
   <div class="wrap">
     <div class="sec-kicker fade-up">Programme</div>
-    <h2 class="sec-head fade-up">JUMP  72-Hour Business <em>Accelerator</em></h2>
+    <h2 class="sec-head fade-up">72-Hour Business <em>Accelerator</em></h2>
 
     <div class="jump-grid">
 
-      <!-- LEFT: flyer image -->
+      <!-- LEFT: logo display -->
       <div class="jump-image-wrap fade-up delay-1">
-        <img class="jump-img" src="images/jump.jpg" alt="JUMP 72-Hour Business Accelerator" />
+        <img class="jump-img" src="images/JumpLogo.png" alt="JUMP 72-Hour Business Accelerator" />
       </div>
 
       <!-- RIGHT: content -->
@@ -1143,7 +1146,7 @@
 
         <div class="btn-row fade-up delay-3">
           <a class="btn-gold" href="jump.html">
-            <span>Join JUMP</span><span>→</span>
+            <span>We Wanna JUMP</span><span>→</span>
           </a>
         </div>
       </div>
