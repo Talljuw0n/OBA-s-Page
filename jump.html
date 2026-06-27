@@ -522,14 +522,17 @@
 <!-- ── NAV ── -->
 <nav id="mainNav">
   <div class="nav-inner">
-    <a class="nav-logo" href="#hero"><img src="images/JumpLogo.png" alt="JUMP" style="height:38px; width:auto; display:block; object-fit:contain;"></a>
+    <a class="nav-logo" href="#hero"><img src="images/Jumpnewlogo.png" alt="JUMP" style="height:38px; width:auto; display:block; object-fit:contain;"></a>
     <div class="nav-links">
       <a class="nav-link" href="index.html" style="opacity:0.55; display:flex; align-items:center; gap:6px;">&#8592; Home</a>
       <a class="nav-link" href="#what">The Programme</a>
       <a class="nav-link" href="#room">The Room</a>
       <a class="nav-link" href="#founder">The Founder</a>
     </div>
-    <a class="nav-seat desktop js-reg-link" href="https://selar.com/a4a7f12835" target="_blank">Your Seat</a>
+    <div style="display:flex; align-items:center; gap:14px;">
+      <span style="color:var(--white); font-size:13px; font-weight:600; letter-spacing:1px; white-space:nowrap;">&#8358;60,000</span>
+      <a class="nav-seat desktop js-reg-link" href="https://selar.com/a4a7f12835" target="_blank">Your Seat</a>
+    </div>
     <button class="nav-hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -552,7 +555,7 @@
   </video>
   <div class="hero-overlay"></div>
   <div class="hero-glow"></div>
-  <div class="hero-badge" style="position:relative;z-index:2;"><span class="live-dot"></span> Registration is Open</div>
+  <div class="hero-badge" style="position:relative;z-index:2; color:var(--white);"><span class="live-dot"></span> Registration is Open</div>
   <h1 style="position:relative;z-index:2;">72 Hours. One Decision.<br/><em>Everything Changes.</em></h1>
   <p class="hero-sub" style="position:relative;z-index:2;">A live business accelerator experience for founders who are ready to stop preparing and start building.</p>
   <div class="countdown-wrap" style="position:relative;z-index:2;">
@@ -579,12 +582,7 @@
       </div>
     </div>
   </div>
-  <div style="position:relative;z-index:2; margin-bottom:20px;">
-    <span style="font-size:11px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.5);">Investment</span>
-    <div style="font-family:'Barlow Condensed',sans-serif; font-size:2.8rem; font-weight:700; color:var(--white); line-height:1;">&#8358;60,000</div>
-    <span style="font-size:11px; color:rgba(255,255,255,0.45);">One-time payment · Lifetime access to the Jumpers' Room</span>
-  </div>
-  <div class="hero-btns" style="position:relative;z-index:2;">
+<div class="hero-btns" style="position:relative;z-index:2;">
     <a class="btn-primary js-reg-link" href="https://selar.com/a4a7f12835" target="_blank">
       Claim Your Seat &rarr;
     </a>
@@ -966,7 +964,7 @@
   });
 
   // ── COUNTDOWN ──
-  const target = new Date('2026-06-30T23:59:59');
+  const target = new Date('2026-07-30T23:59:59');
   function updateCountdown() {
     const now  = new Date();
     const diff = target - now;
