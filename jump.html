@@ -591,8 +591,10 @@
     <span class="sec-kicker fade-up">A Message from Dr. Olori</span>
     <h2 class="sec-head fade-up" style="margin-bottom:10px;">Before you scroll<br/>any further. <em>Watch this.</em></h2>
     <p class="fade-up delay-1" style="font-size:14px; color:var(--muted); margin-bottom:48px; font-style:italic;">90 seconds that will tell you everything you need to know.</p>
-    <video class="fade-up delay-1" src="Woman_hosting_a_podcast.mp4" controls playsinline
-      style="width:100%; max-width:780px; display:block; margin:0 auto; aspect-ratio:16/9; border:1px solid var(--border-red); background:#000;"></video>
+    <div class="fade-up delay-1" style="width:100%; max-width:780px; margin:0 auto; aspect-ratio:16/9; border:1px solid var(--border-red); overflow:hidden;">
+      <iframe src="https://drive.google.com/file/d/1yF95WFDf_RSXQ24g3THwji_Eli-oXvHM/preview"
+        width="100%" height="100%" frameborder="0" allowfullscreen style="display:block;"></iframe>
+    </div>
   </div>
 </section>
 
@@ -900,8 +902,8 @@
   <div class="vid-modal-box">
     <button class="vid-modal-close" id="vidModalClose" aria-label="Close video">&#x2715;</button>
     <div class="vid-modal-ratio" id="vidModalRatio">
-      <video id="vidModalVideo" src="Woman_hosting_a_podcast.mp4" controls playsinline
-        style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; background:#000;"></video>
+      <iframe id="vidModalIframe" src="https://drive.google.com/file/d/1yF95WFDf_RSXQ24g3THwji_Eli-oXvHM/preview"
+        style="position:absolute; inset:0; width:100%; height:100%; border:0;" allowfullscreen></iframe>
     </div>
   </div>
 </div>
@@ -991,19 +993,18 @@
   setInterval(updateCountdown, 1000);
 
   // ── VIDEO POPUP MODAL ──
-  const vidModal   = document.getElementById('vidModal');
-  const vidClose   = document.getElementById('vidModalClose');
-  const vidVideo   = document.getElementById('vidModalVideo');
+  const vidModal  = document.getElementById('vidModal');
+  const vidClose  = document.getElementById('vidModalClose');
+  const vidIframe = document.getElementById('vidModalIframe');
 
   function openVidModal() {
     vidModal.classList.add('open');
     document.body.style.overflow = 'hidden';
-    if (vidVideo) vidVideo.play().catch(() => {});
   }
   function closeVidModal() {
     vidModal.classList.remove('open');
     document.body.style.overflow = '';
-    if (vidVideo) { vidVideo.pause(); vidVideo.currentTime = 0; }
+    if (vidIframe) { const s = vidIframe.src; vidIframe.src = ''; vidIframe.src = s; }
   }
 
   vidClose.addEventListener('click', closeVidModal);
