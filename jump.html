@@ -493,6 +493,9 @@
 
     /* ── RESPONSIVE ── */
     @media(max-width:900px) {
+      .event-strip-grid { grid-template-columns:1fr !important; }
+      .event-strip-grid > div { border-right:none !important; border-bottom:1px solid var(--border); padding:20px 0 !important; }
+      .event-strip-grid > div:last-child { border-bottom:none; }
       .wrap { padding:0 24px; }
       nav { padding:0 24px; }
       .nav-links { display:none; }
@@ -592,6 +595,43 @@
     <a class="btn-outline" href="#video">Watch the Intro Video</a>
   </div>
 </section>
+
+<!-- ── EVENT DETAILS STRIP ── -->
+<div style="background:var(--black-lt); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="wrap event-strip-grid" style="display:grid; grid-template-columns:repeat(3,1fr);">
+
+    <div style="display:flex; align-items:center; gap:18px; padding:28px 0; border-right:1px solid var(--border);">
+      <div style="width:44px; height:44px; border:1px solid var(--border-red); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </div>
+      <div>
+        <span style="font-size:9px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--muted); display:block; margin-bottom:4px;">Where</span>
+        <span style="font-family:'Barlow Condensed',sans-serif; font-size:1.15rem; font-weight:600; color:var(--white);">100% Online &middot; Join from anywhere</span>
+      </div>
+    </div>
+
+    <div style="display:flex; align-items:center; gap:18px; padding:28px 32px; border-right:1px solid var(--border);">
+      <div style="width:44px; height:44px; border:1px solid var(--border-red); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      </div>
+      <div>
+        <span style="font-size:9px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--muted); display:block; margin-bottom:4px;">When</span>
+        <span style="font-family:'Barlow Condensed',sans-serif; font-size:1.15rem; font-weight:600; color:var(--white);">July 30 &ndash; August 1, 2026</span>
+      </div>
+    </div>
+
+    <div style="display:flex; align-items:center; gap:18px; padding:28px 32px;">
+      <div style="width:44px; height:44px; border:1px solid var(--border-red); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </div>
+      <div>
+        <span style="font-size:9px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--muted); display:block; margin-bottom:4px;">Format</span>
+        <span style="font-family:'Barlow Condensed',sans-serif; font-size:1.15rem; font-weight:600; color:var(--white);">72 hours &middot; Live &amp; guided</span>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <!-- ── INTRO VIDEO ── -->
 <section style="padding:90px 0; background:var(--black-mid); border-top:1px solid var(--border);" id="video">
@@ -783,15 +823,15 @@
     </div>
     <div class="community-stats">
       <div class="comm-stat fade-up">
-        <span class="comm-num">76K+</span>
+        <span class="comm-num">81.6K+</span>
         <span class="comm-lbl">Instagram Community</span>
       </div>
       <div class="comm-stat fade-up delay-1">
-        <span class="comm-num">17.7K+</span>
+        <span class="comm-num">20.3K+</span>
         <span class="comm-lbl">TikTok Followers</span>
       </div>
       <div class="comm-stat fade-up delay-2">
-        <span class="comm-num">6K+</span>
+        <span class="comm-num">8K+</span>
         <span class="comm-lbl">YouTube Subscribers</span>
       </div>
       <div class="comm-stat fade-up delay-3">
