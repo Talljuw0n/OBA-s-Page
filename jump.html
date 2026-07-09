@@ -1093,7 +1093,10 @@
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVidModal(); });
 
   // Auto-open after 1.5 s
-  setTimeout(openVidModal, 1500);
+  setTimeout(() => {
+    openVidModal();
+    gtag('event', 'video_popup_open', { event_category: 'Engagement', event_label: 'Intro Video Popup' });
+  }, 1500);
 
   // ── FAQ ACCORDION ──
   document.querySelectorAll('.faq-q').forEach(btn => {
@@ -1124,12 +1127,6 @@
     gtag('event', 'click', { event_category: 'Engagement', event_label: 'Watch Intro Video' });
   });
 
-  // Track when the video popup auto-opens
-  const _origOpen = openVidModal;
-  openVidModal = function() {
-    _origOpen();
-    gtag('event', 'video_popup_open', { event_category: 'Engagement', event_label: 'Intro Video Popup' });
-  };
 </script>
 
 </body>
