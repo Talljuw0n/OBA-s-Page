@@ -764,6 +764,14 @@
       footer { flex-direction:column; gap:16px; text-align:center; }
     }
   </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F8EPZLWM0F"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-F8EPZLWM0F');
+  </script>
 </head>
 <body>
 
@@ -1327,6 +1335,13 @@
     });
   }, { threshold: 0.12 });
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // ── BUTTON TRACKING ──
+  document.querySelectorAll('a[href="jump.html"]').forEach(el => {
+    el.addEventListener('click', () => {
+      gtag('event', 'click', { event_category: 'CTA', event_label: 'We Wanna JUMP' });
+    });
+  });
 </script>
 
 </body>
