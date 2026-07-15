@@ -790,7 +790,7 @@
 
   <div class="nav-links-wrap">
     <div class="nav-links">
-      <a class="nav-link" href="https://selar.com/m/thesecret-garden1" target="_blank">Join ME Live</a>
+      <a class="nav-link" href="https://selar.com/m/theobainc" target="_blank">Join ME Live</a>
       <a class="nav-link" href="https://selar.com/m/dr-oloriboye-ajayi?currency=XAF" target="_blank">Programs</a>
       <a class="nav-link" href="https://youtube.com/@oloriboyeajayi?si=Hdi3ZSZz_KRyipjE" target="_blank">Find me on youtube</a>
     </div>
@@ -802,7 +802,7 @@
 </nav>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a class="nav-link" href="https://selar.com/m/thesecret-garden1" target="_blank">Join ME Live</a>
+  <a class="nav-link" href="https://selar.com/m/theobainc" target="_blank">Join ME Live</a>
   <a class="nav-link" href="https://selar.com/m/dr-oloriboye-ajayi?currency=XAF" target="_blank">Programs</a>
   <a class="nav-link" href="https://youtube.com/@oloriboyeajayi?si=Hdi3ZSZz_KRyipjE" target="_blank">Find me on youtube</a>
   <a class="nav-cta" href="https://forms.gle/s2za4EiXrawCRF249" target="_blank">Book Dr. Olori</a>
@@ -1339,7 +1339,10 @@
   // ── BUTTON TRACKING ──
   document.querySelectorAll('a[href="jump.html"]').forEach(el => {
     el.addEventListener('click', () => {
-      gtag('event', 'click', { event_category: 'CTA', event_label: 'We Wanna JUMP' });
+      gtag('event', 'jump_page_click', {
+        button_label: el.textContent.trim(),
+        transport_type: 'beacon'
+      });
     });
   });
 </script>
