@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BB25 | Build Before 25 | Dr. Olori Boye-Ajayi</title>
+  <link rel="icon" type="image/png" href="images/bb25-favicon-32.png">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --black:    #000000;
+      --panel:    #0A0A0A;
+      --panel-alt:#111111;
+      --lime:     #ADF80F;
+      --lime-dim: #93d80c;
+      --white:    #FFFFFF;
+      --text:     rgba(255,255,255,0.82);
+      --muted:    rgba(255,255,255,0.45);
+      --border:   rgba(255,255,255,0.12);
+      --border-lime: rgba(173,248,15,0.4);
+      --strike:   rgba(255,255,255,0.32);
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      background: var(--black);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+    .wrap { max-width:1040px; margin:0 auto; padding:0 60px; }
+
+    /* ── NAV ── */
+    nav {
+      position:fixed; top:0; left:0; right:0; z-index:100;
+      height:68px;
+      display:flex; align-items:center;
+      padding:0 60px;
+      background:rgba(0,0,0,0); transition:background .3s, border .3s;
+    }
+    nav.scrolled {
+      background:rgba(0,0,0,0.92);
+      border-bottom:1px solid var(--border);
+      backdrop-filter:blur(16px);
+    }
+    .nav-inner { width:100%; display:flex; align-items:center; justify-content:space-between; }
+    .nav-logo { display:flex; align-items:center; }
+    .nav-logo img { height:32px; width:auto; display:block; }
+    .nav-links { display:flex; align-items:center; gap:32px; }
+    .nav-link {
+      font-size:11px; font-weight:500; letter-spacing:2px; text-transform:uppercase;
+      color:var(--text); text-decoration:none; transition:color .2s; white-space:nowrap;
+    }
+    .nav-link:hover { color:var(--lime); }
+    .nav-cta {
+      font-size:11px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase;
+      color:var(--lime); text-decoration:none; white-space:nowrap;
+      border-bottom:1px solid var(--border-lime); padding-bottom:3px; transition:color .2s;
+    }
+    .nav-cta:hover { color:var(--lime-dim); }
+    .nav-hamburger {
+      display:none; flex-direction:column; gap:5px;
+      background:none; border:none; cursor:pointer; padding:4px;
+    }
+    .nav-hamburger span {
+      display:block; width:22px; height:1.5px;
+      background:var(--white); transition:transform .3s, opacity .3s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity:0; }
+    .nav-hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+    .mobile-nav {
+      display:none; position:fixed; top:68px; left:0; right:0; z-index:99;
+      background:rgba(0,0,0,0.97); backdrop-filter:blur(16px);
+      border-bottom:1px solid var(--border);
+      flex-direction:column; padding:20px 24px 28px; gap:0;
+      transform:translateY(-8px); opacity:0;
+      transition:transform .3s, opacity .3s;
+    }
+    .mobile-nav.open { transform:translateY(0); opacity:1; }
+    .mobile-nav .nav-link {
+      font-size:13px; padding:14px 0;
+      border-bottom:1px solid var(--border); display:block;
+    }
+    .mobile-nav .nav-link:last-of-type { border-bottom:none; }
+    .mobile-nav .nav-cta { margin-top:18px; display:block; text-align:center; padding:14px; border:1px solid var(--border-lime); }
+
+    /* ── HERO ── */
+    .hero {
+      padding:170px 60px 90px; text-align:center;
+      background: var(--black);
+      border-bottom:1px solid var(--border);
+    }
+    .hero-kicker {
+      font-size:11px; font-weight:600; letter-spacing:4px; text-transform:uppercase;
+      color:var(--lime); margin-bottom:12px;
+    }
+    .hero-kicker.sub { color:var(--muted); letter-spacing:2px; margin-bottom:24px; }
+    .hero h1 {
+      font-family:'Anton',sans-serif; font-weight:400;
+      font-size:clamp(2rem,4.8vw,3.6rem); line-height:1.2;
+      max-width:780px; margin:0 auto 30px; text-transform:uppercase;
+    }
+    .hero h1 .off { color:var(--muted); text-decoration:line-through; text-decoration-color:var(--strike); text-decoration-thickness:2px; }
+    .hero h1 .on { color:var(--lime); }
+    .hero-sub {
+      font-size:15.5px; color:var(--text); line-height:1.85;
+      max-width:520px; margin:0 auto 40px; font-weight:300;
+    }
+    .hero-btns { display:flex; gap:14px; flex-wrap:wrap; justify-content:center; margin-bottom:22px; }
+    .btn-primary {
+      display:inline-flex; align-items:center; gap:8px;
+      background:var(--lime); color:var(--black);
+      font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase;
+      padding:16px 36px; text-decoration:none; transition:background .25s;
+    }
+    .btn-primary:hover { background:var(--lime-dim); }
+    .btn-outline {
+      display:inline-flex; align-items:center; gap:8px;
+      border:1px solid rgba(255,255,255,0.3); color:var(--white);
+      font-size:12px; font-weight:500; letter-spacing:2px; text-transform:uppercase;
+      padding:16px 32px; text-decoration:none;
+      transition:border-color .25s, background .25s;
+    }
+    .btn-outline:hover { border-color:var(--lime); background:rgba(173,248,15,0.10); color:var(--lime); }
+
+    /* ── SHARED ── */
+    section { position:relative; }
+    .sec-pad { padding:96px 0; }
+    .sec-kicker {
+      font-size:10px; font-weight:600; letter-spacing:4px; text-transform:uppercase;
+      color:var(--lime); margin-bottom:14px; display:block; text-align:center;
+    }
+    .sec-head {
+      font-family:'Barlow Condensed',sans-serif; font-weight:700; text-align:center;
+      font-size:clamp(1.9rem,3.4vw,2.7rem); line-height:1.1; margin-bottom:56px;
+      color:var(--white);
+    }
+    .sec-head em { font-style:italic; color:var(--lime); font-weight:400; }
+    .divider { height:1px; background:var(--border); }
+
+    /* ── COURSES VS BB25 ── */
+    .vs-section { background:var(--panel-alt); }
+    .vs-table { border:1px solid var(--border); }
+    .vs-heads { display:grid; grid-template-columns:1fr 1fr; }
+    .vs-head {
+      padding:18px 28px; font-size:10px; font-weight:700; letter-spacing:2.5px;
+      text-transform:uppercase; text-align:center;
+    }
+    .vs-head.off { color:var(--muted); border-right:1px solid var(--border); }
+    .vs-head.on { color:var(--black); background:var(--lime); }
+    .vs-row { display:grid; grid-template-columns:1fr 1fr; border-top:1px solid var(--border); }
+    .vs-cell {
+      padding:22px 28px; font-size:14px; line-height:1.6;
+    }
+    .vs-cell.off { color:var(--muted); text-decoration:line-through; text-decoration-color:var(--strike); border-right:1px solid var(--border); }
+    .vs-cell.on { color:var(--text); background:rgba(173,248,15,0.06); }
+
+    /* ── PATH ── */
+    .path-section { background:var(--black); }
+    .path-steps { display:flex; align-items:flex-start; gap:0; }
+    .path-step { flex:1; text-align:center; padding:0 18px; position:relative; }
+    .path-dot {
+      width:14px; height:14px; border-radius:50%; background:var(--lime);
+      margin:0 auto 22px; position:relative; z-index:1;
+    }
+    .path-step::before {
+      content:''; position:absolute; top:6px; left:-50%; width:100%; height:1px;
+      background:var(--border-lime);
+    }
+    .path-step:first-child::before { display:none; }
+    .path-num { font-size:10px; letter-spacing:2px; color:var(--muted); display:block; margin-bottom:8px; }
+    .path-title {
+      font-family:'Barlow Condensed',sans-serif; font-size:20px; font-weight:700;
+      color:var(--white); margin-bottom:10px;
+    }
+    .path-desc { font-size:13px; line-height:1.7; color:var(--text); }
+
+    /* ── CHECKLIST ── */
+    .check-section { background:var(--panel-alt); }
+    .checklist { max-width:640px; margin:0 auto; }
+    .check-item {
+      display:flex; align-items:flex-start; gap:16px;
+      padding:18px 0; border-bottom:1px solid var(--border);
+    }
+    .check-item:last-child { border-bottom:none; }
+    .check-mark {
+      flex-shrink:0; width:22px; height:22px; border-radius:50%;
+      border:1px solid var(--border-lime); color:var(--lime);
+      display:flex; align-items:center; justify-content:center;
+      font-size:12px; margin-top:1px;
+    }
+    .check-text { font-size:14.5px; line-height:1.6; color:var(--text); }
+
+    /* ── BACKED BY STRIP ── */
+    .backed-section { background:var(--black); text-align:center; }
+    .backed-strip {
+      display:inline-flex; flex-wrap:wrap; justify-content:center;
+      gap:0; margin-top:12px; border:1px solid var(--border);
+    }
+    .backed-item { padding:22px 40px; text-align:center; border-right:1px solid var(--border); }
+    .backed-item:last-child { border-right:none; }
+    .backed-num {
+      font-family:'Barlow Condensed',sans-serif; font-size:2rem; font-weight:700;
+      color:var(--lime); display:block; line-height:1; margin-bottom:6px;
+    }
+    .backed-lbl { font-size:9.5px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); }
+
+    /* ── FINAL CTA ── */
+    .cta-section {
+      padding:96px 0; text-align:center;
+      background:var(--panel-alt);
+      border-top:1px solid var(--border);
+    }
+    .cta-headline {
+      font-family:'Barlow Condensed',sans-serif; font-weight:600; font-style:italic;
+      font-size:clamp(1.7rem,3.4vw,2.6rem); color:var(--white); margin-bottom:36px;
+      max-width:620px; margin-left:auto; margin-right:auto; line-height:1.4;
+    }
+    .cta-btn {
+      display:inline-flex; align-items:center; gap:10px;
+      background:var(--lime); color:var(--black);
+      font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase;
+      padding:20px 48px; text-decoration:none;
+      transition:background .25s; margin-bottom:20px;
+    }
+    .cta-btn:hover { background:var(--lime-dim); }
+
+    /* ── FOOTER ── */
+    footer {
+      background:var(--black); border-top:1px solid var(--border);
+      padding:44px 60px;
+    }
+    .footer-inner {
+      display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:24px;
+    }
+    .footer-logo { display:flex; align-items:center; text-decoration:none; }
+    .footer-logo img { height:26px; width:auto; display:block; }
+    .footer-tagline {
+      font-size:12.5px; color:var(--muted); margin-top:6px;
+    }
+    .footer-socials { display:flex; gap:16px; }
+    .footer-social {
+      width:36px; height:36px; border:1px solid var(--border);
+      display:flex; align-items:center; justify-content:center;
+      color:var(--muted); text-decoration:none; font-size:14px;
+      transition:border-color .2s, color .2s;
+    }
+    .footer-social:hover { border-color:var(--lime); color:var(--lime); }
+    .footer-note { font-size:11px; color:var(--muted); }
+
+    /* ── SCROLL FADE ── */
+    .fade-up { opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+    .fade-up.visible { opacity:1; transform:translateY(0); }
+    .delay-1 { transition-delay:.1s; }
+    .delay-2 { transition-delay:.2s; }
+    .delay-3 { transition-delay:.3s; }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:900px) {
+      .wrap { padding:0 24px; }
+      nav { padding:0 24px; }
+      .nav-links { display:none; }
+      .nav-cta.desktop { display:none; }
+      .nav-hamburger { display:flex; }
+      .hero { padding:130px 24px 70px; }
+      .vs-heads, .vs-row { grid-template-columns:1fr; }
+      .vs-head.off, .vs-cell.off { border-right:none; border-bottom:1px solid var(--border); }
+      .path-steps { flex-direction:column; gap:36px; }
+      .path-step::before { display:none; }
+      .backed-strip { flex-direction:column; width:100%; }
+      .backed-item { border-right:none; border-bottom:1px solid var(--border); }
+      .backed-item:last-child { border-bottom:none; }
+      .cta-section { padding:70px 24px; }
+      footer { padding:36px 24px; }
+      .footer-inner { flex-direction:column; align-items:flex-start; }
+      .sec-pad { padding:64px 0; }
+    }
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F8EPZLWM0F"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-F8EPZLWM0F');
+  </script>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="mainNav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#hero"><img src="images/bb25-logo.png" alt="BB25"></a>
+    <div class="nav-links">
+      <a class="nav-link" href="index.html" style="opacity:0.55; display:flex; align-items:center; gap:6px;">&#8592; Home</a>
+      <a class="nav-link" href="#compare">Why BB25</a>
+      <a class="nav-link" href="#path">The Route</a>
+      <a class="nav-link" href="#get">What You Get</a>
+    </div>
+    <a class="nav-cta desktop js-reg-link" href="https://buildbefore25.com" target="_blank">Find My Route &rarr;</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <a class="nav-link" href="index.html" style="opacity:0.55;">&#8592; Back to Home</a>
+  <a class="nav-link" href="#compare">Why BB25</a>
+  <a class="nav-link" href="#path">The Route</a>
+  <a class="nav-link" href="#get">What You Get</a>
+  <a class="nav-cta js-reg-link" href="https://buildbefore25.com" target="_blank">Find My Route &rarr;</a>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero" id="hero">
+  <p class="hero-kicker fade-up">#BB25 &middot; Campaign 01 &middot; For Everyone Under 25</p>
+  <p class="hero-kicker sub fade-up">Twelve months. One deadline. Everything built in public.</p>
+  <h1 class="fade-up delay-1"><span class="off">Courses don't pay you.</span><br/><span class="on">Customers do.</span></h1>
+  <p class="hero-sub fade-up delay-2">Find the fastest realistic route to your first paying customer, built around your timeline, your skills, and the hours you actually have.</p>
+  <div class="hero-btns fade-up delay-3">
+    <a class="btn-primary js-reg-link" href="https://buildbefore25.com" target="_blank">
+      Find My Fastest Route &rarr;
+    </a>
+    <a class="btn-outline" href="#path">See The Route</a>
+  </div>
+</section>
+
+<!-- ── COURSES VS BB25 ── -->
+<section class="vs-section sec-pad" id="compare">
+  <div class="wrap">
+    <span class="sec-kicker fade-up">Why BB25</span>
+    <h2 class="sec-head fade-up">One path beats every strategy<br/><em>you never finish.</em></h2>
+    <div class="vs-table fade-up delay-1">
+      <div class="vs-heads">
+        <div class="vs-head off">Most Courses</div>
+        <div class="vs-head on">BB25</div>
+      </div>
+      <div class="vs-row">
+        <div class="vs-cell off">Every strategy that exists</div>
+        <div class="vs-cell on">One route built for you</div>
+      </div>
+      <div class="vs-row">
+        <div class="vs-cell off">Homework you might get to</div>
+        <div class="vs-cell on">The exact message to send today</div>
+      </div>
+      <div class="vs-row">
+        <div class="vs-cell off">A certificate</div>
+        <div class="vs-cell on">Your first paying customer</div>
+      </div>
+      <div class="vs-row">
+        <div class="vs-cell off">Hope it eventually works</div>
+        <div class="vs-cell on">Daily targets you can actually hit</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── THE ROUTE ── -->
+<section class="path-section sec-pad" id="path">
+  <div class="wrap">
+    <span class="sec-kicker fade-up">How It Works</span>
+    <h2 class="sec-head fade-up">Four stops on the way<br/>to your <em>first customer.</em></h2>
+    <div class="path-steps">
+      <div class="path-step fade-up">
+        <div class="path-dot"></div>
+        <span class="path-num">01</span>
+        <h3 class="path-title">Route</h3>
+        <p class="path-desc">Your fastest realistic path, based on your timeline, skills, and hours.</p>
+      </div>
+      <div class="path-step fade-up delay-1">
+        <div class="path-dot"></div>
+        <span class="path-num">02</span>
+        <h3 class="path-title">Message</h3>
+        <p class="path-desc">Ready to use outreach language you can send today.</p>
+      </div>
+      <div class="path-step fade-up delay-2">
+        <div class="path-dot"></div>
+        <span class="path-num">03</span>
+        <h3 class="path-title">Action</h3>
+        <p class="path-desc">Clear daily targets, so you always know the next move.</p>
+      </div>
+      <div class="path-step fade-up delay-3">
+        <div class="path-dot"></div>
+        <span class="path-num">04</span>
+        <h3 class="path-title">Customer</h3>
+        <p class="path-desc">Proof you can build before you feel ready.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── WHAT YOU GET ── -->
+<section class="check-section sec-pad" id="get">
+  <div class="wrap">
+    <span class="sec-kicker fade-up">What You Walk Away With</span>
+    <h2 class="sec-head fade-up">Everything on this list<br/>is <em>yours to keep.</em></h2>
+    <div class="checklist fade-up delay-1">
+      <div class="check-item">
+        <span class="check-mark">&check;</span>
+        <span class="check-text">One route built for your timeline and skills, not a template</span>
+      </div>
+      <div class="check-item">
+        <span class="check-mark">&check;</span>
+        <span class="check-text">The exact message to send today, ready to use</span>
+      </div>
+      <div class="check-item">
+        <span class="check-mark">&check;</span>
+        <span class="check-text">Clear daily targets you can hit right away</span>
+      </div>
+      <div class="check-item">
+        <span class="check-mark">&check;</span>
+        <span class="check-text">An honest read of what will not work for you</span>
+      </div>
+      <div class="check-item">
+        <span class="check-mark">&check;</span>
+        <span class="check-text">Support as you move through the process</span>
+      </div>
+      <div class="check-item">
+        <span class="check-mark">&check;</span>
+        <span class="check-text">Proof that you can build before you feel ready</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── BACKED BY ── -->
+<section class="backed-section sec-pad">
+  <div class="wrap">
+    <span class="sec-kicker fade-up">Backed By</span>
+    <h2 class="sec-head fade-up" style="margin-bottom:8px;">Part of the <em>OBA Inc.</em> ecosystem</h2>
+    <p class="fade-up delay-1" style="font-size:14.5px; color:var(--muted); max-width:540px; margin:0 auto 36px;">BB25 is led by Dr. Olori Boye-Ajayi and open to everyone under 25.</p>
+    <div class="backed-strip fade-up delay-2">
+      <div class="backed-item">
+        <span class="backed-num">12</span>
+        <span class="backed-lbl">Businesses built</span>
+      </div>
+      <div class="backed-item">
+        <span class="backed-num">100K+</span>
+        <span class="backed-lbl">SMEs advised</span>
+      </div>
+      <div class="backed-item">
+        <span class="backed-num">$5B</span>
+        <span class="backed-lbl">Portfolio raised</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FINAL CTA ── -->
+<section class="cta-section" id="register">
+  <div class="wrap">
+    <h2 class="cta-headline fade-up">"Every course you finish without a customer is a course that paid itself, not you."</h2>
+    <a class="cta-btn fade-up delay-1 js-reg-link" href="https://buildbefore25.com" target="_blank">
+      Find My Fastest Route &rarr;
+    </a>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <a class="footer-logo" href="index.html"><img src="images/bb25-logo.png" alt="BB25"></a>
+      <p class="footer-tagline">Twelve months. One deadline. Everything built in public.</p>
+    </div>
+    <div class="footer-socials">
+      <a class="footer-social" href="https://instagram.com/bb25hq" target="_blank" aria-label="Instagram">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a class="footer-social" href="https://www.tiktok.com/@buildbefore25" target="_blank" aria-label="TikTok">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
+      </a>
+      <a class="footer-social" href="https://www.youtube.com/@BuildBefore25HQ" target="_blank" aria-label="YouTube">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>
+      </a>
+    </div>
+    <p class="footer-note">&copy; 2026 OBA Inc. &middot; For everyone under 25</p>
+  </div>
+</footer>
+
+<script>
+  // ── BACK BUTTON → HOMEPAGE ──
+  history.replaceState(null, '', 'index.html');
+  history.pushState(null, '', 'bb25.html');
+
+  // ── NAV SCROLL ──
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // ── HAMBURGER ──
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  hamburger.addEventListener('click', () => {
+    const open = mobileNav.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    mobileNav.style.display = open ? 'flex' : 'none';
+    if (open) requestAnimationFrame(() => mobileNav.classList.add('open'));
+  });
+  mobileNav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+      hamburger.classList.remove('open');
+      setTimeout(() => { mobileNav.style.display = 'none'; }, 300);
+    });
+  });
+
+  // ── SCROLL FADE ──
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // ── BUTTON TRACKING ──
+  document.querySelectorAll('.js-reg-link').forEach(el => {
+    el.addEventListener('click', () => {
+      gtag('event', 'bb25_route_click', {
+        button_label: el.textContent.trim(),
+        transport_type: 'beacon'
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

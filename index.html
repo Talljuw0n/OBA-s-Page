@@ -511,6 +511,82 @@
     }
     .jump-diff p { font-size:13.5px; line-height:1.75; color:rgba(221,216,200,.8); }
 
+    /* ─── BB25 CAMPAIGN ─── */
+    .bb25-section {
+      padding:110px 0; background: var(--panel);
+      border-top:1px solid rgba(193,176,152,.15); border-bottom:1px solid rgba(193,176,152,.15);
+    }
+    .bb25-grid {
+      display:grid; grid-template-columns: 1fr 1fr;
+      gap:70px; align-items:start; margin-top:60px;
+    }
+    .bb25-image-wrap { position:relative; }
+    .bb25-image-wrap::before, .bb25-image-wrap::after {
+      content:''; position:absolute; width:24px; height:24px;
+      border-color:var(--gold); border-style:solid; z-index:2;
+    }
+    .bb25-image-wrap::before { top:-8px; left:-8px; border-width:2px 0 0 2px; }
+    .bb25-image-wrap::after  { bottom:-8px; right:-8px; border-width:0 2px 2px 0; }
+    .bb25-img {
+      width:100%; display:block;
+      aspect-ratio:4/5; object-fit:cover; object-position:center;
+      border:1px solid rgba(193,176,152,.2);
+    }
+    .bb25-tagline {
+      font-family:'Playfair Display',serif; font-style:italic; font-size:17px;
+      color:var(--gold-pale); line-height:1.65; margin-bottom:20px;
+      padding-left:14px; border-left:2px solid var(--gold);
+    }
+    .bb25-intro { font-size:15px; line-height:1.85; color:rgba(221,216,200,.8); margin-bottom:28px; }
+    .bb25-outcomes-label {
+      font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase;
+      color:var(--muted); margin-bottom:16px; display:block;
+    }
+    .bb25-outcomes { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:36px; }
+    .bb25-outcome {
+      display:flex; align-items:flex-start; gap:10px;
+      font-size:13px; line-height:1.6; color:rgba(221,216,200,.8);
+    }
+    .bb25-outcome::before {
+      content:''; display:block; flex-shrink:0;
+      width:5px; height:5px; border-radius:50%;
+      background:var(--gold); margin-top:6px;
+    }
+    .bb25-focus { display:flex; gap:24px; margin-bottom:36px; }
+    .bb25-focus-item { text-align:center; }
+    .bb25-focus-num {
+      font-family:'Playfair Display',serif; font-size:28px; font-weight:400;
+      color:var(--gold); display:block; line-height:1; margin-bottom:4px;
+    }
+    .bb25-focus-label { font-size:9.5px; letter-spacing:2.5px; text-transform:uppercase; color:var(--muted); }
+    .bb25-who-label {
+      font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase;
+      color:var(--muted); margin-bottom:16px; display:block;
+    }
+    .bb25-who { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:32px; }
+    .bb25-who-item {
+      display:flex; align-items:flex-start; gap:10px;
+      font-size:13px; line-height:1.6; color:rgba(221,216,200,.8);
+      padding:12px 14px;
+      border:1px solid rgba(193,176,152,.15);
+      background:rgba(193,176,152,.04);
+    }
+    .bb25-who-item::before {
+      content:''; display:block; flex-shrink:0;
+      width:5px; height:5px; border-radius:50%;
+      background:var(--gold); margin-top:6px;
+    }
+    .bb25-diff {
+      padding:20px 24px; margin-bottom:32px;
+      border-left:2px solid var(--gold);
+      background:rgba(193,176,152,.04);
+    }
+    .bb25-diff-label {
+      font-size:9.5px; font-weight:600; letter-spacing:3px; text-transform:uppercase;
+      color:var(--gold); display:block; margin-bottom:8px;
+    }
+    .bb25-diff p { font-size:13.5px; line-height:1.75; color:rgba(221,216,200,.8); }
+
     /* ─── GALLERY SLIDESHOW ────────────────────────────────────────
        WHY THE OLD VERSION CUT IMAGES:
        aspect-ratio:16/9 + max-height:600px forced a wide, shallow
@@ -758,6 +834,9 @@
       .jump-grid { grid-template-columns:1fr; gap:30px; }
       .jump-outcomes { grid-template-columns:1fr; }
       .jump-who { grid-template-columns:1fr; }
+      .bb25-grid { grid-template-columns:1fr; gap:30px; }
+      .bb25-outcomes { grid-template-columns:1fr; }
+      .bb25-who { grid-template-columns:1fr; }
       .vault-grid { grid-template-columns:1fr; gap:30px; }
       .vault-image-wrap { max-width:280px; }
       .vault-price-amount { font-size:28px; }
@@ -1239,6 +1318,75 @@
   </div>
 </section>
 
+<!-- ── BB25 ── -->
+<section class="bb25-section">
+  <div class="wrap">
+    <div class="sec-kicker fade-up">Campaign</div>
+    <h2 class="sec-head fade-up">Build <em>Before 25</em></h2>
+
+    <div class="bb25-grid">
+
+      <!-- LEFT: flyer image -->
+      <div class="bb25-image-wrap fade-up delay-1">
+        <img class="bb25-img" src="images/bb25-flyer.png" alt="BB25 Build Before 25 Campaign Flyer" />
+      </div>
+
+      <!-- RIGHT: content -->
+      <div class="bb25-content">
+        <p class="bb25-tagline fade-up">"Courses don't pay you. Customers do."</p>
+        <p class="bb25-intro fade-up delay-1">BB25 is a new movement for everyone under 25, built around one question. How fast can you get your first paying customer? Instead of another course that teaches you everything and delivers you nothing, BB25 gives you one clear route built around your timeline, your skills, and the hours you actually have.</p>
+
+        <div class="bb25-diff fade-up delay-1">
+          <span class="bb25-diff-label">What Makes BB25 Different</span>
+          <p>BB25 skips the theory and hands you the exact message to send today, the daily actions to take, and an honest read of what will not work given your constraints. You do not collect another certificate. You collect your first sale.</p>
+        </div>
+
+        <span class="bb25-who-label fade-up delay-2">Who This Is For</span>
+        <div class="bb25-who fade-up delay-2">
+          <span class="bb25-who-item">Anyone under 25 who wants revenue, not another certificate</span>
+          <span class="bb25-who-item">Anyone with a skill or product but no first customer yet</span>
+          <span class="bb25-who-item">People who have taken courses and still have not made a sale</span>
+          <span class="bb25-who-item">Builders ready to work a real deadline instead of waiting for motivation</span>
+        </div>
+
+        <div class="bb25-focus fade-up delay-2">
+          <div class="bb25-focus-item">
+            <span class="bb25-focus-num">01</span>
+            <span class="bb25-focus-label">Route</span>
+          </div>
+          <div class="bb25-focus-item">
+            <span class="bb25-focus-num">02</span>
+            <span class="bb25-focus-label">Message</span>
+          </div>
+          <div class="bb25-focus-item">
+            <span class="bb25-focus-num">03</span>
+            <span class="bb25-focus-label">Action</span>
+          </div>
+        </div>
+
+        <span class="bb25-outcomes-label fade-up delay-3">What You Walk Out With</span>
+        <div class="bb25-outcomes fade-up delay-3">
+          <span class="bb25-outcome">One route built for your timeline and skills</span>
+          <span class="bb25-outcome">The exact message to send today</span>
+          <span class="bb25-outcome">Clear daily actions with specific targets</span>
+          <span class="bb25-outcome">An honest read of what will not work for you</span>
+          <span class="bb25-outcome">Support as you move through the process</span>
+          <span class="bb25-outcome">Momentum toward your first paying customer</span>
+          <span class="bb25-outcome">Open to everyone under 25</span>
+          <span class="bb25-outcome">Proof that you can build before you feel ready</span>
+        </div>
+
+        <div class="btn-row fade-up delay-3">
+          <a class="btn-gold" href="bb25.html">
+            <span>Find My Fastest Route</span><span>→</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ── GALLERY ── -->
 <section class="gallery-section">
   <div class="wrap">
@@ -1340,6 +1488,14 @@
   document.querySelectorAll('a[href="jump.html"]').forEach(el => {
     el.addEventListener('click', () => {
       gtag('event', 'jump_page_click', {
+        button_label: el.textContent.trim(),
+        transport_type: 'beacon'
+      });
+    });
+  });
+  document.querySelectorAll('a[href="bb25.html"]').forEach(el => {
+    el.addEventListener('click', () => {
+      gtag('event', 'bb25_page_click', {
         button_label: el.textContent.trim(),
         transport_type: 'beacon'
       });
