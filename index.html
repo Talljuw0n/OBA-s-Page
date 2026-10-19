@@ -723,6 +723,47 @@
       color:var(--gold-pale); line-height:1.7;
     }
 
+    /* ─── INSIGHT (ESSAY) ─── */
+    .insight-section { padding:110px 0; }
+    .insight-grid {
+      display:grid; grid-template-columns: 400px 1fr;
+      gap:70px; align-items:start; margin-top:60px;
+    }
+    .insight-aside { position:sticky; top:110px; }
+    .insight-image-wrap { position:relative; margin-bottom:34px; }
+    .insight-image-wrap::before, .insight-image-wrap::after {
+      content:''; position:absolute; width:24px; height:24px;
+      border-color:var(--gold); border-style:solid; z-index:2;
+    }
+    .insight-image-wrap::before { top:-8px; left:-8px; border-width:2px 0 0 2px; }
+    .insight-image-wrap::after  { bottom:-8px; right:-8px; border-width:0 2px 2px 0; }
+    .insight-img {
+      width:100%; display:block;
+      aspect-ratio:4/3; object-fit:cover; object-position:center top;
+      border:1px solid rgba(193,176,152,.2);
+    }
+    .insight-dek {
+      font-family:'Playfair Display',serif; font-size:21px; font-weight:400;
+      color:var(--cream); line-height:1.45; margin-bottom:22px;
+    }
+    .insight-byline {
+      font-size:10px; font-weight:600; letter-spacing:3px; text-transform:uppercase;
+      color:var(--muted); padding-top:18px; border-top:1px solid rgba(193,176,152,.15);
+    }
+    .insight-body p { font-size:15px; line-height:1.85; color:rgba(221,216,200,.82); margin-bottom:20px; }
+    .insight-body p.lead::first-letter {
+      font-family:'Playfair Display',serif; font-size:58px; font-weight:500;
+      color:var(--gold); float:left; line-height:.9; margin:6px 12px 0 0;
+    }
+    .insight-quote {
+      margin:34px 0; padding:22px 28px;
+      border-left:2px solid var(--gold); background:rgba(193,176,152,.04);
+      font-family:'Playfair Display',serif; font-style:italic; font-size:22px;
+      color:var(--gold-pale); line-height:1.5;
+    }
+    .insight-more[hidden] { display:none; }
+    .insight-toggle { background:none; cursor:pointer; font-family:'Jost',sans-serif; margin-top:8px; }
+
     /* ─── STUDENT VAULT ─── */
     .vault-section {
       padding:110px 0; background: var(--panel);
@@ -828,6 +869,9 @@
       /* gallery stays tall on mobile — 60vh still shows full images */
       .slideshow { min-height: 60vh; }
       .speaking-grid { grid-template-columns:1fr; gap:40px; }
+      .insight-grid { grid-template-columns:1fr; gap:30px; margin-top:40px; }
+      .insight-aside { position:static; }
+      .insight-quote { font-size:19px; padding:18px 20px; }
       .t2t-grid { grid-template-columns:1fr; gap:30px; }
       .t2t-image-wrap { order:-1; }
       .t2t-stats { grid-template-columns:repeat(2,1fr); }
@@ -984,6 +1028,52 @@
         <span class="award-year">2021 · 2023</span>
         <p class="award-text">Included in the Top 100 Inspiring Women in Africa Award</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── INSIGHT: THE TRUST EQUATION ── -->
+<section class="insight-section" id="trust-equation">
+  <div class="wrap">
+    <div class="sec-kicker fade-up">Insight</div>
+    <h2 class="sec-head fade-up">The Trust <em>Equation</em></h2>
+
+    <div class="insight-grid">
+
+      <!-- LEFT: title card -->
+      <div class="insight-aside fade-up delay-1">
+        <div class="insight-image-wrap">
+          <img class="insight-img" src="images/trust-equation.jpg" alt="Dr. Olori Boye-Ajayi with fellow speakers at the Loveworld Trade and Investment event" />
+        </div>
+        <p class="insight-dek">What Makes Capital, Talent, and Trade Choose Africa?</p>
+        <p class="insight-byline">By Dr. Olori Boye-Ajayi</p>
+      </div>
+
+      <!-- RIGHT: essay -->
+      <div class="insight-body">
+        <p class="lead fade-up">When we talk about the economic trajectory of African markets, we often segment our thinking. Policymakers talk about trade agreements, venture capitalists talk about capital allocation, and human resources experts talk about brain drain.</p>
+        <p class="fade-up delay-1">Yet, as someone who sits at the intersection of trade and capital markets, I look at these three pillars and see a single, unified organism. Capital, talent, and trade are not three separate audiences with three different agendas. They are one audience running one core test: does the promise hold on an ordinary Tuesday?</p>
+        <blockquote class="insight-quote fade-up delay-2">Trust is the interest rate that never appears on the term sheet.</blockquote>
+        <p class="fade-up delay-2">Think about an engineer in London who has been offered a senior role in Accra or Lagos. The salary is good, and she is eager for the move. But she does not phone a friend to ask about gross domestic product growth. She asks three practical questions: Will my contract be honoured? Will my salary arrive on the day it is promised? And if the rules change in a year, who do I call? Now picture a fund manager in Johannesburg looking at that same market, or a buyer in Dubai deciding whether to place a second order. Different people, different accents, but they are asking the exact same three questions.</p>
+
+        <div class="insight-more" id="insightMore" hidden>
+          <p>The cost of failing that test is measurable. The United Nations Development Programme estimated that the Africa premium adds up to $74.5 billion a year to what the continent pays to borrow. But honesty is also a trust signal. An International Monetary Fund working paper found that this premium disappears once you account for financial depth, budget transparency, the size of the formal economy, and institutional strength. Part of that bill is perception, and part of it is earned. Out of 34 African countries rated by major agencies in 2025, only three held investment grade. The premium is a bill we pay twice: once for what the world misreads about us, and once for what we have not yet fixed. Trust is a track record, not a pitch.</p>
+          <p>This lack of predictability plays out in everyday commerce. Imagine a manufacturer in Kumasi who imports machine parts. She quotes her customer on the duty rate that applies the day she places the order, knowing the container takes six weeks to arrive. While it is at sea, the rate changes. She cannot go back to her customer who signed weeks ago, so she absorbs the loss. She did not lose to a competitor; she lost to a surprise. Now picture the same founder applying for a licence, meeting every single condition on the application, only for the approval to arrive on completely different terms while nobody can explain why. Her investor asks the question every investor asks: if it can change this fast, what else can?</p>
+          <p>Investors can price a tough rule, but they cannot price a surprise. Genuine regulatory consistency does not mean a market that never reforms. It means reform with notice, a transition period, a published gazette, and a named desk that answers the phone. The African Continental Free Trade Area is the clearest test of this. Forty-nine countries have ratified it, yet more than half could not trade preferentially because their tariff schedules were not gazetted. As of late September 2026, a Secretariat official reported that 26 countries had gazetted their tariff offers, with 48 of 50 submissions finalised. Ratification is a signature, but the gazette is the signal.</p>
+          <p>We see this same friction when disputes arise. Picture a founder in Nairobi closing the biggest contract of her career with a foreign counterparty. At the last meeting, their lawyers say the dispute clause will name London. She hesitates for a second, then signs because refusing means losing the deal. Two years later, the counterparty stops paying. She reads her own contract and finds she must fight in a foreign city with foreign counsel in pounds, and the cost of the hearing is close to the value of her claim, so she drops it. That is why the dispute clause is never a legal footnote. Only eight International Chamber of Commerce arbitrations in 2023 were seated in Africa, and 142 over the decade, while London was chosen 808 times in the same period. Leading African arbitration centres handle roughly 20 to 80 cases a year, keeping the track record thin in a self-fulfilling cycle. Governments and state-owned entities must lead by seating their own contracts in African centres first, issuing awards quickly, enforcing them predictably, and publishing decisions so precedent can build.</p>
+          <p>Beyond rules and courts, the payment infrastructure itself tells a story. Imagine a creator in Nairobi who sells an online course to a buyer in Lagos. The checkout takes seconds, the buyer pays, and she feels like a global entrepreneur. Then she tries to withdraw her earnings and gets a notice that her currency payouts are temporarily unavailable, followed a month later by another notice that transfers are down because a local payment partner has an issue. Africa trades about $214 billion with itself, roughly 15 percent of its total trade, against about 60 percent in Asia and nearly 70 percent in Europe. Unrecorded flows may account for up to 60 percent of intra-African trade, and the African Export Import Bank estimates a trade finance gap of about $100 billion a year. With 42 currencies, the cost of convertibility is estimated at about $5 billion a year, and transfers can take seven to eight percent of the amount sent. Trade finance is trust made liquid. PAPSS exists to connect African banks and payment service providers for instant, secure cross-border payments, but the real question is how many platforms and small traders are built on it yet.</p>
+          <p>This friction bleeds directly into our talent markets. Picture a nurse in Manchester or an engineer in Houston sending money home on the first Sunday of every month to pay a hospital bill or school fees, quietly financing home from the outside. Meanwhile, a developer in Lagos or Accra loses her best colleague to a remote job paying in dollars because the colleague wants predictable contracts and payments. Talent does not leave for a bad day; it leaves for a bad horizon, seeking a pension that holds its value, a contract that gets honoured, and a regulator they can predict. Africa received $124.2 billion in remittances in 2025, with Ghana reaching nearly $7.8 billion to overtake foreign direct investment for the first time. Our talent is already investing in Africa; the real question is whether we give them a reason to live here as well.</p>
+          <p>Governments set the rules, but founders earn the trust. Picture two founders pitching the same investor, where one has audited accounts, a board that meets, and a report that arrives on time, while the other has a good story. The investor funds the first one every time. Clean books are the cheapest guarantee an African business can offer, and every founder can start tomorrow.</p>
+          <p>If Africa gets one thing right in the next decade to become a trusted destination rather than a market priced for risk, it should be the boring promise kept at scale. Imagine ten years from now when a fund manager in Accra picks up a loan application from a Kenyan manufacturer and does not add a risk premium for the continent, looking instead at a track record of invoices paid, contracts honoured, and rules left unchanged for a decade. Enforce one contract visibly, and the market notices.</p>
+        </div>
+
+        <div class="btn-row fade-up delay-3">
+          <button class="btn-ghost insight-toggle" id="insightToggle" aria-expanded="false" aria-controls="insightMore">
+            <span>Continue Reading</span><span>↓</span>
+          </button>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1479,6 +1569,20 @@
       mobileMenu.classList.remove('open'); hamburger.classList.remove('open');
       setTimeout(() => { mobileMenu.style.display = 'none'; }, 300);
     });
+  });
+</script>
+
+<!-- ── INSIGHT READ MORE ── -->
+<script>
+  const insightToggle = document.getElementById('insightToggle');
+  const insightMore   = document.getElementById('insightMore');
+  insightToggle.addEventListener('click', () => {
+    const open = insightMore.hidden;
+    insightMore.hidden = !open;
+    insightToggle.setAttribute('aria-expanded', open);
+    insightToggle.children[0].textContent = open ? 'Show Less' : 'Continue Reading';
+    insightToggle.children[1].textContent = open ? '↑' : '↓';
+    if (!open) document.getElementById('trust-equation').scrollIntoView({ behavior: 'smooth' });
   });
 </script>
 
